@@ -1,16 +1,15 @@
 package com.plataforma.conversacional.event;
 
 import org.springframework.context.ApplicationEvent;
-import java.util.UUID;
 
 public class MessageSentEvent extends ApplicationEvent {
 
-    private final UUID messageId;
+    private final Long messageId;
 
-    public MessageSentEvent(Object source, UUID messageId) {
+    public MessageSentEvent(Object source, Long messageId) {
         super(source);
         this.messageId = messageId;
     }
 
-    public UUID getMessageId() { return messageId; }
+    public Long getMessageId() { return messageId; }
 }

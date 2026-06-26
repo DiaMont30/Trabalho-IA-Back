@@ -6,13 +6,12 @@ import com.plataforma.conversacional.entity.Session;
 import com.plataforma.conversacional.enums.MessageRole;
 import com.plataforma.conversacional.enums.MessageStatus;
 import java.time.format.DateTimeFormatter;
-import java.util.UUID;
 import javax.annotation.processing.Generated;
 import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2026-06-26T00:08:27-0300",
+    date = "2026-06-26T16:07:42-0300",
     comments = "version: 1.5.5.Final, compiler: Eclipse JDT (IDE) 3.46.100.v20260624-0231, environment: Java 21.0.11 (Eclipse Adoptium)"
 )
 @Component
@@ -24,10 +23,10 @@ public class MessageMapperImpl implements MessageMapper {
             return null;
         }
 
-        UUID sessionId = null;
+        Long sessionId = null;
         String createdAt = null;
         String updatedAt = null;
-        UUID id = null;
+        Long id = null;
         String content = null;
         MessageRole role = null;
         MessageStatus status = null;
@@ -49,7 +48,7 @@ public class MessageMapperImpl implements MessageMapper {
         return messageResponse;
     }
 
-    private UUID messageSessionId(Message message) {
+    private Long messageSessionId(Message message) {
         if ( message == null ) {
             return null;
         }
@@ -57,7 +56,7 @@ public class MessageMapperImpl implements MessageMapper {
         if ( session == null ) {
             return null;
         }
-        UUID id = session.getId();
+        Long id = session.getId();
         if ( id == null ) {
             return null;
         }

@@ -20,7 +20,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
-import java.util.UUID;
 
 @Service
 public class MessageServiceImpl implements MessageService {
@@ -45,7 +44,7 @@ public class MessageServiceImpl implements MessageService {
 
     @Override
     @Transactional
-    public MessageResponse send(UUID sessionId, SendMessageRequest request) {
+    public MessageResponse send(Long sessionId, SendMessageRequest request) {
         Session session = sessionRepository.findById(sessionId)
                 .orElseThrow(() -> new ResourceNotFoundException(
                         "Session not found: " + sessionId));
@@ -72,7 +71,7 @@ public class MessageServiceImpl implements MessageService {
     }
 
     @Override
-    public SessionHistoryResponse getHistory(UUID sessionId, int page, int size) {
+    public SessionHistoryResponse getHistory(Long sessionId, int page, int size) {
         if (!sessionRepository.existsById(sessionId)) {
             throw new ResourceNotFoundException("Session not found: " + sessionId);
         }

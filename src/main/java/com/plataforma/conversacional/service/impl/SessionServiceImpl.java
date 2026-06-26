@@ -3,7 +3,6 @@ package com.plataforma.conversacional.service.impl;
 import com.plataforma.conversacional.dto.response.SessionResponse;
 import com.plataforma.conversacional.service.SessionService;
 import org.springframework.stereotype.Service;
-import java.util.UUID;
 
 @Service
 public class SessionServiceImpl implements SessionService {
@@ -14,7 +13,7 @@ public class SessionServiceImpl implements SessionService {
     }
 
     @Override
-    public SessionResponse findById(UUID sessionId) {
+    public SessionResponse findById(Long sessionId) {
         throw new UnsupportedOperationException("Not implemented yet");
     }
 }

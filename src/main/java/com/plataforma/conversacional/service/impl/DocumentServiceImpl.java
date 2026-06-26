@@ -15,7 +15,6 @@ import com.plataforma.conversacional.storage.FileStorageService;
 import com.plataforma.conversacional.util.FileUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import java.util.UUID;
 
 @Service
 public class DocumentServiceImpl implements DocumentService {
@@ -71,7 +70,7 @@ public class DocumentServiceImpl implements DocumentService {
     }
 
     @Override
-    public DocumentResponse findById(UUID documentId) {
+    public DocumentResponse findById(Long documentId) {
         Document document = documentRepository.findById(documentId)
                 .orElseThrow(() -> new ResourceNotFoundException(
                         "Document not found: " + documentId));

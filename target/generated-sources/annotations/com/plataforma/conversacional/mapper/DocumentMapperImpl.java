@@ -4,13 +4,12 @@ import com.plataforma.conversacional.dto.response.DocumentResponse;
 import com.plataforma.conversacional.entity.Document;
 import com.plataforma.conversacional.enums.DocumentType;
 import java.time.format.DateTimeFormatter;
-import java.util.UUID;
 import javax.annotation.processing.Generated;
 import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2026-06-26T00:08:28-0300",
+    date = "2026-06-26T16:07:44-0300",
     comments = "version: 1.5.5.Final, compiler: Eclipse JDT (IDE) 3.46.100.v20260624-0231, environment: Java 21.0.11 (Eclipse Adoptium)"
 )
 @Component
@@ -24,7 +23,7 @@ public class DocumentMapperImpl implements DocumentMapper {
 
         String fileName = null;
         String uploadedAt = null;
-        UUID id = null;
+        Long id = null;
         String originalName = null;
         DocumentType type = null;
         Long size = null;
@@ -40,7 +39,7 @@ public class DocumentMapperImpl implements DocumentMapper {
         size = document.getSize();
         storagePath = document.getStoragePath();
 
-        UUID sessionId = document.getSession() != null ? document.getSession().getId() : null;
+        Long sessionId = document.getSession() != null ? document.getSession().getId() : null;
 
         DocumentResponse documentResponse = new DocumentResponse( id, fileName, originalName, type, size, storagePath, sessionId, uploadedAt );
 

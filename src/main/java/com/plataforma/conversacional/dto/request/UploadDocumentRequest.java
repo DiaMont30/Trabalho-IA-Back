@@ -5,5 +5,5 @@ import org.springframework.web.multipart.MultipartFile;
 
 public record UploadDocumentRequest(
     @NotNull MultipartFile file,
-    String sessionId
+    Long sessionId
 ) {}

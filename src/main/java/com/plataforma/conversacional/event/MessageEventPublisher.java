@@ -2,7 +2,6 @@ package com.plataforma.conversacional.event;
 
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Component;
-import java.util.UUID;
 
 @Component
 public class MessageEventPublisher {
@@ -13,7 +12,7 @@ public class MessageEventPublisher {
         this.eventPublisher = eventPublisher;
     }
 
-    public void publishMessageSent(UUID messageId) {
+    public void publishMessageSent(Long messageId) {
         eventPublisher.publishEvent(new MessageSentEvent(this, messageId));
     }
 }

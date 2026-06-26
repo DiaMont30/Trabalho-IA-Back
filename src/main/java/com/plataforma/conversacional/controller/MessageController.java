@@ -18,9 +18,10 @@ import static com.plataforma.conversacional.constants.ApiConstants.API_VERSION;
 import static com.plataforma.conversacional.constants.ApiConstants.DEFAULT_PAGE_SIZE;
 import static com.plataforma.conversacional.constants.ApiConstants.MESSAGE_PATH;
 import static com.plataforma.conversacional.constants.ApiConstants.SESSION_ID_VARIABLE;
+import static com.plataforma.conversacional.constants.ApiConstants.SESSION_PATH;
 
 @RestController
-@RequestMapping(API_VERSION + "/{sessionId}" + MESSAGE_PATH)
+@RequestMapping(API_VERSION + SESSION_PATH + "/{sessionId}" + MESSAGE_PATH)
 public class MessageController {
 
     private final MessageService messageService;

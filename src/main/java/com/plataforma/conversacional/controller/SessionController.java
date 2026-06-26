@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import java.util.List;
 import static com.plataforma.conversacional.constants.ApiConstants.API_VERSION;
 import static com.plataforma.conversacional.constants.ApiConstants.SESSION_PATH;
 import static com.plataforma.conversacional.constants.ApiConstants.SESSION_ID_VARIABLE;
@@ -31,6 +32,12 @@ public class SessionController {
     @GetMapping("/{" + SESSION_ID_VARIABLE + "}")
     public ResponseEntity<SessionResponse> findById(@PathVariable Long sessionId) {
         SessionResponse response = sessionService.findById(sessionId);
+        return ResponseEntity.ok(response);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<SessionResponse>> listAll() {
+        List<SessionResponse> response = sessionService.findAll();
         return ResponseEntity.ok(response);
     }
 }

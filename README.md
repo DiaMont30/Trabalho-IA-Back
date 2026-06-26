@@ -83,7 +83,9 @@ Trabalho-IA-Back/
 
 3. **Executar**
 
-   `mvn spring-boot:run`
+   ```bash
+    mvn spring-boot:run
+   ```
 
    A aplicação estará disponível em `http://localhost:8080` ou `http://localhost:8080/swagger-ui/index.html`.
 

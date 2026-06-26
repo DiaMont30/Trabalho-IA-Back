@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import java.util.UUID;
 import static com.plataforma.conversacional.constants.ApiConstants.API_VERSION;
 import static com.plataforma.conversacional.constants.ApiConstants.DEFAULT_PAGE_SIZE;
 import static com.plataforma.conversacional.constants.ApiConstants.MESSAGE_PATH;
@@ -32,7 +31,7 @@ public class MessageController {
 
     @PostMapping
     public ResponseEntity<MessageResponse> send(
-            @PathVariable UUID sessionId,
+            @PathVariable Long sessionId,
             @Valid @RequestBody SendMessageRequest request) {
         MessageResponse response = messageService.send(sessionId, request);
         return ResponseEntity.status(201).body(response);
@@ -40,7 +39,7 @@ public class MessageController {
 
     @GetMapping
     public ResponseEntity<SessionHistoryResponse> getHistory(
-            @PathVariable UUID sessionId,
+            @PathVariable Long sessionId,
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = DEFAULT_PAGE_SIZE) int size) {
         SessionHistoryResponse response = messageService.getHistory(sessionId, page, size);

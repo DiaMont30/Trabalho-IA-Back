@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
-import java.util.UUID;
 import static com.plataforma.conversacional.constants.ApiConstants.API_VERSION;
 import static com.plataforma.conversacional.constants.ApiConstants.DOCUMENT_ID_VARIABLE;
 import static com.plataforma.conversacional.constants.ApiConstants.DOCUMENT_PATH;
@@ -30,7 +29,7 @@ public class DocumentController {
     @PostMapping("/upload")
     public ResponseEntity<DocumentResponse> upload(
             @RequestParam("file") MultipartFile file,
-            @RequestParam(value = "sessionId", required = false) UUID sessionId) throws IOException {
+            @RequestParam(value = "sessionId", required = false) Long sessionId) throws IOException {
         FileUploadData fileUploadData = new FileUploadData(
                 file.getOriginalFilename(),
                 file.getContentType(),
@@ -43,7 +42,7 @@ public class DocumentController {
     }
 
     @GetMapping("/{" + DOCUMENT_ID_VARIABLE + "}")
-    public ResponseEntity<DocumentResponse> findById(@PathVariable UUID documentId) {
+    public ResponseEntity<DocumentResponse> findById(@PathVariable Long documentId) {
         DocumentResponse response = documentService.findById(documentId);
         return ResponseEntity.ok(response);
     }

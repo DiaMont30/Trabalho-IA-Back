@@ -15,7 +15,6 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 @Entity
 @Table(name = "documents", indexes = {
@@ -25,30 +24,30 @@ import java.util.UUID;
 public class Document {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "session_id")
     private Session session;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 255)
     private String originalName;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false, unique = true, length = 255)
     private String storageFileName;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 500)
     private String storagePath;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
+    @Column(nullable = false, length = 10)
     private DocumentType type;
 
     @Column(nullable = false)
     private Long size;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 100)
     private String contentType;
 
     @Column(nullable = false, updatable = false)
@@ -59,8 +58,8 @@ public class Document {
         uploadedAt = LocalDateTime.now();
     }
 
-    public UUID getId() { return id; }
-    public void setId(UUID id) { this.id = id; }
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
     public Session getSession() { return session; }
     public void setSession(Session session) { this.session = session; }
     public String getOriginalName() { return originalName; }

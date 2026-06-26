@@ -1,16 +1,14 @@
 package com.plataforma.conversacional.dto.internal;
 
-import java.util.UUID;
-
 public class FileUploadData {
 
     private String originalName;
     private String contentType;
     private long size;
     private byte[] content;
-    private UUID sessionId;
+    private Long sessionId;
 
-    public FileUploadData(String originalName, String contentType, long size, byte[] content, UUID sessionId) {
+    public FileUploadData(String originalName, String contentType, long size, byte[] content, Long sessionId) {
         this.originalName = originalName;
         this.contentType = contentType;
         this.size = size;
@@ -22,5 +20,5 @@ public class FileUploadData {
     public String getContentType() { return contentType; }
     public long getSize() { return size; }
     public byte[] getContent() { return content; }
-    public UUID getSessionId() { return sessionId; }
+    public Long getSessionId() { return sessionId; }
 }

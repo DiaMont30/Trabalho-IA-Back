@@ -4,13 +4,12 @@ import com.plataforma.conversacional.dto.response.SessionResponse;
 import com.plataforma.conversacional.entity.Session;
 import com.plataforma.conversacional.enums.SessionStatus;
 import java.time.format.DateTimeFormatter;
-import java.util.UUID;
 import javax.annotation.processing.Generated;
 import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2026-06-26T00:08:29-0300",
+    date = "2026-06-26T16:07:41-0300",
     comments = "version: 1.5.5.Final, compiler: Eclipse JDT (IDE) 3.46.100.v20260624-0231, environment: Java 21.0.11 (Eclipse Adoptium)"
 )
 @Component
@@ -24,7 +23,7 @@ public class SessionMapperImpl implements SessionMapper {
 
         String createdAt = null;
         String updatedAt = null;
-        UUID id = null;
+        Long id = null;
         String title = null;
         SessionStatus status = null;
 

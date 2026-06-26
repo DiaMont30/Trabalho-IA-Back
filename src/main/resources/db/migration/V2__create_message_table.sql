@@ -1,12 +1,12 @@
 CREATE TABLE messages (
-    id BINARY(16) NOT NULL PRIMARY KEY,
-    session_id BINARY(16) NOT NULL,
+    id BIGSERIAL NOT NULL PRIMARY KEY,
+    session_id BIGINT NOT NULL,
     content TEXT NOT NULL,
     role VARCHAR(20) NOT NULL,
     status VARCHAR(20) NOT NULL,
     metadata JSON NULL,
-    created_at DATETIME NOT NULL,
-    updated_at DATETIME NOT NULL,
+    created_at TIMESTAMP NOT NULL,
+    updated_at TIMESTAMP NOT NULL,
     CONSTRAINT fk_message_session FOREIGN KEY (session_id) REFERENCES sessions(id) ON DELETE CASCADE
 );
 

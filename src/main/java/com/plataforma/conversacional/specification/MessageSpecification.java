@@ -5,7 +5,7 @@ import org.springframework.data.jpa.domain.Specification;
 
 public class MessageSpecification {
 
-    public static Specification<Message> bySessionId(String sessionId) {
+    public static Specification<Message> bySessionId(Long sessionId) {
         throw new UnsupportedOperationException("Not implemented yet");
     }
 }

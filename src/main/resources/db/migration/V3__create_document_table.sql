@@ -1,13 +1,13 @@
 CREATE TABLE documents (
-    id BINARY(16) NOT NULL PRIMARY KEY,
-    session_id BINARY(16) NULL,
+    id BIGSERIAL NOT NULL PRIMARY KEY,
+    session_id BIGINT NULL,
     original_name VARCHAR(255) NOT NULL,
     storage_file_name VARCHAR(255) NOT NULL UNIQUE,
     storage_path VARCHAR(500) NOT NULL,
     type VARCHAR(10) NOT NULL,
     size BIGINT NOT NULL,
     content_type VARCHAR(100) NOT NULL,
-    uploaded_at DATETIME NOT NULL,
+    uploaded_at TIMESTAMP NOT NULL,
     CONSTRAINT fk_document_session FOREIGN KEY (session_id) REFERENCES sessions(id) ON DELETE SET NULL
 );
 

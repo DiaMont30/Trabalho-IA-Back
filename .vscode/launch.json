@@ -1,0 +1,14 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Spring Boot-PlataformaConversacionalApplication<conversacional>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "com.plataforma.conversacional.PlataformaConversacionalApplication",
+      "projectName": "conversacional",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    }
+  ]
+}

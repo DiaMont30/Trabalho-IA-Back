@@ -29,6 +29,7 @@ springdoc:
     path: /swagger-ui.html
 
 app:
+  version: ${APP_VERSION:0.0.1-SNAPSHOT}
   storage:
     upload-dir: ${UPLOAD_DIR:./uploads}
 

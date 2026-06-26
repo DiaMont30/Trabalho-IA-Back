@@ -9,6 +9,6 @@ public class ApplicationHealthIndicator implements HealthIndicator {
 
     @Override
     public Health health() {
-        throw new UnsupportedOperationException("Not implemented yet");
+        return Health.up().build();
     }
 }

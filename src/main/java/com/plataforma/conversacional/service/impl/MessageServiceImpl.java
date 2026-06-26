@@ -14,8 +14,12 @@ import com.plataforma.conversacional.repository.MessageRepository;
 import com.plataforma.conversacional.repository.SessionRepository;
 import com.plataforma.conversacional.service.MessageService;
 import com.plataforma.conversacional.strategy.MessageProcessingStrategy;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -69,6 +73,24 @@ public class MessageServiceImpl implements MessageService {
 
     @Override
     public SessionHistoryResponse getHistory(UUID sessionId, int page, int size) {
-        throw new UnsupportedOperationException("Not implemented yet");
+        if (!sessionRepository.existsById(sessionId)) {
+            throw new ResourceNotFoundException("Session not found: " + sessionId);
+        }
+
+        Pageable pageable = PageRequest.of(page, size);
+        Page<Message> messagePage = messageRepository.findBySessionId(sessionId, pageable);
+
+        List<MessageResponse> messages = messagePage.getContent().stream()
+                .map(messageMapper::toResponse)
+                .toList();
+
+        return new SessionHistoryResponse(
+                sessionId,
+                messages,
+                messagePage.getNumber(),
+                messagePage.getTotalPages(),
+                messagePage.getTotalElements(),
+                messagePage.hasNext()
+        );
     }
 }

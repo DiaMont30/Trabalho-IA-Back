@@ -57,6 +57,38 @@ Trabalho-IA-Back/
 
 ---
 
+## Como executar o código
+
+### Pré-requisitos
+
+- Java 17+ instalado
+- Maven 3.8+ instalado (ou utilizar o wrapper da IDE)
+- PostgreSQL rodando (local ou remoto)
+
+### Passos
+
+1. **Clonar o repositório**
+
+   ```bash
+   git clone https://github.com/DiaMont30/Trabalho-IA-Back.git
+   cd Trabalho-IA-Back
+   ```
+
+2. **Criar o arquivo `.env`** na raiz do projeto com as credenciais do banco:
+
+   ```env
+   DB_USERNAME=chatbot
+   DB_PASSWORD=***
+   ```
+
+3. **Executar**
+
+   `mvn spring-boot:run`
+
+   A aplicação estará disponível em `http://localhost:8080` ou `http://localhost:8080/swagger-ui/index.html`.
+
+---
+
 ## Como executar o `.jar`
 
 ### Pré-requisito
@@ -83,12 +115,6 @@ Trabalho-IA-Back/
    A aplicação sobe na porta `8080`.
 
 ---
-
-## URL para clonar o repositório
-
-```bash
-git clone https://github.com/DiaMont30/Trabalho-IA-Back.git
-```
 
 ## Tecnologias
 

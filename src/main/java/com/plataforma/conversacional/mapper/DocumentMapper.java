@@ -10,7 +10,7 @@ import org.mapstruct.ReportingPolicy;
 public interface DocumentMapper {
 
     @Mapping(target = "fileName", source = "storageFileName")
-    @Mapping(target = "sessionId", source = "session.id")
+    @Mapping(target = "sessionId", expression = "java(document.getSession() != null ? document.getSession().getId() : null)")
     @Mapping(target = "uploadedAt", source = "uploadedAt")
     DocumentResponse toResponse(Document document);
 }

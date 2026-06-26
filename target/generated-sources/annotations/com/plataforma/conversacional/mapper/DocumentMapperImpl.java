@@ -2,7 +2,6 @@ package com.plataforma.conversacional.mapper;
 
 import com.plataforma.conversacional.dto.response.DocumentResponse;
 import com.plataforma.conversacional.entity.Document;
-import com.plataforma.conversacional.entity.Session;
 import com.plataforma.conversacional.enums.DocumentType;
 import java.time.format.DateTimeFormatter;
 import java.util.UUID;
@@ -11,7 +10,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2026-06-25T23:41:02-0300",
+    date = "2026-06-25T23:52:15-0300",
     comments = "version: 1.5.5.Final, compiler: javac, environment: Java 17.0.12 (Oracle Corporation)"
 )
 @Component
@@ -24,7 +23,6 @@ public class DocumentMapperImpl implements DocumentMapper {
         }
 
         String fileName = null;
-        UUID sessionId = null;
         String uploadedAt = null;
         UUID id = null;
         String originalName = null;
@@ -33,7 +31,6 @@ public class DocumentMapperImpl implements DocumentMapper {
         String storagePath = null;
 
         fileName = document.getStorageFileName();
-        sessionId = documentSessionId( document );
         if ( document.getUploadedAt() != null ) {
             uploadedAt = DateTimeFormatter.ISO_LOCAL_DATE_TIME.format( document.getUploadedAt() );
         }
@@ -43,23 +40,10 @@ public class DocumentMapperImpl implements DocumentMapper {
         size = document.getSize();
         storagePath = document.getStoragePath();
 
+        UUID sessionId = document.getSession() != null ? document.getSession().getId() : null;
+
         DocumentResponse documentResponse = new DocumentResponse( id, fileName, originalName, type, size, storagePath, sessionId, uploadedAt );
 
         return documentResponse;
-    }
-
-    private UUID documentSessionId(Document document) {
-        if ( document == null ) {
-            return null;
-        }
-        Session session = document.getSession();
-        if ( session == null ) {
-            return null;
-        }
-        UUID id = session.getId();
-        if ( id == null ) {
-            return null;
-        }
-        return id;
     }
 }

@@ -17,7 +17,7 @@
 | 6   | Validação por magic bytes em upload                                       | Média      | ✅ Concluída    |
 | 7   | Implementar config classes stub (Web, Storage, OpenApi, MessagePublisher) | Baixa      | ✅ iniciada |
 | 8   | Logging estruturado JSON (logback-spring.xml)                             | Média      | ✅ Concluída     |
-| 9   | **Pipeline RAG — Parte 2 (16 etapas)**                                    | **Alta**   | 🟡 Em andamento (14/16) |
+| 9   | **Pipeline RAG — Parte 2 (16 etapas)**                                    | **Alta**   | 🟡 Em andamento (15/16) |
 
 ---
 
@@ -508,7 +508,7 @@ CREATE INDEX idx_jobs_status ON pipeline_jobs(status);
 
 **Tarefas:**
 
-- [ ] Adicionar handlers no `GlobalExceptionHandler.java`:
+- [x] Adicionar handlers no `GlobalExceptionHandler.java`:
 
 | Exceção                | HTTP Status               | error                         |
 | ---------------------- | ------------------------- | ----------------------------- |
@@ -517,8 +517,8 @@ CREATE INDEX idx_jobs_status ON pipeline_jobs(status);
 | EmbeddingException     | 502 BAD_GATEWAY           | Embedding Service Unavailable |
 | RetrievalException     | 500 INTERNAL_SERVER_ERROR | Retrieval Failed              |
 
-- [ ] Criar `exception/RetrievalException.java`
-- [ ] Garantir que PipelineJob registre errorMessage quando qualquer etapa falhar
+- [x] Criar `exception/RetrievalException.java`
+- [x] Garantir que PipelineJob registre errorMessage quando qualquer etapa falhar
 
 **Arquivos:** `exception/RetrievalException.java`, `exception/GlobalExceptionHandler.java`
 

@@ -131,7 +131,7 @@
 
 **Tarefas:**
 
-- [ ] Criar `docker-compose.yml` na raiz do projeto:
+- [x] Criar `docker-compose.yml` na raiz do projeto:
 
 ```yaml
 version: "3.8"
@@ -153,14 +153,14 @@ volumes:
   ollama_data:
 ```
 
-- [ ] Adicionar script `docker-init.sh` para baixar modelo padrão:
+- [x] Adicionar script `docker-init.sh` para baixar modelo padrão:
 
   ```bash
   docker compose up -d
   docker compose exec ollama ollama pull nomic-embed-text
   ```
 
-- [ ] Adicionar propriedades no `application.yml`:
+- [x] Adicionar propriedades no `application.yml`:
   ```yaml
   app:
     rag:
@@ -180,13 +180,13 @@ volumes:
 
 ---
 
-### Etapa 9.2 — Migrations Flyway (V4, V5, V6, V7)
+### Etapa 9.2 — Migrations Flyway (V5, V6, V7)
 
 **Objetivo:** Criar as tabelas do pipeline RAG.
 
 **Tarefas:**
 
-- [ ] Criar `V4__create_document_chunks_table.sql`:
+- [x] Criar `V5__create_document_chunks_table.sql`:
 
 ```sql
 CREATE TABLE document_chunks (
@@ -204,7 +204,7 @@ CREATE TABLE document_chunks (
 CREATE INDEX idx_chunks_document_id ON document_chunks(document_id);
 ```
 
-- [ ] Criar `V5__create_source_references_table.sql`:
+- [x] Criar `V6__create_source_references_table.sql`:
 
 ```sql
 CREATE TABLE source_references (
@@ -221,7 +221,7 @@ CREATE TABLE source_references (
 CREATE INDEX idx_sources_message_id ON source_references(message_id);
 ```
 
-- [ ] Criar `V6__create_pipeline_jobs_table.sql`:
+- [x] Criar `V7__create_pipeline_jobs_table.sql`:
 
 ```sql
 CREATE TYPE pipeline_status AS ENUM ('QUEUED', 'PARSING', 'CHUNKING', 'EMBEDDING', 'READY', 'FAILED');
@@ -241,7 +241,7 @@ CREATE INDEX idx_jobs_document_id ON pipeline_jobs(document_id);
 CREATE INDEX idx_jobs_status ON pipeline_jobs(status);
 ```
 
-**Arquivos:** `src/main/resources/db/migration/V4__create_document_chunks_table.sql`, `V5__create_source_references_table.sql`, `V6__create_pipeline_jobs_table.sql`
+**Arquivos:** `src/main/resources/db/migration/V5__create_document_chunks_table.sql`, `V6__create_source_references_table.sql`, `V7__create_pipeline_jobs_table.sql`
 
 ---
 
@@ -251,10 +251,10 @@ CREATE INDEX idx_jobs_status ON pipeline_jobs(status);
 
 **Tarefas:**
 
-- [ ] Criar `entity/DocumentChunk.java` — id, document (ManyToOne), content, chunkIndex, embedding (String JSON), metadata (String JSON), createdAt
-- [ ] Criar `entity/SourceReference.java` — id, message (ManyToOne), chunk (ManyToOne), relevanceScore, excerpt, createdAt
-- [ ] Criar `entity/PipelineJob.java` — id, document (ManyToOne), status (PipelineStatus), chunksCount, errorMessage, createdAt, completedAt
-- [ ] Criar `enums/PipelineStatus.java` — QUEUED, PARSING, CHUNKING, EMBEDDING, READY, FAILED
+- [x] Criar `entity/DocumentChunk.java` — id, document (ManyToOne), content, chunkIndex, embedding (String JSON), metadata (String JSON), createdAt
+- [x] Criar `entity/SourceReference.java` — id, message (ManyToOne), chunk (ManyToOne), relevanceScore, excerpt, createdAt
+- [x] Criar `entity/PipelineJob.java` — id, document (ManyToOne), status (PipelineStatus), chunksCount, errorMessage, createdAt, completedAt
+- [x] Criar `enums/PipelineStatus.java` — QUEUED, PARSING, CHUNKING, EMBEDDING, READY, FAILED
 
 **Arquivos:** `entity/DocumentChunk.java`, `entity/SourceReference.java`, `entity/PipelineJob.java`, `enums/PipelineStatus.java`
 
@@ -266,14 +266,14 @@ CREATE INDEX idx_jobs_status ON pipeline_jobs(status);
 
 **Tarefas:**
 
-- [ ] Criar `storage/VectorStore.java` — interface com métodos:
+- [x] Criar `storage/VectorStore.java` — interface com métodos:
   - `void storeChunk(DocumentChunk chunk, float[] embedding)`
   - `void storeChunks(List<DocumentChunk> chunks, List<float[]> embeddings)`
   - `List<ScoredChunk> searchSimilar(float[] queryEmbedding, int topK, double minScore)`
   - `void deleteByDocumentId(Long documentId)`
-- [ ] Criar DTO interno `retrieval/ScoredChunk.java` — chunk, score
-- [ ] Criar `storage/MockVectorStore.java` — implementação em memória com ConcurrentHashMap e cálculo de similaridade por cosseno
-- [ ] Criar `util/CosineSimilarity.java` — método utilitário estático para cálculo de similaridade
+- [x] Criar DTO interno `retrieval/ScoredChunk.java` — chunk, score
+- [x] Criar `storage/MockVectorStore.java` — implementação em memória com ConcurrentHashMap e cálculo de similaridade por cosseno
+- [x] Criar `util/CosineSimilarity.java` — método utilitário estático para cálculo de similaridade
 
 **Arquivos:** `storage/VectorStore.java`, `storage/MockVectorStore.java`, `util/CosineSimilarity.java`, `retrieval/ScoredChunk.java`
 
@@ -582,7 +582,7 @@ CREATE INDEX idx_jobs_status ON pipeline_jobs(status);
 ```
 Etapa 9.1  ─── Docker Compose (Ollama)
      │
-Etapa 9.2  ─── Migrations V4-V6
+Etapa 9.2  ─── Migrations V5-V7
      │
 Etapa 9.3  ─── Entidades JPA (DocumentChunk, SourceReference, PipelineJob)
      │

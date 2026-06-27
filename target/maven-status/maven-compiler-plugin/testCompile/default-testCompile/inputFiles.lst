@@ -1,3 +1,16 @@
+<<<<<<< HEAD
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\test\java\com\plataforma\conversacional\service\impl\HealthServiceImplTest.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\test\java\com\plataforma\conversacional\service\impl\MessageServiceImplTest.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\test\java\com\plataforma\conversacional\controller\MessageControllerTest.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\test\java\com\plataforma\conversacional\controller\SessionControllerTest.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\test\java\com\plataforma\conversacional\service\impl\SessionServiceImplTest.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\test\java\com\plataforma\conversacional\repository\MessageRepositoryTest.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\test\java\com\plataforma\conversacional\repository\DocumentRepositoryTest.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\test\java\com\plataforma\conversacional\repository\SessionRepositoryTest.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\test\java\com\plataforma\conversacional\controller\DocumentControllerTest.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\test\java\com\plataforma\conversacional\controller\HealthControllerTest.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\test\java\com\plataforma\conversacional\service\impl\DocumentServiceImplTest.java
+=======
 C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\test\java\com\plataforma\conversacional\controller\HealthControllerTest.java
 C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\test\java\com\plataforma\conversacional\controller\SessionControllerTest.java
 C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\test\java\com\plataforma\conversacional\repository\DocumentRepositoryTest.java
@@ -9,3 +22,4 @@ C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\test\java\com\p
 C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\test\java\com\plataforma\conversacional\controller\DocumentControllerTest.java
 C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\test\java\com\plataforma\conversacional\service\impl\SessionServiceImplTest.java
 C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\test\java\com\plataforma\conversacional\service\impl\MessageServiceImplTest.java
+>>>>>>> cb0ac5ef9c4c2df5bbd1a9570b8a1b92f83ecb27

@@ -1,4 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: com.plataforma.conversacional.repository.SessionRepositoryTest
 -------------------------------------------------------------------------------
+<<<<<<< HEAD
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.280 s -- in com.plataforma.conversacional.repository.SessionRepositoryTest
+=======
 Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.119 s -- in com.plataforma.conversacional.repository.SessionRepositoryTest
+>>>>>>> cb0ac5ef9c4c2df5bbd1a9570b8a1b92f83ecb27

@@ -1,4 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: com.plataforma.conversacional.service.impl.DocumentServiceImplTest
 -------------------------------------------------------------------------------
+<<<<<<< HEAD
+Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.185 s -- in com.plataforma.conversacional.service.impl.DocumentServiceImplTest
+=======
 Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.511 s -- in com.plataforma.conversacional.service.impl.DocumentServiceImplTest
+>>>>>>> cb0ac5ef9c4c2df5bbd1a9570b8a1b92f83ecb27

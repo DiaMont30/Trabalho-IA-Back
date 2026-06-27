@@ -251,10 +251,10 @@ CREATE INDEX idx_jobs_status ON pipeline_jobs(status);
 
 **Tarefas:**
 
-- [ ] Criar `entity/DocumentChunk.java` — id, document (ManyToOne), content, chunkIndex, embedding (String JSON), metadata (String JSON), createdAt
-- [ ] Criar `entity/SourceReference.java` — id, message (ManyToOne), chunk (ManyToOne), relevanceScore, excerpt, createdAt
-- [ ] Criar `entity/PipelineJob.java` — id, document (ManyToOne), status (PipelineStatus), chunksCount, errorMessage, createdAt, completedAt
-- [ ] Criar `enums/PipelineStatus.java` — QUEUED, PARSING, CHUNKING, EMBEDDING, READY, FAILED
+- [x] Criar `entity/DocumentChunk.java` — id, document (ManyToOne), content, chunkIndex, embedding (String JSON), metadata (String JSON), createdAt
+- [x] Criar `entity/SourceReference.java` — id, message (ManyToOne), chunk (ManyToOne), relevanceScore, excerpt, createdAt
+- [x] Criar `entity/PipelineJob.java` — id, document (ManyToOne), status (PipelineStatus), chunksCount, errorMessage, createdAt, completedAt
+- [x] Criar `enums/PipelineStatus.java` — QUEUED, PARSING, CHUNKING, EMBEDDING, READY, FAILED
 
 **Arquivos:** `entity/DocumentChunk.java`, `entity/SourceReference.java`, `entity/PipelineJob.java`, `enums/PipelineStatus.java`
 

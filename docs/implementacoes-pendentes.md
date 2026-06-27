@@ -17,7 +17,7 @@
 | 6   | Validação por magic bytes em upload                                       | Média      | ✅ Concluída    |
 | 7   | Implementar config classes stub (Web, Storage, OpenApi, MessagePublisher) | Baixa      | ✅ iniciada |
 | 8   | Logging estruturado JSON (logback-spring.xml)                             | Média      | ✅ Concluída     |
-| 9   | **Pipeline RAG — Parte 2 (16 etapas)**                                    | **Alta**   | 🟡 Em andamento (7/16) |
+| 9   | **Pipeline RAG — Parte 2 (16 etapas)**                                    | **Alta**   | 🟡 Em andamento (8/16) |
 
 ---
 
@@ -350,11 +350,11 @@ CREATE INDEX idx_jobs_status ON pipeline_jobs(status);
 
 **Tarefas:**
 
-- [ ] Criar `retrieval/Retriever.java` — interface:
+- [x] Criar `retrieval/Retriever.java` — interface:
   ```java
   List<ScoredChunk> retrieve(String query, int topK);
   ```
-- [ ] Criar `retrieval/SimilarityRetriever.java` — `@Service`, injeta EmbeddingStrategy + VectorStore:
+- [x] Criar `retrieval/SimilarityRetriever.java` — `@Service`, injeta EmbeddingStrategy + VectorStore:
   1. Gera embedding da query via EmbeddingStrategy
   2. Busca chunks similares via VectorStore.searchSimilar()
   3. Ordena por score descendente

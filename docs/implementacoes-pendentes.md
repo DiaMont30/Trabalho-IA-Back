@@ -131,7 +131,7 @@
 
 **Tarefas:**
 
-- [ ] Criar `docker-compose.yml` na raiz do projeto:
+- [x] Criar `docker-compose.yml` na raiz do projeto:
 
 ```yaml
 version: "3.8"
@@ -153,14 +153,14 @@ volumes:
   ollama_data:
 ```
 
-- [ ] Adicionar script `docker-init.sh` para baixar modelo padrão:
+- [x] Adicionar script `docker-init.sh` para baixar modelo padrão:
 
   ```bash
   docker compose up -d
   docker compose exec ollama ollama pull nomic-embed-text
   ```
 
-- [ ] Adicionar propriedades no `application.yml`:
+- [x] Adicionar propriedades no `application.yml`:
   ```yaml
   app:
     rag:

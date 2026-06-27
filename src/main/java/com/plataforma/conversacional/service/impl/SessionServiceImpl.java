@@ -1,5 +1,6 @@
 package com.plataforma.conversacional.service.impl;
 
+import com.plataforma.conversacional.dto.response.SessionPageResponse;
 import com.plataforma.conversacional.dto.response.SessionResponse;
 import com.plataforma.conversacional.entity.Session;
 import com.plataforma.conversacional.enums.SessionStatus;
@@ -7,6 +8,9 @@ import com.plataforma.conversacional.exception.ResourceNotFoundException;
 import com.plataforma.conversacional.mapper.SessionMapper;
 import com.plataforma.conversacional.repository.SessionRepository;
 import com.plataforma.conversacional.service.SessionService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -39,9 +43,20 @@ public class SessionServiceImpl implements SessionService {
     }
 
     @Override
-    public List<SessionResponse> findAll() {
-        return sessionRepository.findAll().stream()
+    public SessionPageResponse findAll(int page, int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        Page<Session> sessionPage = sessionRepository.findAll(pageable);
+
+        List<SessionResponse> sessions = sessionPage.getContent().stream()
                 .map(sessionMapper::toResponse)
                 .toList();
+
+        return new SessionPageResponse(
+                sessions,
+                sessionPage.getNumber(),
+                sessionPage.getTotalPages(),
+                sessionPage.getTotalElements(),
+                sessionPage.hasNext()
+        );
     }
 }

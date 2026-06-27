@@ -1,5 +1,6 @@
 package com.plataforma.conversacional.controller;
 
+import com.plataforma.conversacional.dto.response.SessionPageResponse;
 import com.plataforma.conversacional.dto.response.SessionResponse;
 import com.plataforma.conversacional.service.SessionService;
 import org.springframework.http.ResponseEntity;
@@ -7,9 +8,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import java.util.List;
 import static com.plataforma.conversacional.constants.ApiConstants.API_VERSION;
+import static com.plataforma.conversacional.constants.ApiConstants.DEFAULT_PAGE_SIZE;
 import static com.plataforma.conversacional.constants.ApiConstants.SESSION_PATH;
 import static com.plataforma.conversacional.constants.ApiConstants.SESSION_ID_VARIABLE;
 
@@ -36,8 +38,10 @@ public class SessionController {
     }
 
     @GetMapping
-    public ResponseEntity<List<SessionResponse>> listAll() {
-        List<SessionResponse> response = sessionService.findAll();
+    public ResponseEntity<SessionPageResponse> listAll(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = DEFAULT_PAGE_SIZE) int size) {
+        SessionPageResponse response = sessionService.findAll(page, size);
         return ResponseEntity.ok(response);
     }
 }

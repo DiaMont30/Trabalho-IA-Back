@@ -86,15 +86,15 @@
 
 ## [5] Paginação — GET /sessions
 
-- [ ] Adicionar parâmetros page/size no endpoint
-- [ ] Implementar no SessionServiceImpl com Pageable
+- [x] Adicionar parâmetros page/size no endpoint
+- [x] Implementar no SessionServiceImpl com Pageable
 
 ---
 
 ## [6] Validação de Upload — Magic Bytes
 
-- [ ] Implementar verificação de magic bytes para PDF (%PDF) e TXT
-- [ ] Atualizar AllowedFileTypeValidator ou DocumentServiceImpl
+- [x] Implementar verificação de magic bytes para PDF (%PDF) e TXT
+- [x] Atualizar AllowedFileTypeValidator ou DocumentServiceImpl
 
 ---
 

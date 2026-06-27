@@ -1,6 +1,7 @@
 -------------------------------------------------------------------------------
 Test set: com.plataforma.conversacional.controller.MessageControllerTest
 -------------------------------------------------------------------------------
+<<<<<<< HEAD
 Tests run: 3, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 1.643 s <<< FAILURE! -- in com.plataforma.conversacional.controller.MessageControllerTest
 com.plataforma.conversacional.controller.MessageControllerTest.send_ShouldReturn400_WhenContentBlank -- Time elapsed: 0.016 s <<< FAILURE!
 java.lang.AssertionError: Status expected:<400> but was:<403>
@@ -24,3 +25,6 @@ java.lang.AssertionError: Status expected:<201> but was:<403>
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 
+=======
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.994 s -- in com.plataforma.conversacional.controller.MessageControllerTest
+>>>>>>> cb0ac5ef9c4c2df5bbd1a9570b8a1b92f83ecb27

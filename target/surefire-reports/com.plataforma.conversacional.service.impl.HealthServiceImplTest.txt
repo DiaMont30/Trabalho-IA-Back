@@ -1,6 +1,7 @@
 -------------------------------------------------------------------------------
 Test set: com.plataforma.conversacional.service.impl.HealthServiceImplTest
 -------------------------------------------------------------------------------
+<<<<<<< HEAD
 Tests run: 6, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 0.465 s <<< FAILURE! -- in com.plataforma.conversacional.service.impl.HealthServiceImplTest
 com.plataforma.conversacional.service.impl.HealthServiceImplTest.check_ShouldUseConfiguredAppVersion -- Time elapsed: 0.019 s <<< FAILURE!
 org.opentest4j.AssertionFailedError: expected: not <null>
@@ -28,3 +29,6 @@ org.opentest4j.AssertionFailedError: expected: not <null>
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 
+=======
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.184 s -- in com.plataforma.conversacional.service.impl.HealthServiceImplTest
+>>>>>>> cb0ac5ef9c4c2df5bbd1a9570b8a1b92f83ecb27

@@ -1,6 +1,7 @@
 -------------------------------------------------------------------------------
 Test set: com.plataforma.conversacional.controller.SessionControllerTest
 -------------------------------------------------------------------------------
+<<<<<<< HEAD
 Tests run: 3, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 1.582 s <<< FAILURE! -- in com.plataforma.conversacional.controller.SessionControllerTest
 com.plataforma.conversacional.controller.SessionControllerTest.create_ShouldReturn201 -- Time elapsed: 0.065 s <<< FAILURE!
 java.lang.AssertionError: Status expected:<201> but was:<403>
@@ -13,3 +14,6 @@ java.lang.AssertionError: Status expected:<201> but was:<403>
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 
+=======
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.612 s -- in com.plataforma.conversacional.controller.SessionControllerTest
+>>>>>>> cb0ac5ef9c4c2df5bbd1a9570b8a1b92f83ecb27

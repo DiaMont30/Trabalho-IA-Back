@@ -1,4 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: com.plataforma.conversacional.repository.MessageRepositoryTest
 -------------------------------------------------------------------------------
+<<<<<<< HEAD
 Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.771 s -- in com.plataforma.conversacional.repository.MessageRepositoryTest
+=======
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.361 s -- in com.plataforma.conversacional.repository.MessageRepositoryTest
+>>>>>>> cb0ac5ef9c4c2df5bbd1a9570b8a1b92f83ecb27

@@ -266,14 +266,14 @@ CREATE INDEX idx_jobs_status ON pipeline_jobs(status);
 
 **Tarefas:**
 
-- [ ] Criar `storage/VectorStore.java` — interface com métodos:
+- [x] Criar `storage/VectorStore.java` — interface com métodos:
   - `void storeChunk(DocumentChunk chunk, float[] embedding)`
   - `void storeChunks(List<DocumentChunk> chunks, List<float[]> embeddings)`
   - `List<ScoredChunk> searchSimilar(float[] queryEmbedding, int topK, double minScore)`
   - `void deleteByDocumentId(Long documentId)`
-- [ ] Criar DTO interno `retrieval/ScoredChunk.java` — chunk, score
-- [ ] Criar `storage/MockVectorStore.java` — implementação em memória com ConcurrentHashMap e cálculo de similaridade por cosseno
-- [ ] Criar `util/CosineSimilarity.java` — método utilitário estático para cálculo de similaridade
+- [x] Criar DTO interno `retrieval/ScoredChunk.java` — chunk, score
+- [x] Criar `storage/MockVectorStore.java` — implementação em memória com ConcurrentHashMap e cálculo de similaridade por cosseno
+- [x] Criar `util/CosineSimilarity.java` — método utilitário estático para cálculo de similaridade
 
 **Arquivos:** `storage/VectorStore.java`, `storage/MockVectorStore.java`, `util/CosineSimilarity.java`, `retrieval/ScoredChunk.java`
 

@@ -14,6 +14,7 @@ C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\p
 C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\retrieval\Retriever.java
 C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\dto\request\LoginRequest.java
 C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\validation\AllowedFileTypeValidator.java
+C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\exception\RetrievalException.java
 C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\config\RestTemplateConfig.java
 C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\dto\request\UploadDocumentRequest.java
 C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\entity\PipelineJob.java

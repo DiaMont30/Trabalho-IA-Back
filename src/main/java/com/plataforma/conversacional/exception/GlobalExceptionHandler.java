@@ -54,6 +54,58 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(response);
     }
 
+    @ExceptionHandler(RagProcessingException.class)
+    public ResponseEntity<ErrorResponse> handleRagProcessing(RagProcessingException ex, WebRequest request) {
+        ErrorResponse response = new ErrorResponse(
+                HttpStatus.UNPROCESSABLE_ENTITY.value(),
+                "RAG Processing Failed",
+                ex.getMessage(),
+                LocalDateTime.now().toString(),
+                request.getDescription(false).replace("uri=", ""),
+                null
+        );
+        return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body(response);
+    }
+
+    @ExceptionHandler(ParsingException.class)
+    public ResponseEntity<ErrorResponse> handleParsing(ParsingException ex, WebRequest request) {
+        ErrorResponse response = new ErrorResponse(
+                HttpStatus.UNPROCESSABLE_ENTITY.value(),
+                "Document Parsing Failed",
+                ex.getMessage(),
+                LocalDateTime.now().toString(),
+                request.getDescription(false).replace("uri=", ""),
+                null
+        );
+        return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body(response);
+    }
+
+    @ExceptionHandler(EmbeddingException.class)
+    public ResponseEntity<ErrorResponse> handleEmbedding(EmbeddingException ex, WebRequest request) {
+        ErrorResponse response = new ErrorResponse(
+                HttpStatus.BAD_GATEWAY.value(),
+                "Embedding Service Unavailable",
+                ex.getMessage(),
+                LocalDateTime.now().toString(),
+                request.getDescription(false).replace("uri=", ""),
+                null
+        );
+        return ResponseEntity.status(HttpStatus.BAD_GATEWAY).body(response);
+    }
+
+    @ExceptionHandler(RetrievalException.class)
+    public ResponseEntity<ErrorResponse> handleRetrieval(RetrievalException ex, WebRequest request) {
+        ErrorResponse response = new ErrorResponse(
+                HttpStatus.INTERNAL_SERVER_ERROR.value(),
+                "Retrieval Failed",
+                ex.getMessage(),
+                LocalDateTime.now().toString(),
+                request.getDescription(false).replace("uri=", ""),
+                null
+        );
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
+    }
+
     @ExceptionHandler(BusinessException.class)
     public ResponseEntity<ErrorResponse> handleBusiness(BusinessException ex, WebRequest request) {
         ErrorResponse response = new ErrorResponse(

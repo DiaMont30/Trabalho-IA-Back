@@ -12,6 +12,6 @@ public class MessageSentEventListener {
 
     @EventListener
     public void handleMessageSent(MessageSentEvent event) {
-        log.info("MessageSentEvent received for messageId={}", event.getMessageId());
+        log.info("MessageSentEvent received for messageId={}, messageType={}", event.getMessageId(), event.getMessageType());
     }
 }

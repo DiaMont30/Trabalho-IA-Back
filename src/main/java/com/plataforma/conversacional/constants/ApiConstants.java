@@ -13,6 +13,8 @@ public final class ApiConstants {
     public static final String QUERY_PATH = "/query";
     public static final String INGEST_PATH = "/ingest";
     public static final String SOURCES_PATH = "/sources";
+    public static final String WEBHOOK_PATH = "/webhooks";
+    public static final String N8N_PATH = "/n8n";
 
     public static final String SESSION_ID_VARIABLE = "sessionId";
     public static final String DOCUMENT_ID_VARIABLE = "documentId";

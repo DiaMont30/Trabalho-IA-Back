@@ -46,6 +46,9 @@ app:
     retrieval:
       top-k: 5
       min-score: 0.7
+  n8n:
+    webhook-url: ${N8N_WEBHOOK_URL:http://localhost:5678/webhook/rag}
+    enabled: false
 
 logging:
   level:

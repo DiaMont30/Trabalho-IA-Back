@@ -31,12 +31,14 @@ C:\Users\gabri\Desktop\Serratec\IA\Trabalho-IA-Back\src\main\java\com\plataforma
 C:\Users\gabri\Desktop\Serratec\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\controller\SessionController.java
 C:\Users\gabri\Desktop\Serratec\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\exception\ParsingException.java
 C:\Users\gabri\Desktop\Serratec\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\dto\response\HealthResponse.java
+C:\Users\gabri\Desktop\Serratec\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\retrieval\SimilarityRetriever.java
 C:\Users\gabri\Desktop\Serratec\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\specification\MessageSpecification.java
 C:\Users\gabri\Desktop\Serratec\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\embedding\EmbeddingStrategy.java
 C:\Users\gabri\Desktop\Serratec\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\service\HealthService.java
 C:\Users\gabri\Desktop\Serratec\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\repository\UserRepository.java
 C:\Users\gabri\Desktop\Serratec\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\storage\LocalFileStorageService.java
 C:\Users\gabri\Desktop\Serratec\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\entity\Session.java
+C:\Users\gabri\Desktop\Serratec\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\retrieval\Retriever.java
 C:\Users\gabri\Desktop\Serratec\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\dto\response\MessageResponse.java
 C:\Users\gabri\Desktop\Serratec\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\exception\ResourceNotFoundException.java
 C:\Users\gabri\Desktop\Serratec\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\chunking\FixedSizeChunker.java

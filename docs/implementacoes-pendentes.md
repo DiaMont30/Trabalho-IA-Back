@@ -12,9 +12,9 @@
 | 1   | Autenticação JWT completa (Fase 2)                                        | Alta       | ✅ Concluída    |
 | 2   | Testes unitários e de integração                                          | Alta       | ✅ Concluída    |
 | 3   | Implementar MessageSpecification (consultas dinâmicas)                    | Média      | ✅ Concluída    |
-| 4   | Implementar Event Listeners para MessageSentEvent                         | Média      | ❌ Não iniciada |
-| 5   | Paginação no endpoint GET /sessions                                       | Baixa      | ❌ Não iniciada |
-| 6   | Validação por magic bytes em upload                                       | Média      | ❌ Não iniciada |
+| 4   | Implementar Event Listeners para MessageSentEvent                         | Média      | ✅ Concluída    |
+| 5   | Paginação no endpoint GET /sessions                                       | Baixa      | ✅ Concluída    |
+| 6   | Validação por magic bytes em upload                                       | Média      | ✅ Concluída    |
 | 7   | Implementar config classes stub (Web, Storage, OpenApi, MessagePublisher) | Baixa      | ❌ Não iniciada |
 | 8   | Logging estruturado JSON (logback-spring.xml)                             | Média      | ❌ Não iniciada |
 | 9   | **Pipeline RAG — Parte 2 (13 etapas)**                                    | **Alta**   | ❌ Não iniciada |
@@ -79,22 +79,22 @@
 
 ## [4] Event Listeners
 
-- [ ] Criar consumer para MessageSentEvent
-- [ ] Definir ação: logging, notificação, ou preparação para fila
+- [x] Criar consumer para MessageSentEvent
+- [x] Definir ação: logging, notificação, ou preparação para fila
 
 ---
 
 ## [5] Paginação — GET /sessions
 
-- [ ] Adicionar parâmetros page/size no endpoint
-- [ ] Implementar no SessionServiceImpl com Pageable
+- [x] Adicionar parâmetros page/size no endpoint
+- [x] Implementar no SessionServiceImpl com Pageable
 
 ---
 
 ## [6] Validação de Upload — Magic Bytes
 
-- [ ] Implementar verificação de magic bytes para PDF (%PDF) e TXT
-- [ ] Atualizar AllowedFileTypeValidator ou DocumentServiceImpl
+- [x] Implementar verificação de magic bytes para PDF (%PDF) e TXT
+- [x] Atualizar AllowedFileTypeValidator ou DocumentServiceImpl
 
 ---
 

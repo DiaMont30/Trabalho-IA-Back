@@ -125,7 +125,6 @@ Trabalho-IA-Back/
 - [Spring Data JPA](https://spring.io/projects/spring-data-jpa) — Camada de persistência com Hibernate
 - [Spring Security](https://spring.io/projects/spring-security) — Autenticação e controle de acesso
 - [PostgreSQL](https://www.postgresql.org/) — Banco de dados relacional
-- [Flyway](https://flywaydb.org/) — Versionamento e migração do banco de dados
 - [MapStruct](https://mapstruct.org/) — Mapeamento entre entidades e DTOs
 - [SpringDoc OpenAPI](https://springdoc.org/) — Documentação da API (Swagger)
 - [Spring Dotenv](https://github.com/paulschwarz/spring-dotenv) — Carregamento de variáveis de ambiente do arquivo `.env`

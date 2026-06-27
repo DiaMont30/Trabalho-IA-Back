@@ -3,9 +3,9 @@ package com.plataforma.conversacional.service.impl;
 import com.plataforma.conversacional.dto.response.HealthResponse;
 import com.plataforma.conversacional.health.ApplicationHealthIndicator;
 import com.plataforma.conversacional.health.DatabaseHealthIndicator;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.actuate.health.Health;
@@ -22,8 +22,12 @@ class HealthServiceImplTest {
     @Mock
     private DatabaseHealthIndicator dbIndicator;
 
-    @InjectMocks
     private HealthServiceImpl healthService;
+
+    @BeforeEach
+    void setUp() {
+        healthService = new HealthServiceImpl(appIndicator, dbIndicator, "0.0.1-SNAPSHOT");
+    }
 
     @Test
     void check_ShouldReturnUp_WhenBothIndicatorsUp() {

@@ -16,7 +16,7 @@
 | 5   | Paginação no endpoint GET /sessions                                       | Baixa      | ✅ Concluída    |
 | 6   | Validação por magic bytes em upload                                       | Média      | ✅ Concluída    |
 | 7   | Implementar config classes stub (Web, Storage, OpenApi, MessagePublisher) | Baixa      | ✅ iniciada |
-| 8   | Logging estruturado JSON (logback-spring.xml)                             | Média      | ❌ Não iniciada |
+| 8   | Logging estruturado JSON (logback-spring.xml)                             | Média      | ✅ Concluída     |
 | 9   | **Pipeline RAG — Parte 2 (13 etapas)**                                    | **Alta**   | ❌ Não iniciada |
 
 ---
@@ -109,9 +109,9 @@
 
 ## [8] Logging Estruturado
 
-- [ ] Criar logback-spring.xml em src/main/resources/
-- [ ] Configurar appender JSON
-- [ ] Configurar níveis por pacote
+- [x] Criar logback-spring.xml em src/main/resources/
+- [x] Configurar appender JSON (LogstashEncoder)
+- [x] Configurar níveis por pacote (dev | prod | default)
 
 ---
 

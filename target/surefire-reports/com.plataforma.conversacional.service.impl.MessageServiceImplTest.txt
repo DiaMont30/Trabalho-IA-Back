@@ -1,8 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.plataforma.conversacional.service.impl.MessageServiceImplTest
 -------------------------------------------------------------------------------
-<<<<<<< HEAD
-Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.055 s -- in com.plataforma.conversacional.service.impl.MessageServiceImplTest
-=======
-Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.340 s -- in com.plataforma.conversacional.service.impl.MessageServiceImplTest
->>>>>>> cb0ac5ef9c4c2df5bbd1a9570b8a1b92f83ecb27
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.248 s -- in com.plataforma.conversacional.service.impl.MessageServiceImplTest

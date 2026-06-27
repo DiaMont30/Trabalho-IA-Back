@@ -180,13 +180,13 @@ volumes:
 
 ---
 
-### Etapa 9.2 — Migrations Flyway (V4, V5, V6, V7)
+### Etapa 9.2 — Migrations Flyway (V5, V6, V7)
 
 **Objetivo:** Criar as tabelas do pipeline RAG.
 
 **Tarefas:**
 
-- [ ] Criar `V4__create_document_chunks_table.sql`:
+- [x] Criar `V5__create_document_chunks_table.sql`:
 
 ```sql
 CREATE TABLE document_chunks (
@@ -204,7 +204,7 @@ CREATE TABLE document_chunks (
 CREATE INDEX idx_chunks_document_id ON document_chunks(document_id);
 ```
 
-- [ ] Criar `V5__create_source_references_table.sql`:
+- [x] Criar `V6__create_source_references_table.sql`:
 
 ```sql
 CREATE TABLE source_references (
@@ -221,7 +221,7 @@ CREATE TABLE source_references (
 CREATE INDEX idx_sources_message_id ON source_references(message_id);
 ```
 
-- [ ] Criar `V6__create_pipeline_jobs_table.sql`:
+- [x] Criar `V7__create_pipeline_jobs_table.sql`:
 
 ```sql
 CREATE TYPE pipeline_status AS ENUM ('QUEUED', 'PARSING', 'CHUNKING', 'EMBEDDING', 'READY', 'FAILED');
@@ -241,7 +241,7 @@ CREATE INDEX idx_jobs_document_id ON pipeline_jobs(document_id);
 CREATE INDEX idx_jobs_status ON pipeline_jobs(status);
 ```
 
-**Arquivos:** `src/main/resources/db/migration/V4__create_document_chunks_table.sql`, `V5__create_source_references_table.sql`, `V6__create_pipeline_jobs_table.sql`
+**Arquivos:** `src/main/resources/db/migration/V5__create_document_chunks_table.sql`, `V6__create_source_references_table.sql`, `V7__create_pipeline_jobs_table.sql`
 
 ---
 
@@ -582,7 +582,7 @@ CREATE INDEX idx_jobs_status ON pipeline_jobs(status);
 ```
 Etapa 9.1  ─── Docker Compose (Ollama)
      │
-Etapa 9.2  ─── Migrations V4-V6
+Etapa 9.2  ─── Migrations V5-V7
      │
 Etapa 9.3  ─── Entidades JPA (DocumentChunk, SourceReference, PipelineJob)
      │

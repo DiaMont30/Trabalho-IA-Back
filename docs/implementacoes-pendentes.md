@@ -17,7 +17,7 @@
 | 6   | Validação por magic bytes em upload                                       | Média      | ✅ Concluída    |
 | 7   | Implementar config classes stub (Web, Storage, OpenApi, MessagePublisher) | Baixa      | ✅ iniciada |
 | 8   | Logging estruturado JSON (logback-spring.xml)                             | Média      | ✅ Concluída     |
-| 9   | **Pipeline RAG — Parte 2 (16 etapas)**                                    | **Alta**   | 🟡 Em andamento (10/16) |
+| 9   | **Pipeline RAG — Parte 2 (16 etapas)**                                    | **Alta**   | 🟡 Em andamento (11/16) |
 
 ---
 
@@ -394,12 +394,12 @@ CREATE INDEX idx_jobs_status ON pipeline_jobs(status);
 
 **Tarefas:**
 
-- [ ] Criar `service/RagIngestionService.java` — interface:
+- [x] Criar `service/RagIngestionService.java` — interface:
   ```java
   IngestionStatusResponse ingestDocument(Long documentId);
   IngestionStatusResponse getStatus(Long jobId);
   ```
-- [ ] Criar `service/impl/RagIngestionServiceImpl.java` — `@Service`, `@Async`:
+- [x] Criar `service/impl/RagIngestionServiceImpl.java` — `@Service`, `@Async`:
   1. Busca Document do repositório + conteúdo do arquivo via FileStorageService
   2. Cria PipelineJob com status QUEUED
   3. Atualiza status → PARSING → extrai texto via DocumentParser
@@ -407,8 +407,8 @@ CREATE INDEX idx_jobs_status ON pipeline_jobs(status);
   5. Atualiza status → EMBEDDING → gera embeddings via EmbeddingStrategy
   6. Armazena chunks + embeddings via VectorStore
   7. Atualiza status → READY
-- [ ] Criar `event/DocumentIngestedEvent.java` — evento de domínio
-- [ ] Configurar `@EnableAsync` na aplicação
+- [x] Criar `event/DocumentIngestedEvent.java` — evento de domínio
+- [x] Configurar `@EnableAsync` na aplicação (já existente em MessagePublisherConfig)
 
 **Arquivos:** `service/RagIngestionService.java`, `service/impl/RagIngestionServiceImpl.java`, `event/DocumentIngestedEvent.java`
 
@@ -420,21 +420,21 @@ CREATE INDEX idx_jobs_status ON pipeline_jobs(status);
 
 **Tarefas:**
 
-- [ ] Criar DTO `dto/request/RagQueryRequest.java`:
+- [x] Criar DTO `dto/request/RagQueryRequest.java`:
   ```java
   public record RagQueryRequest(
       @NotBlank @Size(min = 1, max = 5000) String query,
       @NotNull Long sessionId
   ) {}
   ```
-- [ ] Criar DTO `dto/response/RagQueryResponse.java`:
+- [x] Criar DTO `dto/response/RagQueryResponse.java`:
   ```java
   public record RagQueryResponse(
       String answer,
       List<SourceDetailResponse> sources
   ) {}
   ```
-- [ ] Criar DTO `dto/response/SourceDetailResponse.java`:
+- [x] Criar DTO `dto/response/SourceDetailResponse.java`:
   ```java
   public record SourceDetailResponse(
       Long documentId,
@@ -443,7 +443,7 @@ CREATE INDEX idx_jobs_status ON pipeline_jobs(status);
       double relevanceScore
   ) {}
   ```
-- [ ] Criar DTO `dto/response/IngestionStatusResponse.java`:
+- [x] Criar DTO `dto/response/IngestionStatusResponse.java`:
   ```java
   public record IngestionStatusResponse(
       Long jobId,
@@ -453,7 +453,7 @@ CREATE INDEX idx_jobs_status ON pipeline_jobs(status);
       String errorMessage
   ) {}
   ```
-- [ ] Criar `controller/RagController.java` — `@RestController`:
+- [x] Criar `controller/RagController.java` — `@RestController`:
 
 | Método | Endpoint                            | Request                | Response                   | Erros         |
 | ------ | ----------------------------------- | ---------------------- | -------------------------- | ------------- |
@@ -462,7 +462,7 @@ CREATE INDEX idx_jobs_status ON pipeline_jobs(status);
 | GET    | `/api/v1/rag/ingest/{jobId}/status` | —                      | IngestionStatusResponse    | 404           |
 | GET    | `/api/v1/rag/sources/{messageId}`   | —                      | List<SourceDetailResponse> | 404           |
 
-- [ ] Adicionar constantes no `ApiConstants.java`:
+- [x] Adicionar constantes no `ApiConstants.java`:
   ```java
   public static final String RAG_PATH = "/rag";
   public static final String QUERY_PATH = "/query";

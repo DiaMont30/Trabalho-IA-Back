@@ -4,6 +4,7 @@ C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\
 C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\entity\User.java
 C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\entity\Document.java
 C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\exception\ParsingException.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\dto\response\IngestionStatusResponse.java
 C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\enums\PipelineStatus.java
 C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\service\impl\MessageServiceImpl.java
 C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\entity\SourceReference.java
@@ -13,6 +14,7 @@ C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\
 C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\specification\MessageSpecification.java
 C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\storage\LocalFileStorageService.java
 C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\storage\MockVectorStore.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\event\DocumentIngestedEvent.java
 C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\storage\VectorStore.java
 C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\validation\AllowedFileType.java
 C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\mapper\MessageMapper.java
@@ -55,13 +57,16 @@ C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\
 C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\exception\EmbeddingException.java
 C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\service\DocumentService.java
 C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\controller\AuthController.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\controller\RagController.java
 C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\controller\HealthController.java
 C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\retrieval\ScoredChunk.java
 C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\pipeline\SourceDetail.java
 C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\dto\request\UploadDocumentRequest.java
 C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\event\MessageEventPublisher.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\dto\request\RagQueryRequest.java
 C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\repository\SourceReferenceRepository.java
 C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\pipeline\DefaultRagPipeline.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\service\RagIngestionService.java
 C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\dto\response\SessionResponse.java
 C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\util\CosineSimilarity.java
 C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\security\JwtAuthenticationFilter.java
@@ -70,6 +75,7 @@ C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\
 C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\enums\MessageStatus.java
 C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\config\WebConfig.java
 C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\repository\DocumentRepository.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\dto\response\RagQueryResponse.java
 C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\pipeline\RagPipeline.java
 C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\entity\Message.java
 C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\controller\MessageController.java
@@ -95,5 +101,7 @@ C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\
 C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\dto\request\SendMessageRequest.java
 C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\enums\SessionStatus.java
 C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\health\ApplicationHealthIndicator.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\service\impl\RagIngestionServiceImpl.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\dto\response\SourceDetailResponse.java
 C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\validation\AllowedFileTypeValidator.java
 C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\entity\DocumentChunk.java

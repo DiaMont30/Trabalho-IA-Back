@@ -18,6 +18,7 @@ C:\Users\gabri\Desktop\Serratec\IA\Trabalho-IA-Back\src\main\java\com\plataforma
 C:\Users\gabri\Desktop\Serratec\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\enums\MessageRole.java
 C:\Users\gabri\Desktop\Serratec\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\controller\AuthController.java
 C:\Users\gabri\Desktop\Serratec\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\mapper\DocumentMapper.java
+C:\Users\gabri\Desktop\Serratec\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\chunking\RecursiveChunker.java
 C:\Users\gabri\Desktop\Serratec\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\config\StorageConfig.java
 C:\Users\gabri\Desktop\Serratec\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\util\FileUtils.java
 C:\Users\gabri\Desktop\Serratec\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\retrieval\ScoredChunk.java
@@ -36,9 +37,11 @@ C:\Users\gabri\Desktop\Serratec\IA\Trabalho-IA-Back\src\main\java\com\plataforma
 C:\Users\gabri\Desktop\Serratec\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\entity\Session.java
 C:\Users\gabri\Desktop\Serratec\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\dto\response\MessageResponse.java
 C:\Users\gabri\Desktop\Serratec\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\exception\ResourceNotFoundException.java
+C:\Users\gabri\Desktop\Serratec\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\chunking\FixedSizeChunker.java
 C:\Users\gabri\Desktop\Serratec\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\enums\DocumentType.java
 C:\Users\gabri\Desktop\Serratec\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\event\MessageSentEventListener.java
 C:\Users\gabri\Desktop\Serratec\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\service\impl\SessionServiceImpl.java
+C:\Users\gabri\Desktop\Serratec\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\chunking\Chunk.java
 C:\Users\gabri\Desktop\Serratec\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\event\MessageEventPublisher.java
 C:\Users\gabri\Desktop\Serratec\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\strategy\MessageProcessingStrategy.java
 C:\Users\gabri\Desktop\Serratec\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\config\CorsConfig.java
@@ -52,6 +55,7 @@ C:\Users\gabri\Desktop\Serratec\IA\Trabalho-IA-Back\src\main\java\com\plataforma
 C:\Users\gabri\Desktop\Serratec\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\exception\GlobalExceptionHandler.java
 C:\Users\gabri\Desktop\Serratec\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\storage\FileStorageService.java
 C:\Users\gabri\Desktop\Serratec\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\config\MessagePublisherConfig.java
+C:\Users\gabri\Desktop\Serratec\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\chunking\ChunkingStrategy.java
 C:\Users\gabri\Desktop\Serratec\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\controller\MessageController.java
 C:\Users\gabri\Desktop\Serratec\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\dto\request\RegisterRequest.java
 C:\Users\gabri\Desktop\Serratec\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\dto\response\AuthResponse.java

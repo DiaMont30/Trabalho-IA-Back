@@ -17,7 +17,7 @@
 | 6   | Validação por magic bytes em upload                                       | Média      | ✅ Concluída    |
 | 7   | Implementar config classes stub (Web, Storage, OpenApi, MessagePublisher) | Baixa      | ✅ iniciada |
 | 8   | Logging estruturado JSON (logback-spring.xml)                             | Média      | ✅ Concluída     |
-| 9   | **Pipeline RAG — Parte 2 (16 etapas)**                                    | **Alta**   | 🟡 Em andamento (5/16) |
+| 9   | **Pipeline RAG — Parte 2 (16 etapas)**                                    | **Alta**   | 🟡 Em andamento (6/16) |
 
 ---
 
@@ -311,13 +311,13 @@ CREATE INDEX idx_jobs_status ON pipeline_jobs(status);
 
 **Tarefas:**
 
-- [ ] Criar `chunking/ChunkingStrategy.java` — interface:
+- [x] Criar `chunking/ChunkingStrategy.java` — interface:
   ```java
   List<Chunk> chunk(String text);
   ```
-- [ ] Criar DTO interno `chunking/Chunk.java` — `String content`, `int index`
-- [ ] Criar `chunking/FixedSizeChunker.java` — `@Component`, divide em tamanho fixo com overlap configurável via `@Value("${app.rag.chunking.max-size}")` e `@Value("${app.rag.chunking.overlap}")`
-- [ ] Criar `chunking/RecursiveChunker.java` — `@Component` (opcional, fallback), divide recursivamente por parágrafos → frases → caracteres
+- [x] Criar DTO interno `chunking/Chunk.java` — `String content`, `int index`
+- [x] Criar `chunking/FixedSizeChunker.java` — `@Component`, divide em tamanho fixo com overlap configurável via `@Value("${app.rag.chunking.max-size}")` e `@Value("${app.rag.chunking.overlap}")`
+- [x] Criar `chunking/RecursiveChunker.java` — `@Component` (opcional, fallback), divide recursivamente por parágrafos → frases → caracteres
 
 **Arquivos:** `chunking/ChunkingStrategy.java`, `chunking/Chunk.java`, `chunking/FixedSizeChunker.java`
 

@@ -53,6 +53,7 @@ com\plataforma\conversacional\repository\MessageRepository.class
 com\plataforma\conversacional\security\JwtTokenProvider.class
 com\plataforma\conversacional\integration\n8n\RestN8nWebhookClient.class
 com\plataforma\conversacional\controller\RagController.class
+com\plataforma\conversacional\exception\RetrievalException.class
 com\plataforma\conversacional\strategy\MockMessageProcessingStrategy.class
 com\plataforma\conversacional\mapper\DocumentMapper.class
 com\plataforma\conversacional\controller\WebhookController.class

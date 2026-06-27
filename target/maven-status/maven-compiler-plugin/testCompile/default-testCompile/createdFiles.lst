@@ -1,5 +1,6 @@
 com\plataforma\conversacional\controller\HealthControllerTest.class
 com\plataforma\conversacional\controller\MessageControllerTest.class
+com\plataforma\conversacional\service\impl\MessageServiceImplTest.class
 com\plataforma\conversacional\controller\DocumentControllerTest.class
 com\plataforma\conversacional\service\impl\DocumentServiceImplTest.class
 com\plataforma\conversacional\service\impl\SessionServiceImplTest.class

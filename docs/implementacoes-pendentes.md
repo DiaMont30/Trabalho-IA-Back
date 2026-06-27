@@ -17,7 +17,7 @@
 | 6   | Validação por magic bytes em upload                                       | Média      | ✅ Concluída    |
 | 7   | Implementar config classes stub (Web, Storage, OpenApi, MessagePublisher) | Baixa      | ✅ iniciada |
 | 8   | Logging estruturado JSON (logback-spring.xml)                             | Média      | ✅ Concluída     |
-| 9   | **Pipeline RAG — Parte 2 (16 etapas)**                                    | **Alta**   | 🟡 Em andamento (15/16) |
+| 9   | **Pipeline RAG — Parte 2 (16 etapas)**                                    | **Alta**   | ✅ Concluída (16/16) |
 
 ---
 
@@ -566,12 +566,12 @@ CREATE INDEX idx_jobs_status ON pipeline_jobs(status);
 
 **Tarefas:**
 
-- [ ] Atualizar `spec-dominio.md` — adicionar entidades DocumentChunk, SourceReference, PipelineJob + enums PipelineStatus
-- [ ] Atualizar `spec-api.md` — adicionar endpoints RAG, DTOs, webhooks, códigos de erro 502
-- [ ] Atualizar `spec-casos-de-uso.md` — adicionar fluxos: Ingestão de Documento, Query RAG, Webhook n8n
-- [ ] Atualizar `spec-arquitetura.md` — adicionar pacotes: parser/, chunking/, embedding/, retrieval/, pipeline/, integration/, webhook/
-- [ ] Atualizar `spec-nao-funcionais.md` — adicionar requisitos de performance (cosine similarity, cache embedding, timeout Ollama)
-- [ ] Atualizar `spec-diretrizes.md` — adicionar regras de isolamento do pipeline RAG
+- [x] Atualizar `spec-dominio.md` — adicionar entidades DocumentChunk, SourceReference, PipelineJob + enums PipelineStatus
+- [x] Atualizar `spec-api.md` — adicionar endpoints RAG, DTOs, webhooks, códigos de erro 502
+- [x] Atualizar `spec-casos-de-uso.md` — adicionar fluxos: Ingestão de Documento, Query RAG, Webhook n8n
+- [x] Atualizar `spec-arquitetura.md` — adicionar pacotes: parser/, chunking/, embedding/, retrieval/, pipeline/, integration/, webhook/
+- [x] Atualizar `spec-nao-funcionais.md` — adicionar requisitos de performance (cosine similarity, cache embedding, timeout Ollama)
+- [x] Atualizar `spec-diretrizes.md` — adicionar regras de isolamento do pipeline RAG
 
 **Arquivos:** `docs/spec-dominio.md`, `docs/spec-api.md`, `docs/spec-casos-de-uso.md`, `docs/spec-arquitetura.md`, `docs/spec-nao-funcionais.md`, `docs/spec-diretrizes.md`
 

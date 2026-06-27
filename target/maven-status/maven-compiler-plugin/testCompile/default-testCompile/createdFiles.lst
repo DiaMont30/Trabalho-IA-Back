@@ -4,8 +4,10 @@ com\plataforma\conversacional\service\impl\MessageServiceImplTest.class
 com\plataforma\conversacional\controller\DocumentControllerTest.class
 com\plataforma\conversacional\service\impl\DocumentServiceImplTest.class
 com\plataforma\conversacional\service\impl\SessionServiceImplTest.class
-com\plataforma\conversacional\repository\SessionRepositoryTest.class
-com\plataforma\conversacional\repository\DocumentRepositoryTest.class
 com\plataforma\conversacional\repository\MessageRepositoryTest.class
 com\plataforma\conversacional\service\impl\HealthServiceImplTest.class
+com\plataforma\conversacional\controller\WebhookControllerTest.class
+com\plataforma\conversacional\repository\SessionRepositoryTest.class
+com\plataforma\conversacional\repository\DocumentRepositoryTest.class
+com\plataforma\conversacional\integration\n8n\RestN8nWebhookClientTest.class
 com\plataforma\conversacional\controller\SessionControllerTest.class

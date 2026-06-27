@@ -17,7 +17,7 @@
 | 6   | Validação por magic bytes em upload                                       | Média      | ✅ Concluída    |
 | 7   | Implementar config classes stub (Web, Storage, OpenApi, MessagePublisher) | Baixa      | ✅ iniciada |
 | 8   | Logging estruturado JSON (logback-spring.xml)                             | Média      | ✅ Concluída     |
-| 9   | **Pipeline RAG — Parte 2 (16 etapas)**                                    | **Alta**   | 🟡 Em andamento (6/16) |
+| 9   | **Pipeline RAG — Parte 2 (16 etapas)**                                    | **Alta**   | 🟡 Em andamento (7/16) |
 
 ---
 
@@ -329,16 +329,16 @@ CREATE INDEX idx_jobs_status ON pipeline_jobs(status);
 
 **Tarefas:**
 
-- [ ] Criar `embedding/EmbeddingStrategy.java` — interface:
+- [x] Criar `embedding/EmbeddingStrategy.java` — interface:
   ```java
   float[] embed(String text);
   List<float[]> embedBatch(List<String> texts);
   int getDimension();
   ```
-- [ ] Criar `embedding/OllamaEmbeddingStrategy.java` — `@Component`, faz POST para `http://localhost:11434/api/embeddings` com RestTemplate
-- [ ] Configurar RestTemplate com timeout de 5s
-- [ ] Tratar resposta do Ollama: `{"embedding": [0.1, 0.2, ...]}`
-- [ ] Criar `exception/EmbeddingException.java` — RuntimeException para falhas de embedding
+- [x] Criar `embedding/OllamaEmbeddingStrategy.java` — `@Component`, faz POST para `http://localhost:11434/api/embeddings` com RestTemplate
+- [x] Configurar RestTemplate com timeout de 5s
+- [x] Tratar resposta do Ollama: `{"embedding": [0.1, 0.2, ...]}`
+- [x] Criar `exception/EmbeddingException.java` — RuntimeException para falhas de embedding
 
 **Arquivos:** `embedding/EmbeddingStrategy.java`, `embedding/OllamaEmbeddingStrategy.java`, `exception/EmbeddingException.java`, `config/RestTemplateConfig.java` (bean RestTemplate)
 

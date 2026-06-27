@@ -17,7 +17,7 @@
 | 6   | Validação por magic bytes em upload                                       | Média      | ✅ Concluída    |
 | 7   | Implementar config classes stub (Web, Storage, OpenApi, MessagePublisher) | Baixa      | ✅ iniciada |
 | 8   | Logging estruturado JSON (logback-spring.xml)                             | Média      | ✅ Concluída     |
-| 9   | **Pipeline RAG — Parte 2 (13 etapas)**                                    | **Alta**   | ❌ Não iniciada |
+| 9   | **Pipeline RAG — Parte 2 (16 etapas)**                                    | **Alta**   | 🟡 Em andamento (5/16) |
 
 ---
 
@@ -285,13 +285,13 @@ CREATE INDEX idx_jobs_status ON pipeline_jobs(status);
 
 **Tarefas:**
 
-- [ ] Criar `parsing/DocumentParser.java` — interface:
+- [x] Criar `parsing/DocumentParser.java` — interface:
   ```java
   String parse(byte[] content, String contentType);
   ```
-- [ ] Criar `parsing/TxtParser.java` — `@Component`, new String(content, StandardCharsets.UTF_8)
-- [ ] Criar `parsing/PdfParser.java` — `@Component`, usar Apache PDFBox para extrair texto
-- [ ] Adicionar dependência no pom.xml:
+- [x] Criar `parsing/TxtParser.java` — `@Component`, new String(content, StandardCharsets.UTF_8)
+- [x] Criar `parsing/PdfParser.java` — `@Component`, usar Apache PDFBox para extrair texto
+- [x] Adicionar dependência no pom.xml:
   ```xml
   <dependency>
       <groupId>org.apache.pdfbox</groupId>
@@ -299,7 +299,7 @@ CREATE INDEX idx_jobs_status ON pipeline_jobs(status);
       <version>3.0.1</version>
   </dependency>
   ```
-- [ ] Criar `exception/ParsingException.java` — RuntimeException para falhas de parsing
+- [x] Criar `exception/ParsingException.java` — RuntimeException para falhas de parsing
 
 **Arquivos:** `parsing/DocumentParser.java`, `parsing/TxtParser.java`, `parsing/PdfParser.java`, `exception/ParsingException.java`, `pom.xml`
 

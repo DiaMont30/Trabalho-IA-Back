@@ -11,7 +11,7 @@
 |---|---|---|---|
 | 1 | Autenticação JWT completa (Fase 2) | Alta | ✅ Concluída |
 | 2 | Testes unitários e de integração | Alta | ❌ Não iniciada |
-| 3 | Implementar MessageSpecification (consultas dinâmicas) | Média | ❌ Não iniciada |
+| 3 | Implementar MessageSpecification (consultas dinâmicas) | Média | ✅ Concluída |
 | 4 | Implementar Event Listeners para MessageSentEvent | Média | ❌ Não iniciada |
 | 5 | Paginação no endpoint GET /sessions | Baixa | ❌ Não iniciada |
 | 6 | Validação por magic bytes em upload | Média | ❌ Não iniciada |
@@ -67,8 +67,8 @@
 
 ## [3] MessageSpecification
 
-- [ ] Implementar `bySessionId(Long sessionId)` com CriteriaBuilder
-- [ ] Integrar com MessageRepository (JpaSpecificationExecutor já estendido)
+- [x] Implementar `bySessionId(Long sessionId)` com CriteriaBuilder
+- [x] Integrar com MessageRepository (JpaSpecificationExecutor já estendido)
 
 ---
 

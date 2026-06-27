@@ -24,6 +24,7 @@ C:\Users\gabri\Desktop\Serratec\IA\Trabalho-IA-Back\src\main\java\com\plataforma
 C:\Users\gabri\Desktop\Serratec\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\retrieval\ScoredChunk.java
 C:\Users\gabri\Desktop\Serratec\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\entity\DocumentChunk.java
 C:\Users\gabri\Desktop\Serratec\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\validation\AllowedFileType.java
+C:\Users\gabri\Desktop\Serratec\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\config\RestTemplateConfig.java
 C:\Users\gabri\Desktop\Serratec\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\service\SessionService.java
 C:\Users\gabri\Desktop\Serratec\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\entity\Message.java
 C:\Users\gabri\Desktop\Serratec\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\mapper\SessionMapper.java
@@ -31,6 +32,7 @@ C:\Users\gabri\Desktop\Serratec\IA\Trabalho-IA-Back\src\main\java\com\plataforma
 C:\Users\gabri\Desktop\Serratec\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\exception\ParsingException.java
 C:\Users\gabri\Desktop\Serratec\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\dto\response\HealthResponse.java
 C:\Users\gabri\Desktop\Serratec\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\specification\MessageSpecification.java
+C:\Users\gabri\Desktop\Serratec\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\embedding\EmbeddingStrategy.java
 C:\Users\gabri\Desktop\Serratec\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\service\HealthService.java
 C:\Users\gabri\Desktop\Serratec\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\repository\UserRepository.java
 C:\Users\gabri\Desktop\Serratec\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\storage\LocalFileStorageService.java
@@ -38,6 +40,7 @@ C:\Users\gabri\Desktop\Serratec\IA\Trabalho-IA-Back\src\main\java\com\plataforma
 C:\Users\gabri\Desktop\Serratec\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\dto\response\MessageResponse.java
 C:\Users\gabri\Desktop\Serratec\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\exception\ResourceNotFoundException.java
 C:\Users\gabri\Desktop\Serratec\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\chunking\FixedSizeChunker.java
+C:\Users\gabri\Desktop\Serratec\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\embedding\OllamaEmbeddingStrategy.java
 C:\Users\gabri\Desktop\Serratec\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\enums\DocumentType.java
 C:\Users\gabri\Desktop\Serratec\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\event\MessageSentEventListener.java
 C:\Users\gabri\Desktop\Serratec\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\service\impl\SessionServiceImpl.java
@@ -60,6 +63,7 @@ C:\Users\gabri\Desktop\Serratec\IA\Trabalho-IA-Back\src\main\java\com\plataforma
 C:\Users\gabri\Desktop\Serratec\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\dto\request\RegisterRequest.java
 C:\Users\gabri\Desktop\Serratec\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\dto\response\AuthResponse.java
 C:\Users\gabri\Desktop\Serratec\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\dto\request\LoginRequest.java
+C:\Users\gabri\Desktop\Serratec\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\exception\EmbeddingException.java
 C:\Users\gabri\Desktop\Serratec\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\PlataformaConversacionalApplication.java
 C:\Users\gabri\Desktop\Serratec\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\service\impl\MessageServiceImpl.java
 C:\Users\gabri\Desktop\Serratec\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\repository\DocumentRepository.java

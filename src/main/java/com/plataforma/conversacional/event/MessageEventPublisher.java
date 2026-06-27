@@ -12,7 +12,7 @@ public class MessageEventPublisher {
         this.eventPublisher = eventPublisher;
     }
 
-    public void publishMessageSent(Long messageId) {
-        eventPublisher.publishEvent(new MessageSentEvent(this, messageId));
+    public void publishMessageSent(Long messageId, String messageType) {
+        eventPublisher.publishEvent(new MessageSentEvent(this, messageId, messageType));
     }
 }

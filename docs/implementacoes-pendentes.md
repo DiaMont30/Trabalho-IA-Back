@@ -17,7 +17,7 @@
 | 6   | Validação por magic bytes em upload                                       | Média      | ✅ Concluída    |
 | 7   | Implementar config classes stub (Web, Storage, OpenApi, MessagePublisher) | Baixa      | ✅ iniciada |
 | 8   | Logging estruturado JSON (logback-spring.xml)                             | Média      | ✅ Concluída     |
-| 9   | **Pipeline RAG — Parte 2 (16 etapas)**                                    | **Alta**   | 🟡 Em andamento (11/16) |
+| 9   | **Pipeline RAG — Parte 2 (16 etapas)**                                    | **Alta**   | 🟡 Em andamento (14/16) |
 
 ---
 
@@ -480,23 +480,23 @@ CREATE INDEX idx_jobs_status ON pipeline_jobs(status);
 
 **Tarefas:**
 
-- [ ] Criar `integration/n8n/N8nWebhookClient.java` — interface:
+- [x] Criar `integration/n8n/N8nWebhookClient.java` — interface:
   ```java
   void notifyQueryCompleted(RagQueryResponse response, Long sessionId);
   void notifyIngestionCompleted(Long documentId, String status);
   ```
-- [ ] Criar `integration/n8n/RestN8nWebhookClient.java` — `@Component`, POST para URL configurada
-- [ ] Adicionar propriedades no `application.yml`:
+- [x] Criar `integration/n8n/RestN8nWebhookClient.java` — `@Component`, POST para URL configurada
+- [x] Adicionar propriedades no `application.yml`:
   ```yaml
   app:
     n8n:
       webhook-url: ${N8N_WEBHOOK_URL:http://localhost:5678/webhook/rag}
       enabled: false
   ```
-- [ ] Criar DTO `dto/webhook/N8nWebhookPayload.java` — eventType, payload (Map), timestamp
-- [ ] Criar `controller/WebhookController.java` — recebe respostas do n8n:
+- [x] Criar DTO `dto/webhook/N8nWebhookPayload.java` — eventType, payload (Map), timestamp
+- [x] Criar `controller/WebhookController.java` — recebe respostas do n8n:
   - `POST /api/v1/webhooks/n8n/rag-response` — processa resposta assíncrona do n8n
-- [ ] Atualizar `MessageSentEvent` para incluir tipo RAG vs simples
+- [x] Atualizar `MessageSentEvent` para incluir tipo RAG vs simples
 
 **Arquivos:** `integration/n8n/N8nWebhookClient.java`, `integration/n8n/RestN8nWebhookClient.java`, `dto/webhook/N8nWebhookPayload.java`, `controller/WebhookController.java`
 
@@ -530,12 +530,12 @@ CREATE INDEX idx_jobs_status ON pipeline_jobs(status);
 
 **Tarefas:**
 
-- [ ] Atualizar `MessageServiceImpl.send()` para:
+- [x] Atualizar `MessageServiceImpl.send()` para:
   - Detectar se a sessão tem documentos indexados
   - Se sim, usar RagPipeline em vez de MockMessageProcessingStrategy
   - Se não, manter comportamento atual (mock)
-- [ ] Salvar SourceReference no banco junto com a mensagem ASSISTANT
-- [ ] Incluir metadados das fontes no campo `metadata` da Message
+- [x] Salvar SourceReference no banco junto com a mensagem ASSISTANT
+- [x] Incluir metadados das fontes no campo `metadata` da Message
 
 **Arquivos:** `service/impl/MessageServiceImpl.java`
 

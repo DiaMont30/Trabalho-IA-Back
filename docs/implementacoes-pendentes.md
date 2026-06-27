@@ -9,7 +9,7 @@
 
 | # | Pendência | Prioridade | Status |
 |---|---|---|---|
-| 1 | Autenticação JWT completa (Fase 2) | Alta | ❌ Não iniciada |
+| 1 | Autenticação JWT completa (Fase 2) | Alta | ✅ Concluída |
 | 2 | Testes unitários e de integração | Alta | ❌ Não iniciada |
 | 3 | Implementar MessageSpecification (consultas dinâmicas) | Média | ✅ Concluída |
 | 4 | Implementar Event Listeners para MessageSentEvent | Média | ❌ Não iniciada |
@@ -26,19 +26,19 @@
 > **Documento de referência:** `docs/implementacao-autenticacao.md`
 
 ### Pré-requisitos
-- [ ] Adicionar dependências JJWT no pom.xml
-- [ ] Adicionar propriedades JWT no application.yml
+- [x] Adicionar dependências JJWT no pom.xml
+- [x] Adicionar propriedades JWT no application.yml
 
 ### Implementação
-- [ ] Criar migration V4__create_users_table.sql
-- [ ] Criar entidade User em entity/
-- [ ] Criar UserRepository
-- [ ] Criar CustomUserDetailsService em security/
-- [ ] Implementar JwtTokenProvider (substituir skeletons)
-- [ ] Implementar JwtAuthenticationFilter (substituir skeleton)
-- [ ] Criar DTOs: LoginRequest, RegisterRequest, AuthResponse
-- [ ] Criar AuthController
-- [ ] Atualizar SecurityConfig com rotas protegidas
+- [x] Criar migration V4__create_users_table.sql
+- [x] Criar entidade User em entity/
+- [x] Criar UserRepository
+- [x] Criar CustomUserDetailsService em security/
+- [x] Implementar JwtTokenProvider (substituir skeletons)
+- [x] Implementar JwtAuthenticationFilter (substituir skeleton)
+- [x] Criar DTOs: LoginRequest, RegisterRequest, AuthResponse
+- [x] Criar AuthController
+- [x] Atualizar SecurityConfig com rotas protegidas
 
 ---
 

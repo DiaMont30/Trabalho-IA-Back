@@ -9,6 +9,10 @@ public final class ApiConstants {
     public static final String DOCUMENT_PATH = "/documents";
     public static final String HEALTH_PATH = "/health";
     public static final String AUTH_PATH = "/auth";
+    public static final String RAG_PATH = "/rag";
+    public static final String QUERY_PATH = "/query";
+    public static final String INGEST_PATH = "/ingest";
+    public static final String SOURCES_PATH = "/sources";
 
     public static final String SESSION_ID_VARIABLE = "sessionId";
     public static final String DOCUMENT_ID_VARIABLE = "documentId";

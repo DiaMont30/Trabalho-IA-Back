@@ -8,6 +8,7 @@ public final class ApiConstants {
     public static final String MESSAGE_PATH = "/messages";
     public static final String DOCUMENT_PATH = "/documents";
     public static final String HEALTH_PATH = "/health";
+    public static final String AUTH_PATH = "/auth";
 
     public static final String SESSION_ID_VARIABLE = "sessionId";
     public static final String DOCUMENT_ID_VARIABLE = "documentId";

@@ -1,8 +1,0 @@
-CREATE TABLE sessions (
-    id BIGSERIAL NOT NULL PRIMARY KEY,
-    title VARCHAR(255) NULL,
-    status VARCHAR(20) NOT NULL DEFAULT 'ACTIVE',
-    created_at TIMESTAMP NOT NULL,
-    updated_at TIMESTAMP NOT NULL,
-    closed_at TIMESTAMP NULL
-);

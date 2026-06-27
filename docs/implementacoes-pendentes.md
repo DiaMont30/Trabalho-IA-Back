@@ -10,7 +10,7 @@
 | # | Pendência | Prioridade | Status |
 |---|---|---|---|
 | 1 | Autenticação JWT completa (Fase 2) | Alta | ✅ Concluída |
-| 2 | Testes unitários e de integração | Alta | ❌ Não iniciada |
+| 2 | Testes unitários e de integração | Alta | ✅ Concluída |
 | 3 | Implementar MessageSpecification (consultas dinâmicas) | Média | ❌ Não iniciada |
 | 4 | Implementar Event Listeners para MessageSentEvent | Média | ❌ Não iniciada |
 | 5 | Paginação no endpoint GET /sessions | Baixa | ❌ Não iniciada |
@@ -47,21 +47,21 @@
 > **Cobertura mínima:** 80%
 
 ### Controllers (@WebMvcTest)
-- [ ] SessionControllerTest
-- [ ] MessageControllerTest
-- [ ] DocumentControllerTest
-- [ ] HealthControllerTest
+- [x] SessionControllerTest
+- [x] MessageControllerTest
+- [x] DocumentControllerTest
+- [x] HealthControllerTest
 
 ### Services (@ExtendWith(MockitoExtension.class))
-- [ ] SessionServiceImplTest
-- [ ] MessageServiceImplTest
-- [ ] DocumentServiceImplTest
-- [ ] HealthServiceImplTest
+- [x] SessionServiceImplTest
+- [x] MessageServiceImplTest
+- [x] DocumentServiceImplTest
+- [x] HealthServiceImplTest
 
 ### Repositories (@DataJpaTest)
-- [ ] SessionRepositoryTest
-- [ ] MessageRepositoryTest
-- [ ] DocumentRepositoryTest
+- [x] SessionRepositoryTest
+- [x] MessageRepositoryTest
+- [x] DocumentRepositoryTest
 
 ---
 

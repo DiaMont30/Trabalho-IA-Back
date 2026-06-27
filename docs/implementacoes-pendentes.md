@@ -7,17 +7,17 @@
 
 ## Pendências — Estado Atual
 
-| # | Pendência | Prioridade | Status |
-|---|---|---|---|
-| 1 | Autenticação JWT completa (Fase 2) | Alta | ✅ Concluída |
-| 2 | Testes unitários e de integração | Alta | ❌ Não iniciada |
-| 3 | Implementar MessageSpecification (consultas dinâmicas) | Média | ✅ Concluída |
-| 4 | Implementar Event Listeners para MessageSentEvent | Média | ❌ Não iniciada |
-| 5 | Paginação no endpoint GET /sessions | Baixa | ❌ Não iniciada |
-| 6 | Validação por magic bytes em upload | Média | ❌ Não iniciada |
-| 7 | Implementar config classes stub (Web, Storage, OpenApi, MessagePublisher) | Baixa | ✅ Concluída |
-| 8 | Logging estruturado JSON (logback-spring.xml) | Média | ❌ Não iniciada |
-| 9 | **Pipeline RAG — Parte 2 (13 etapas)** | **Alta** | ❌ Não iniciada |
+| #   | Pendência                                                                 | Prioridade | Status          |
+| --- | ------------------------------------------------------------------------- | ---------- | --------------- |
+| 1   | Autenticação JWT completa (Fase 2)                                        | Alta       | ✅ Concluída    |
+| 2   | Testes unitários e de integração                                          | Alta       | ✅ Concluída    |
+| 3   | Implementar MessageSpecification (consultas dinâmicas)                    | Média      | ✅ Concluída    |
+| 4   | Implementar Event Listeners para MessageSentEvent                         | Média      | ✅ Concluída    |
+| 5   | Paginação no endpoint GET /sessions                                       | Baixa      | ✅ Concluída    |
+| 6   | Validação por magic bytes em upload                                       | Média      | ✅ Concluída    |
+| 7   | Implementar config classes stub (Web, Storage, OpenApi, MessagePublisher) | Baixa      | ✅ iniciada |
+| 8   | Logging estruturado JSON (logback-spring.xml)                             | Média      | ❌ Não iniciada |
+| 9   | **Pipeline RAG — Parte 2 (13 etapas)**                                    | **Alta**   | ❌ Não iniciada |
 
 ---
 
@@ -26,11 +26,13 @@
 > **Documento de referência:** `docs/implementacao-autenticacao.md`
 
 ### Pré-requisitos
+
 - [x] Adicionar dependências JJWT no pom.xml
 - [x] Adicionar propriedades JWT no application.yml
 
 ### Implementação
-- [x] Criar migration V4__create_users_table.sql
+
+- [x] Criar migration V4\_\_create_users_table.sql
 - [x] Criar entidade User em entity/
 - [x] Criar UserRepository
 - [x] Criar CustomUserDetailsService em security/
@@ -47,21 +49,24 @@
 > **Cobertura mínima:** 80%
 
 ### Controllers (@WebMvcTest)
-- [ ] SessionControllerTest
-- [ ] MessageControllerTest
-- [ ] DocumentControllerTest
-- [ ] HealthControllerTest
+
+- [x] SessionControllerTest
+- [x] MessageControllerTest
+- [x] DocumentControllerTest
+- [x] HealthControllerTest
 
 ### Services (@ExtendWith(MockitoExtension.class))
-- [ ] SessionServiceImplTest
-- [ ] MessageServiceImplTest
-- [ ] DocumentServiceImplTest
-- [ ] HealthServiceImplTest
+
+- [x] SessionServiceImplTest
+- [x] MessageServiceImplTest
+- [x] DocumentServiceImplTest
+- [x] HealthServiceImplTest
 
 ### Repositories (@DataJpaTest)
-- [ ] SessionRepositoryTest
-- [ ] MessageRepositoryTest
-- [ ] DocumentRepositoryTest
+
+- [x] SessionRepositoryTest
+- [x] MessageRepositoryTest
+- [x] DocumentRepositoryTest
 
 ---
 
@@ -74,22 +79,22 @@
 
 ## [4] Event Listeners
 
-- [ ] Criar consumer para MessageSentEvent
-- [ ] Definir ação: logging, notificação, ou preparação para fila
+- [x] Criar consumer para MessageSentEvent
+- [x] Definir ação: logging, notificação, ou preparação para fila
 
 ---
 
 ## [5] Paginação — GET /sessions
 
-- [ ] Adicionar parâmetros page/size no endpoint
-- [ ] Implementar no SessionServiceImpl com Pageable
+- [x] Adicionar parâmetros page/size no endpoint
+- [x] Implementar no SessionServiceImpl com Pageable
 
 ---
 
 ## [6] Validação de Upload — Magic Bytes
 
-- [ ] Implementar verificação de magic bytes para PDF (%PDF) e TXT
-- [ ] Atualizar AllowedFileTypeValidator ou DocumentServiceImpl
+- [x] Implementar verificação de magic bytes para PDF (%PDF) e TXT
+- [x] Atualizar AllowedFileTypeValidator ou DocumentServiceImpl
 
 ---
 
@@ -125,10 +130,11 @@
 **Objetivo:** Disponibilizar Ollama localmente via Docker para geração de embeddings.
 
 **Tarefas:**
+
 - [ ] Criar `docker-compose.yml` na raiz do projeto:
 
 ```yaml
-version: '3.8'
+version: "3.8"
 services:
   ollama:
     image: ollama/ollama:latest
@@ -148,6 +154,7 @@ volumes:
 ```
 
 - [ ] Adicionar script `docker-init.sh` para baixar modelo padrão:
+
   ```bash
   docker compose up -d
   docker compose exec ollama ollama pull nomic-embed-text
@@ -178,6 +185,7 @@ volumes:
 **Objetivo:** Criar as tabelas do pipeline RAG.
 
 **Tarefas:**
+
 - [ ] Criar `V4__create_document_chunks_table.sql`:
 
 ```sql
@@ -242,6 +250,7 @@ CREATE INDEX idx_jobs_status ON pipeline_jobs(status);
 **Objetivo:** Mapear as novas tabelas em entidades JPA.
 
 **Tarefas:**
+
 - [ ] Criar `entity/DocumentChunk.java` — id, document (ManyToOne), content, chunkIndex, embedding (String JSON), metadata (String JSON), createdAt
 - [ ] Criar `entity/SourceReference.java` — id, message (ManyToOne), chunk (ManyToOne), relevanceScore, excerpt, createdAt
 - [ ] Criar `entity/PipelineJob.java` — id, document (ManyToOne), status (PipelineStatus), chunksCount, errorMessage, createdAt, completedAt
@@ -256,6 +265,7 @@ CREATE INDEX idx_jobs_status ON pipeline_jobs(status);
 **Objetivo:** Abstrair o armazenamento e busca de embeddings.
 
 **Tarefas:**
+
 - [ ] Criar `storage/VectorStore.java` — interface com métodos:
   - `void storeChunk(DocumentChunk chunk, float[] embedding)`
   - `void storeChunks(List<DocumentChunk> chunks, List<float[]> embeddings)`
@@ -274,6 +284,7 @@ CREATE INDEX idx_jobs_status ON pipeline_jobs(status);
 **Objetivo:** Extrair texto bruto de documentos PDF e TXT.
 
 **Tarefas:**
+
 - [ ] Criar `parsing/DocumentParser.java` — interface:
   ```java
   String parse(byte[] content, String contentType);
@@ -299,6 +310,7 @@ CREATE INDEX idx_jobs_status ON pipeline_jobs(status);
 **Objetivo:** Dividir texto extraído em fragmentos para indexação.
 
 **Tarefas:**
+
 - [ ] Criar `chunking/ChunkingStrategy.java` — interface:
   ```java
   List<Chunk> chunk(String text);
@@ -316,6 +328,7 @@ CREATE INDEX idx_jobs_status ON pipeline_jobs(status);
 **Objetivo:** Gerar embeddings via Ollama rodando em Docker.
 
 **Tarefas:**
+
 - [ ] Criar `embedding/EmbeddingStrategy.java` — interface:
   ```java
   float[] embed(String text);
@@ -336,6 +349,7 @@ CREATE INDEX idx_jobs_status ON pipeline_jobs(status);
 **Objetivo:** Buscar chunks relevantes dada uma query.
 
 **Tarefas:**
+
 - [ ] Criar `retrieval/Retriever.java` — interface:
   ```java
   List<ScoredChunk> retrieve(String query, int topK);
@@ -355,6 +369,7 @@ CREATE INDEX idx_jobs_status ON pipeline_jobs(status);
 **Objetivo:** Orquestrar o fluxo completo de retrieve → augment → generate.
 
 **Tarefas:**
+
 - [ ] Criar `pipeline/RagPipeline.java` — interface:
   ```java
   RagResult execute(String query, Long sessionId);
@@ -378,6 +393,7 @@ CREATE INDEX idx_jobs_status ON pipeline_jobs(status);
 **Objetivo:** Orquestrar parse → chunk → embed → store para cada documento.
 
 **Tarefas:**
+
 - [ ] Criar `service/RagIngestionService.java` — interface:
   ```java
   IngestionStatusResponse ingestDocument(Long documentId);
@@ -403,6 +419,7 @@ CREATE INDEX idx_jobs_status ON pipeline_jobs(status);
 **Objetivo:** Expor endpoints REST para query RAG e ingestão.
 
 **Tarefas:**
+
 - [ ] Criar DTO `dto/request/RagQueryRequest.java`:
   ```java
   public record RagQueryRequest(
@@ -438,12 +455,12 @@ CREATE INDEX idx_jobs_status ON pipeline_jobs(status);
   ```
 - [ ] Criar `controller/RagController.java` — `@RestController`:
 
-| Método | Endpoint | Request | Response | Erros |
-|---|---|---|---|---|
-| POST | `/api/v1/rag/query` | RagQueryRequest (JSON) | RagQueryResponse | 400, 404, 422 |
-| POST | `/api/v1/rag/ingest/{documentId}` | — | IngestionStatusResponse | 400, 404 |
-| GET | `/api/v1/rag/ingest/{jobId}/status` | — | IngestionStatusResponse | 404 |
-| GET | `/api/v1/rag/sources/{messageId}` | — | List<SourceDetailResponse> | 404 |
+| Método | Endpoint                            | Request                | Response                   | Erros         |
+| ------ | ----------------------------------- | ---------------------- | -------------------------- | ------------- |
+| POST   | `/api/v1/rag/query`                 | RagQueryRequest (JSON) | RagQueryResponse           | 400, 404, 422 |
+| POST   | `/api/v1/rag/ingest/{documentId}`   | —                      | IngestionStatusResponse    | 400, 404      |
+| GET    | `/api/v1/rag/ingest/{jobId}/status` | —                      | IngestionStatusResponse    | 404           |
+| GET    | `/api/v1/rag/sources/{messageId}`   | —                      | List<SourceDetailResponse> | 404           |
 
 - [ ] Adicionar constantes no `ApiConstants.java`:
   ```java
@@ -462,6 +479,7 @@ CREATE INDEX idx_jobs_status ON pipeline_jobs(status);
 **Objetivo:** Preparar webhooks para orquestração externa via n8n.
 
 **Tarefas:**
+
 - [ ] Criar `integration/n8n/N8nWebhookClient.java` — interface:
   ```java
   void notifyQueryCompleted(RagQueryResponse response, Long sessionId);
@@ -489,14 +507,15 @@ CREATE INDEX idx_jobs_status ON pipeline_jobs(status);
 **Objetivo:** Garantir que erros do pipeline retornem respostas HTTP adequadas.
 
 **Tarefas:**
+
 - [ ] Adicionar handlers no `GlobalExceptionHandler.java`:
 
-| Exceção | HTTP Status | error |
-|---|---|---|
-| RagProcessingException | 422 UNPROCESSABLE_ENTITY | RAG Processing Failed |
-| ParsingException | 422 UNPROCESSABLE_ENTITY | Document Parsing Failed |
-| EmbeddingException | 502 BAD_GATEWAY | Embedding Service Unavailable |
-| RetrievalException | 500 INTERNAL_SERVER_ERROR | Retrieval Failed |
+| Exceção                | HTTP Status               | error                         |
+| ---------------------- | ------------------------- | ----------------------------- |
+| RagProcessingException | 422 UNPROCESSABLE_ENTITY  | RAG Processing Failed         |
+| ParsingException       | 422 UNPROCESSABLE_ENTITY  | Document Parsing Failed       |
+| EmbeddingException     | 502 BAD_GATEWAY           | Embedding Service Unavailable |
+| RetrievalException     | 500 INTERNAL_SERVER_ERROR | Retrieval Failed              |
 
 - [ ] Criar `exception/RetrievalException.java`
 - [ ] Garantir que PipelineJob registre errorMessage quando qualquer etapa falhar
@@ -510,6 +529,7 @@ CREATE INDEX idx_jobs_status ON pipeline_jobs(status);
 **Objetivo:** Conectar o pipeline RAG ao fluxo de mensagens existente.
 
 **Tarefas:**
+
 - [ ] Atualizar `MessageServiceImpl.send()` para:
   - Detectar se a sessão tem documentos indexados
   - Se sim, usar RagPipeline em vez de MockMessageProcessingStrategy
@@ -526,6 +546,7 @@ CREATE INDEX idx_jobs_status ON pipeline_jobs(status);
 **Objetivo:** Criar repositórios JPA para as novas entidades.
 
 **Tarefas:**
+
 - [ ] Criar `repository/DocumentChunkRepository.java`:
   - `List<DocumentChunk> findByDocumentId(Long documentId)`
   - `void deleteByDocumentId(Long documentId)`
@@ -544,6 +565,7 @@ CREATE INDEX idx_jobs_status ON pipeline_jobs(status);
 **Objetivo:** Manter a documentação sincronizada com a implementação.
 
 **Tarefas:**
+
 - [ ] Atualizar `spec-dominio.md` — adicionar entidades DocumentChunk, SourceReference, PipelineJob + enums PipelineStatus
 - [ ] Atualizar `spec-api.md` — adicionar endpoints RAG, DTOs, webhooks, códigos de erro 502
 - [ ] Atualizar `spec-casos-de-uso.md` — adicionar fluxos: Ingestão de Documento, Query RAG, Webhook n8n

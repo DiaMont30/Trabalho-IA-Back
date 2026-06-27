@@ -17,7 +17,7 @@
 | 6   | Validação por magic bytes em upload                                       | Média      | ✅ Concluída    |
 | 7   | Implementar config classes stub (Web, Storage, OpenApi, MessagePublisher) | Baixa      | ✅ iniciada |
 | 8   | Logging estruturado JSON (logback-spring.xml)                             | Média      | ✅ Concluída     |
-| 9   | **Pipeline RAG — Parte 2 (16 etapas)**                                    | **Alta**   | 🟡 Em andamento (8/16) |
+| 9   | **Pipeline RAG — Parte 2 (16 etapas)**                                    | **Alta**   | 🟡 Em andamento (10/16) |
 
 ---
 
@@ -370,19 +370,19 @@ CREATE INDEX idx_jobs_status ON pipeline_jobs(status);
 
 **Tarefas:**
 
-- [ ] Criar `pipeline/RagPipeline.java` — interface:
+- [x] Criar `pipeline/RagPipeline.java` — interface:
   ```java
   RagResult execute(String query, Long sessionId);
   ```
-- [ ] Criar DTO `pipeline/RagResult.java` — `String answer`, `List<SourceReference> sources`
-- [ ] Criar DTO `pipeline/SourceDetail.java` — `Long chunkId`, `Long documentId`, `String documentName`, `String excerpt`, `double relevanceScore`
-- [ ] Criar `pipeline/DefaultRagPipeline.java` — `@Service`, injeta Retriever + MessageProcessingStrategy:
+- [x] Criar DTO `pipeline/RagResult.java` — `String answer`, `List<SourceReference> sources`
+- [x] Criar DTO `pipeline/SourceDetail.java` — `Long chunkId`, `Long documentId`, `String documentName`, `String excerpt`, `double relevanceScore`
+- [x] Criar `pipeline/DefaultRagPipeline.java` — `@Service`, injeta Retriever + MessageProcessingStrategy:
   1. Retrieve: busca chunks relevantes (topK=5, minScore=0.7)
   2. Augment: monta contexto string concatenando chunks
   3. Generate: chama MessageProcessingStrategy.process(context + "\n\nPergunta: " + query)
   4. Track: cria SourceReference para cada chunk usado
   5. Retorna RagResult com resposta + fontes
-- [ ] Criar `exception/RagProcessingException.java` — RuntimeException com status code 422
+- [x] Criar `exception/RagProcessingException.java` — RuntimeException com status code 422
 
 **Arquivos:** `pipeline/RagPipeline.java`, `pipeline/DefaultRagPipeline.java`, `pipeline/RagResult.java`, `pipeline/SourceDetail.java`, `exception/RagProcessingException.java`
 
@@ -547,12 +547,12 @@ CREATE INDEX idx_jobs_status ON pipeline_jobs(status);
 
 **Tarefas:**
 
-- [ ] Criar `repository/DocumentChunkRepository.java`:
+- [x] Criar `repository/DocumentChunkRepository.java`:
   - `List<DocumentChunk> findByDocumentId(Long documentId)`
   - `void deleteByDocumentId(Long documentId)`
-- [ ] Criar `repository/SourceReferenceRepository.java`:
+- [x] Criar `repository/SourceReferenceRepository.java`:
   - `List<SourceReference> findByMessageId(Long messageId)`
-- [ ] Criar `repository/PipelineJobRepository.java`:
+- [x] Criar `repository/PipelineJobRepository.java`:
   - `Optional<PipelineJob> findByDocumentId(Long documentId)`
   - `List<PipelineJob> findByStatus(PipelineStatus status)`
 

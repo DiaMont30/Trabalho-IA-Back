@@ -15,7 +15,7 @@
 | 4 | Implementar Event Listeners para MessageSentEvent | Média | ❌ Não iniciada |
 | 5 | Paginação no endpoint GET /sessions | Baixa | ❌ Não iniciada |
 | 6 | Validação por magic bytes em upload | Média | ❌ Não iniciada |
-| 7 | Implementar config classes stub (Web, Storage, OpenApi, MessagePublisher) | Baixa | ❌ Não iniciada |
+| 7 | Implementar config classes stub (Web, Storage, OpenApi, MessagePublisher) | Baixa | ✅ Concluída |
 | 8 | Logging estruturado JSON (logback-spring.xml) | Média | ❌ Não iniciada |
 | 9 | **Pipeline RAG — Parte 2 (13 etapas)** | **Alta** | ❌ Não iniciada |
 
@@ -95,10 +95,10 @@
 
 ## [7] Config Classes
 
-- [ ] Implementar WebConfig (se necessário)
-- [ ] Implementar StorageConfig (configurar upload-dir)
-- [ ] Implementar OpenApiConfig (info, contato, etc.)
-- [ ] Implementar MessagePublisherConfig (pool de threads para eventos)
+- [x] Implementar WebConfig (configurar ObjectMapper com date format)
+- [x] Implementar StorageConfig (bean Path para upload-dir)
+- [x] Implementar OpenApiConfig (OpenAPI bean com info/contact)
+- [x] Implementar MessagePublisherConfig (thread pool + @EnableAsync)
 
 ---
 

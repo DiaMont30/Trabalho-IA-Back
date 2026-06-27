@@ -6,6 +6,11 @@ import org.springframework.data.jpa.domain.Specification;
 public class MessageSpecification {
 
     public static Specification<Message> bySessionId(Long sessionId) {
-        throw new UnsupportedOperationException("Not implemented yet");
+        return (root, query, cb) -> {
+            if (sessionId == null) {
+                return cb.conjunction();
+            }
+            return cb.equal(root.get("session").get("id"), sessionId);
+        };
     }
 }

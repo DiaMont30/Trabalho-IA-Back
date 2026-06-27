@@ -43,7 +43,6 @@ com\plataforma\conversacional\validation\AllowedFileTypeValidator.class
 com\plataforma\conversacional\constants\ApiConstants.class
 com\plataforma\conversacional\mapper\MessageMapper.class
 com\plataforma\conversacional\config\SecurityConfig.class
-com\plataforma\conversacional\mapper\MessageMapperImpl.class
 com\plataforma\conversacional\dto\response\ErrorResponse.class
 com\plataforma\conversacional\event\MessageEventPublisher.class
 com\plataforma\conversacional\service\impl\DocumentServiceImpl.class

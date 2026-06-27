@@ -1,4 +1,6 @@
-# Grupo 4
+# Projeto IA – Front-end
+
+## Grupo 4
 
 > **Serratec Residência de Software · Sala 34 · Trabalho avaliativo · disciplina de Inteligência Artificial**
 

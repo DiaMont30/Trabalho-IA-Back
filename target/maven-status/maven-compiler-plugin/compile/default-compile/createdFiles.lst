@@ -31,9 +31,11 @@ com\plataforma\conversacional\storage\FileStorageService.class
 com\plataforma\conversacional\chunking\Chunk.class
 com\plataforma\conversacional\parsing\PdfParser.class
 com\plataforma\conversacional\dto\response\SessionHistoryResponse.class
+com\plataforma\conversacional\service\impl\AsyncIngestionProcessor.class
 com\plataforma\conversacional\repository\SourceReferenceRepository.class
 com\plataforma\conversacional\enums\SessionStatus.class
 com\plataforma\conversacional\repository\DocumentChunkRepository.class
+com\plataforma\conversacional\event\DocumentUploadedEvent.class
 com\plataforma\conversacional\config\CorsConfig.class
 com\plataforma\conversacional\validation\AllowedFileType.class
 com\plataforma\conversacional\validation\AllowedFileTypeValidator.class
@@ -42,6 +44,7 @@ com\plataforma\conversacional\constants\ApiConstants.class
 com\plataforma\conversacional\mapper\MessageMapper.class
 com\plataforma\conversacional\retrieval\ScoredChunk.class
 com\plataforma\conversacional\chunking\FixedSizeChunker.class
+com\plataforma\conversacional\strategy\OllamaChatStrategy.class
 com\plataforma\conversacional\embedding\EmbeddingStrategy.class
 com\plataforma\conversacional\mapper\MessageMapperImpl.class
 com\plataforma\conversacional\integration\n8n\N8nWebhookClient.class
@@ -64,6 +67,7 @@ com\plataforma\conversacional\mapper\SessionMapper.class
 com\plataforma\conversacional\dto\response\RagQueryResponse.class
 com\plataforma\conversacional\repository\DocumentRepository.class
 com\plataforma\conversacional\entity\PipelineJob.class
+com\plataforma\conversacional\event\DocumentEventPublisher.class
 com\plataforma\conversacional\chunking\ChunkingStrategy.class
 com\plataforma\conversacional\controller\HealthController.class
 com\plataforma\conversacional\security\JwtAuthenticationFilter.class
@@ -82,6 +86,7 @@ com\plataforma\conversacional\config\CorsConfig$1.class
 com\plataforma\conversacional\dto\request\SendMessageRequest.class
 com\plataforma\conversacional\repository\PipelineJobRepository.class
 com\plataforma\conversacional\dto\response\HealthResponse.class
+com\plataforma\conversacional\service\impl\AsyncIngestionProcessor$1.class
 com\plataforma\conversacional\dto\request\RagQueryRequest.class
 com\plataforma\conversacional\event\MessageSentEventListener.class
 com\plataforma\conversacional\exception\RagProcessingException.class
@@ -96,10 +101,10 @@ com\plataforma\conversacional\dto\response\AuthResponse.class
 com\plataforma\conversacional\exception\EmbeddingException.class
 com\plataforma\conversacional\pipeline\RagPipeline.class
 com\plataforma\conversacional\storage\LocalFileStorageService.class
-com\plataforma\conversacional\service\impl\RagIngestionServiceImpl$1.class
 com\plataforma\conversacional\config\SecurityConfig.class
 com\plataforma\conversacional\dto\response\ErrorResponse.class
 com\plataforma\conversacional\service\impl\RagIngestionServiceImpl.class
+com\plataforma\conversacional\event\DocumentUploadedEventListener.class
 com\plataforma\conversacional\event\MessageEventPublisher.class
 com\plataforma\conversacional\embedding\OllamaEmbeddingStrategy.class
 com\plataforma\conversacional\repository\UserRepository.class

@@ -11,8 +11,8 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2026-06-27T13:54:58-0300",
-    comments = "version: 1.5.5.Final, compiler: javac, environment: Java 17.0.18 (Oracle Corporation)"
+    date = "2026-06-28T11:57:58-0300",
+    comments = "version: 1.5.5.Final, compiler: javac, environment: Java 17.0.18 (Microsoft)"
 )
 @Component
 public class MessageMapperImpl implements MessageMapper {
@@ -30,6 +30,7 @@ public class MessageMapperImpl implements MessageMapper {
         String content = null;
         MessageRole role = null;
         MessageStatus status = null;
+        String metadata = null;
 
         sessionId = messageSessionId( message );
         if ( message.getCreatedAt() != null ) {
@@ -42,8 +43,9 @@ public class MessageMapperImpl implements MessageMapper {
         content = message.getContent();
         role = message.getRole();
         status = message.getStatus();
+        metadata = message.getMetadata();
 
-        MessageResponse messageResponse = new MessageResponse( id, sessionId, content, role, status, createdAt, updatedAt );
+        MessageResponse messageResponse = new MessageResponse( id, sessionId, content, role, status, createdAt, updatedAt, metadata );
 
         return messageResponse;
     }

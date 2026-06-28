@@ -31,7 +31,7 @@ class SessionControllerTest {
     @Test
     void create_ShouldReturn201() throws Exception {
         SessionResponse response = new SessionResponse(
-                1L, "Nova conversa", SessionStatus.ACTIVE,
+                1L, "Nova conversa", null, SessionStatus.ACTIVE,
                 "2024-01-01T00:00:00", "2024-01-01T00:00:00");
         when(sessionService.create()).thenReturn(response);
 
@@ -44,7 +44,7 @@ class SessionControllerTest {
     @Test
     void findById_ShouldReturn200() throws Exception {
         SessionResponse response = new SessionResponse(
-                1L, "Test", SessionStatus.ACTIVE,
+                1L, "Test", null, SessionStatus.ACTIVE,
                 "2024-01-01T00:00:00", "2024-01-01T00:00:00");
         when(sessionService.findById(1L)).thenReturn(response);
 

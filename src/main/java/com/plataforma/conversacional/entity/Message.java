@@ -34,7 +34,6 @@ public class Message {
     @JoinColumn(name = "session_id", nullable = false)
     private Session session;
 
-    @Lob
     @Column(nullable = false, columnDefinition = "TEXT")
     private String content;
 

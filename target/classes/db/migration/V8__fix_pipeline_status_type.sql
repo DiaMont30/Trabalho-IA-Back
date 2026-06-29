@@ -1,0 +1,3 @@
+ALTER TABLE pipeline_jobs ALTER COLUMN status DROP DEFAULT;
+ALTER TABLE pipeline_jobs ALTER COLUMN status TYPE VARCHAR(20);
+DROP TYPE IF EXISTS pipeline_status;

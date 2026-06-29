@@ -9,9 +9,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
-import org.springframework.stereotype.Component;
-
-@Component
 public class MockVectorStore implements VectorStore {
 
     private final Map<Long, float[]> store = new ConcurrentHashMap<>();

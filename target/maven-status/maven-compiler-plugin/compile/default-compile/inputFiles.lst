@@ -1,112 +1,112 @@
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\chunking\FixedSizeChunker.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\dto\response\SourceDetailResponse.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\embedding\EmbeddingStrategy.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\exception\BusinessException.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\health\ApplicationHealthIndicator.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\retrieval\ScoredChunk.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\repository\UserRepository.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\dto\response\SessionPageResponse.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\entity\SourceReference.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\pipeline\SourceDetail.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\dto\response\ErrorResponse.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\exception\ParsingException.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\dto\response\SessionHistoryResponse.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\retrieval\Retriever.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\dto\request\LoginRequest.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\validation\AllowedFileTypeValidator.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\exception\RetrievalException.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\config\RestTemplateConfig.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\dto\request\UploadDocumentRequest.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\entity\PipelineJob.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\config\OpenApiConfig.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\util\CosineSimilarity.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\controller\HealthController.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\controller\MessageController.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\integration\n8n\RestN8nWebhookClient.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\mapper\MessageMapper.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\enums\PipelineStatus.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\enums\MessageStatus.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\service\DocumentService.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\service\impl\SessionServiceImpl.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\config\SecurityConfig.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\security\CustomUserDetailsService.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\service\RagIngestionService.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\pipeline\RagResult.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\repository\DocumentChunkRepository.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\enums\DocumentType.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\entity\Session.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\storage\MockVectorStore.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\controller\DocumentController.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\constants\ApiConstants.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\dto\webhook\N8nWebhookPayload.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\dto\response\MessageResponse.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\parsing\PdfParser.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\controller\RagController.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\repository\DocumentRepository.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\service\SessionService.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\event\MessageSentEvent.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\embedding\OllamaEmbeddingStrategy.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\entity\Document.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\PlataformaConversacionalApplication.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\entity\DocumentChunk.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\repository\MessageRepository.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\validation\AllowedFileType.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\chunking\Chunk.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\event\MessageSentEventListener.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\storage\FileStorageService.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\dto\response\IngestionStatusResponse.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\health\DatabaseHealthIndicator.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\exception\EmbeddingException.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\exception\GlobalExceptionHandler.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\integration\n8n\N8nWebhookClient.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\config\StorageConfig.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\config\CorsConfig.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\parsing\TxtParser.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\pipeline\RagPipeline.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\config\WebConfig.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\service\impl\HealthServiceImpl.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\util\FileUtils.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\dto\request\SendMessageRequest.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\dto\response\RagQueryResponse.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\controller\AuthController.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\controller\WebhookController.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\event\MessageEventPublisher.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\repository\SessionRepository.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\repository\PipelineJobRepository.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\dto\internal\FileUploadData.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\dto\request\RegisterRequest.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\dto\response\SessionResponse.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\service\impl\MessageServiceImpl.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\enums\MessageRole.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\security\JwtAuthenticationFilter.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\mapper\DocumentMapper.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\service\HealthService.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\exception\RagProcessingException.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\specification\MessageSpecification.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\service\MessageService.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\entity\Message.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\dto\response\DocumentResponse.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\security\JwtTokenProvider.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\config\MessagePublisherConfig.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\dto\response\HealthResponse.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\event\DocumentIngestedEvent.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\repository\SourceReferenceRepository.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\service\impl\DocumentServiceImpl.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\strategy\MessageProcessingStrategy.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\storage\VectorStore.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\chunking\ChunkingStrategy.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\parsing\DocumentParser.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\exception\InvalidFileTypeException.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\chunking\RecursiveChunker.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\entity\User.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\dto\response\AuthResponse.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\retrieval\SimilarityRetriever.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\mapper\SessionMapper.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\storage\LocalFileStorageService.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\enums\SessionStatus.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\exception\ResourceNotFoundException.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\pipeline\DefaultRagPipeline.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\controller\SessionController.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\dto\request\RagQueryRequest.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\strategy\MockMessageProcessingStrategy.java
-C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\service\impl\RagIngestionServiceImpl.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\exception\InvalidFileTypeException.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\enums\MessageRole.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\service\impl\HealthServiceImpl.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\entity\User.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\entity\Document.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\exception\ParsingException.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\dto\response\IngestionStatusResponse.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\enums\PipelineStatus.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\service\impl\MessageServiceImpl.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\entity\SourceReference.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\chunking\FixedSizeChunker.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\dto\response\HealthResponse.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\util\FileUtils.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\specification\MessageSpecification.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\storage\LocalFileStorageService.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\storage\MockVectorStore.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\event\DocumentIngestedEvent.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\storage\VectorStore.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\validation\AllowedFileType.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\mapper\MessageMapper.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\config\CorsConfig.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\controller\DocumentController.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\dto\webhook\N8nWebhookPayload.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\config\OpenApiConfig.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\enums\DocumentType.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\embedding\EmbeddingStrategy.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\strategy\MessageProcessingStrategy.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\integration\n8n\N8nWebhookClient.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\security\JwtTokenProvider.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\chunking\Chunk.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\entity\Session.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\chunking\RecursiveChunker.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\storage\FileStorageService.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\config\StorageConfig.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\embedding\OllamaEmbeddingStrategy.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\parsing\PdfParser.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\repository\SessionRepository.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\chunking\ChunkingStrategy.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\strategy\MockMessageProcessingStrategy.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\dto\response\ErrorResponse.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\dto\response\SessionPageResponse.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\repository\PipelineJobRepository.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\exception\RetrievalException.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\parsing\TxtParser.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\pipeline\RagResult.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\parsing\DocumentParser.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\security\CustomUserDetailsService.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\config\MessagePublisherConfig.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\retrieval\SimilarityRetriever.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\service\MessageService.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\exception\ResourceNotFoundException.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\dto\response\AuthResponse.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\controller\SessionController.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\retrieval\Retriever.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\exception\RagProcessingException.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\mapper\SessionMapper.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\exception\BusinessException.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\integration\n8n\RestN8nWebhookClient.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\dto\request\LoginRequest.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\event\MessageSentEvent.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\exception\EmbeddingException.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\service\DocumentService.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\controller\AuthController.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\controller\RagController.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\controller\HealthController.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\retrieval\ScoredChunk.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\pipeline\SourceDetail.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\dto\request\UploadDocumentRequest.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\event\MessageEventPublisher.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\controller\WebhookController.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\dto\request\RagQueryRequest.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\repository\SourceReferenceRepository.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\pipeline\DefaultRagPipeline.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\service\RagIngestionService.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\dto\response\SessionResponse.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\util\CosineSimilarity.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\security\JwtAuthenticationFilter.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\dto\response\MessageResponse.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\exception\GlobalExceptionHandler.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\enums\MessageStatus.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\config\WebConfig.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\repository\DocumentRepository.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\dto\response\RagQueryResponse.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\pipeline\RagPipeline.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\entity\Message.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\controller\MessageController.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\event\MessageSentEventListener.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\config\RestTemplateConfig.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\config\SecurityConfig.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\repository\DocumentChunkRepository.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\mapper\DocumentMapper.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\dto\response\DocumentResponse.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\health\DatabaseHealthIndicator.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\constants\ApiConstants.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\service\impl\DocumentServiceImpl.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\service\SessionService.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\entity\PipelineJob.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\PlataformaConversacionalApplication.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\service\HealthService.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\service\impl\SessionServiceImpl.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\repository\MessageRepository.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\dto\internal\FileUploadData.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\dto\response\SessionHistoryResponse.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\dto\request\RegisterRequest.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\repository\UserRepository.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\dto\request\SendMessageRequest.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\enums\SessionStatus.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\health\ApplicationHealthIndicator.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\service\impl\RagIngestionServiceImpl.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\dto\response\SourceDetailResponse.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\validation\AllowedFileTypeValidator.java
+C:\Users\Kaique Abranches\Desktop\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\entity\DocumentChunk.java

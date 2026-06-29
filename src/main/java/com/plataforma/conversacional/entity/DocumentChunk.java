@@ -7,10 +7,10 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import java.time.LocalDateTime;
 
 @Entity
@@ -25,14 +25,13 @@ public class DocumentChunk {
     @JoinColumn(name = "document_id", nullable = false)
     private Document document;
 
-    @Lob
     @Column(nullable = false, columnDefinition = "TEXT")
     private String content;
 
     @Column(nullable = false)
     private Integer chunkIndex;
 
-    @Column(columnDefinition = "TEXT")
+    @Transient
     private String embedding;
 
     @Column(columnDefinition = "JSON")

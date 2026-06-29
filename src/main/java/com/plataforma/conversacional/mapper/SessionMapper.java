@@ -11,5 +11,6 @@ public interface SessionMapper {
 
     @Mapping(target = "createdAt", source = "createdAt")
     @Mapping(target = "updatedAt", source = "updatedAt")
+    @Mapping(target = "lastMessage", source = "lastMessage")
     SessionResponse toResponse(Session session);
 }

@@ -10,5 +10,6 @@ public record MessageResponse(
     MessageRole role,
     MessageStatus status,
     String createdAt,
-    String updatedAt
+    String updatedAt,
+    String metadata
 ) {}

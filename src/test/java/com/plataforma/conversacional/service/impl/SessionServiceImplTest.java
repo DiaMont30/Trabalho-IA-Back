@@ -42,7 +42,7 @@ class SessionServiceImplTest {
         session.setTitle("Nova conversa");
 
         SessionResponse expectedResponse = new SessionResponse(
-                1L, "Nova conversa", SessionStatus.ACTIVE,
+                1L, "Nova conversa", null, SessionStatus.ACTIVE,
                 "2024-01-01T00:00:00", "2024-01-01T00:00:00");
 
         when(sessionRepository.save(any(Session.class))).thenReturn(session);
@@ -63,7 +63,7 @@ class SessionServiceImplTest {
         session.setId(1L);
 
         SessionResponse expectedResponse = new SessionResponse(
-                1L, "Test", SessionStatus.ACTIVE,
+                1L, "Test", null, SessionStatus.ACTIVE,
                 "2024-01-01T00:00:00", "2024-01-01T00:00:00");
 
         when(sessionRepository.findById(1L)).thenReturn(Optional.of(session));
@@ -89,7 +89,7 @@ class SessionServiceImplTest {
         Page<Session> page = new PageImpl<>(List.of(session));
 
         SessionResponse sessionResponse = new SessionResponse(
-                1L, "Test", SessionStatus.ACTIVE,
+                1L, "Test", null, SessionStatus.ACTIVE,
                 "2024-01-01T00:00:00", "2024-01-01T00:00:00");
 
         when(sessionRepository.findAll(any(PageRequest.class))).thenReturn(page);

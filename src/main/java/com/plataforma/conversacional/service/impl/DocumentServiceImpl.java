@@ -5,6 +5,7 @@ import com.plataforma.conversacional.dto.response.DocumentResponse;
 import com.plataforma.conversacional.entity.Document;
 import com.plataforma.conversacional.entity.Session;
 import com.plataforma.conversacional.enums.DocumentType;
+import com.plataforma.conversacional.event.DocumentEventPublisher;
 import com.plataforma.conversacional.exception.InvalidFileTypeException;
 import com.plataforma.conversacional.exception.ResourceNotFoundException;
 import com.plataforma.conversacional.mapper.DocumentMapper;
@@ -23,15 +24,18 @@ public class DocumentServiceImpl implements DocumentService {
     private final SessionRepository sessionRepository;
     private final FileStorageService fileStorageService;
     private final DocumentMapper documentMapper;
+    private final DocumentEventPublisher documentEventPublisher;
 
     public DocumentServiceImpl(DocumentRepository documentRepository,
                                SessionRepository sessionRepository,
                                FileStorageService fileStorageService,
-                               DocumentMapper documentMapper) {
+                               DocumentMapper documentMapper,
+                               DocumentEventPublisher documentEventPublisher) {
         this.documentRepository = documentRepository;
         this.sessionRepository = sessionRepository;
         this.fileStorageService = fileStorageService;
         this.documentMapper = documentMapper;
+        this.documentEventPublisher = documentEventPublisher;
     }
 
     @Override
@@ -65,6 +69,8 @@ public class DocumentServiceImpl implements DocumentService {
         }
 
         documentRepository.save(document);
+
+        documentEventPublisher.publishDocumentUploaded(document.getId());
 
         return documentMapper.toResponse(document);
     }

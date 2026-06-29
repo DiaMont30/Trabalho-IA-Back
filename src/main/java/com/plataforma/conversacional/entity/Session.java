@@ -27,6 +27,9 @@ public class Session {
     @Column(length = 255)
     private String title;
 
+    @Column(name = "last_message", length = 500)
+    private String lastMessage;
+
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 20)
     private SessionStatus status;
@@ -60,6 +63,8 @@ public class Session {
     public void setId(Long id) { this.id = id; }
     public String getTitle() { return title; }
     public void setTitle(String title) { this.title = title; }
+    public String getLastMessage() { return lastMessage; }
+    public void setLastMessage(String lastMessage) { this.lastMessage = lastMessage; }
     public SessionStatus getStatus() { return status; }
     public void setStatus(SessionStatus status) { this.status = status; }
     public LocalDateTime getCreatedAt() { return createdAt; }

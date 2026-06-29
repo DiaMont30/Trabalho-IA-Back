@@ -105,7 +105,7 @@ class MessageServiceImplTest {
 
         MessageResponse expectedResponse = new MessageResponse(
                 2L, 1L, "Mock response", MessageRole.ASSISTANT,
-                MessageStatus.RECEIVED, "2024-01-01T00:00:00", "2024-01-01T00:00:00");
+                MessageStatus.RECEIVED, "2024-01-01T00:00:00", "2024-01-01T00:00:00", null);
 
         when(messageRepository.save(any(Message.class))).thenAnswer(invocation -> {
             Message msg = invocation.getArgument(0);
@@ -148,7 +148,7 @@ class MessageServiceImplTest {
 
         MessageResponse expectedResponse = new MessageResponse(
                 2L, 1L, "RAG response", MessageRole.ASSISTANT,
-                MessageStatus.RECEIVED, "2024-01-01T00:00:00", "2024-01-01T00:00:00");
+                MessageStatus.RECEIVED, "2024-01-01T00:00:00", "2024-01-01T00:00:00", null);
 
         when(messageRepository.save(any(Message.class))).thenAnswer(invocation -> {
             Message msg = invocation.getArgument(0);
@@ -194,7 +194,7 @@ class MessageServiceImplTest {
 
         MessageResponse msgResponse = new MessageResponse(
                 1L, 1L, "Hello", MessageRole.USER,
-                MessageStatus.SENT, "2024-01-01T00:00:00", "2024-01-01T00:00:00");
+                MessageStatus.SENT, "2024-01-01T00:00:00", "2024-01-01T00:00:00", null);
 
         when(messageRepository.findBySessionId(1L, PageRequest.of(0, 10))).thenReturn(page);
         when(messageMapper.toResponse(message)).thenReturn(msgResponse);

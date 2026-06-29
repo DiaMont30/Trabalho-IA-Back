@@ -6,6 +6,7 @@ import com.plataforma.conversacional.entity.Document;
 import com.plataforma.conversacional.entity.Session;
 import com.plataforma.conversacional.enums.DocumentType;
 import com.plataforma.conversacional.enums.SessionStatus;
+import com.plataforma.conversacional.event.DocumentEventPublisher;
 import com.plataforma.conversacional.exception.InvalidFileTypeException;
 import com.plataforma.conversacional.exception.ResourceNotFoundException;
 import com.plataforma.conversacional.mapper.DocumentMapper;
@@ -36,6 +37,9 @@ class DocumentServiceImplTest {
 
     @Mock
     private DocumentMapper documentMapper;
+
+    @Mock
+    private DocumentEventPublisher documentEventPublisher;
 
     @InjectMocks
     private DocumentServiceImpl documentService;

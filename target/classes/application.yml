@@ -43,8 +43,8 @@ app:
     ollama:
       url: http://localhost:11434
       model: nomic-embed-text
+      timeout: 60000
       chat-model: llama3.2
-      timeout: 5000
     chunking:
       max-size: 512
       overlap: 64

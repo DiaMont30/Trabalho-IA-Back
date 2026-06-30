@@ -1,0 +1,222 @@
+{
+    "settings":  {
+                     "executionOrder":  "v1",
+                     "binaryMode":  "separate",
+                     "availableInMCP":  false
+                 },
+    "name":  "Integra??o RAG - n8n",
+    "tags":  [
+
+             ],
+    "versionId":  "0aa5311d-d180-4914-830a-ecdce027cd7f",
+    "nodes":  [
+                  {
+                      "parameters":  {
+                                         "httpMethod":  "POST",
+                                         "path":  "rag",
+                                         "responseMode":  "lastNode",
+                                         "options":  {
+
+                                                     }
+                                     },
+                      "id":  "94bae161-c47b-42ed-a6a0-760b9c569dec",
+                      "name":  "Webhook",
+                      "type":  "n8n-nodes-base.webhook",
+                      "typeVersion":  2.1,
+                      "position":  [
+                                       0,
+                                       0
+                                   ],
+                      "webhookId":  "06f833cd-2ac3-463c-8004-9af933e279ad"
+                  },
+                  {
+                      "parameters":  {
+                                         "rules":  {
+                                                       "values":  [
+                                                                      {
+                                                                          "conditions":  {
+                                                                                             "options":  {
+                                                                                                             "caseSensitive":  true,
+                                                                                                             "leftValue":  "",
+                                                                                                             "typeValidation":  "strict",
+                                                                                                             "version":  3
+                                                                                                         },
+                                                                                             "conditions":  [
+                                                                                                                {
+                                                                                                                    "leftValue":  "={{ $json.body.eventType }} ",
+                                                                                                                    "rightValue":  "INGESTION_COMPLETED",
+                                                                                                                    "operator":  {
+                                                                                                                                     "type":  "string",
+                                                                                                                                     "operation":  "equals"
+                                                                                                                                 },
+                                                                                                                    "id":  "fc61b6e6-58d1-4c1a-acaa-833c862f9310"
+                                                                                                                }
+                                                                                                            ],
+                                                                                             "combinator":  "and"
+                                                                                         }
+                                                                      },
+                                                                      {
+                                                                          "conditions":  {
+                                                                                             "options":  {
+                                                                                                             "caseSensitive":  true,
+                                                                                                             "leftValue":  "",
+                                                                                                             "typeValidation":  "strict",
+                                                                                                             "version":  3
+                                                                                                         },
+                                                                                             "conditions":  [
+                                                                                                                {
+                                                                                                                    "id":  "3638f317-6006-454d-9d8d-680ed039272c",
+                                                                                                                    "leftValue":  "={{ $json.body.eventType }} ",
+                                                                                                                    "rightValue":  "QUERY_COMPLETED",
+                                                                                                                    "operator":  {
+                                                                                                                                     "type":  "string",
+                                                                                                                                     "operation":  "equals",
+                                                                                                                                     "name":  "filter.operator.equals"
+                                                                                                                                 }
+                                                                                                                }
+                                                                                                            ],
+                                                                                             "combinator":  "and"
+                                                                                         }
+                                                                      }
+                                                                  ]
+                                                   },
+                                         "options":  {
+
+                                                     }
+                                     },
+                      "id":  "fc16f2c6-c9bb-4573-a520-b864e9295ebf",
+                      "name":  "Switch",
+                      "type":  "n8n-nodes-base.switch",
+                      "typeVersion":  3.4,
+                      "position":  [
+                                       208,
+                                       0
+                                   ]
+                  },
+                  {
+                      "parameters":  {
+                                         "url":  "=http://host.docker.internal:8080/api/v1/documents/{{ $json.body.payload.documentId }}/status",
+                                         "sendBody":  true,
+                                         "bodyParameters":  {
+                                                                "parameters":  [
+                                                                                   {
+
+                                                                                   }
+                                                                               ]
+                                                            },
+                                         "options":  {
+                                                         "response":  {
+                                                                          "response":  {
+                                                                                           "responseFormat":  "json"
+                                                                                       }
+                                                                      }
+                                                     }
+                                     },
+                      "id":  "3e87f50d-71fc-41a4-9098-237412b799f5",
+                      "name":  "HTTP Request",
+                      "type":  "n8n-nodes-base.httpRequest",
+                      "typeVersion":  4.4,
+                      "position":  [
+                                       432,
+                                       -112
+                                   ]
+                  },
+                  {
+                      "parameters":  {
+                                         "fromEmail":  "gabrieluiz.aguiar@gmail.com",
+                                         "toEmail":  "gabrieluiz.aguiar@gmail.com",
+                                         "subject":  "testando",
+                                         "emailFormat":  "text",
+                                         "text":  "123",
+                                         "options":  {
+
+                                                     }
+                                     },
+                      "type":  "n8n-nodes-base.emailSend",
+                      "typeVersion":  2.1,
+                      "position":  [
+                                       416,
+                                       96
+                                   ],
+                      "id":  "0ac277b2-12e8-4308-86c4-6041ae76c6b8",
+                      "name":  "Send an Email1",
+                      "webhookId":  "4dd09be3-d459-4926-9c5e-f7f255dab697",
+                      "credentials":  {
+                                          "smtp":  {
+                                                       "id":  "kgiuvGOp7Ibur2RQ",
+                                                       "name":  "SMTP account"
+                                                   }
+                                      }
+                  },
+                  {
+                      "parameters":  {
+                                         "fromEmail":  "gabrieluiz.aguiar@gmail.com",
+                                         "toEmail":  "gabrieluiz.aguiar@gmail.com",
+                                         "subject":  "Testando",
+                                         "emailFormat":  "text",
+                                         "text":  "teste123",
+                                         "options":  {
+
+                                                     }
+                                     },
+                      "type":  "n8n-nodes-base.emailSend",
+                      "typeVersion":  2.1,
+                      "position":  [
+                                       640,
+                                       -112
+                                   ],
+                      "id":  "ecc21dc3-0641-4c41-9860-bba63d117934",
+                      "name":  "Send an Email",
+                      "webhookId":  "e1d644d8-3e75-4f99-983b-916e3556b7ed",
+                      "credentials":  {
+                                          "smtp":  {
+                                                       "id":  "kgiuvGOp7Ibur2RQ",
+                                                       "name":  "SMTP account"
+                                                   }
+                                      }
+                  }
+              ],
+    "triggerCount":  1,
+    "connections":  {
+                        "Webhook":  {
+                                        "main":  [
+                                                     [
+                                                         {
+                                                             "node":  "Switch",
+                                                             "type":  "main",
+                                                             "index":  0
+                                                         }
+                                                     ]
+                                                 ]
+                                    },
+                        "HTTP Request":  {
+                                             "main":  [
+                                                          [
+                                                              {
+                                                                  "node":  "Send an Email",
+                                                                  "type":  "main",
+                                                                  "index":  0
+                                                              }
+                                                          ]
+                                                      ]
+                                         },
+                        "Switch":  {
+                                       "main":  [
+                                                    [
+                                                        {
+                                                            "node":  "HTTP Request",
+                                                            "type":  "main",
+                                                            "index":  0
+                                                        }
+                                                    ],
+                                                    [
+                                                        {
+                                                            "node":  "Send an Email1",
+                                                            "type":  "main",
+                                                            "index":  0
+                                                        }
+                                                    ]
+                                                ]
+                                   }
+                    }
+}

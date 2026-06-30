@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.plataforma.conversacional.dto.internal.FileUploadData;
 import com.plataforma.conversacional.dto.request.SendMessageRequest;
 import com.plataforma.conversacional.dto.response.DocumentResponse;
-import com.plataforma.conversacional.dto.response.IngestionStatusResponse;
 import com.plataforma.conversacional.dto.response.MessageResponse;
 import com.plataforma.conversacional.dto.response.SessionHistoryResponse;
 import com.plataforma.conversacional.entity.Document;
@@ -18,6 +17,8 @@ import com.plataforma.conversacional.enums.PipelineStatus;
 import com.plataforma.conversacional.event.MessageEventPublisher;
 import com.plataforma.conversacional.exception.ResourceNotFoundException;
 import com.plataforma.conversacional.mapper.MessageMapper;
+import com.plataforma.conversacional.parsing.DocumentParser;
+import com.plataforma.conversacional.util.FileUtils;
 import com.plataforma.conversacional.pipeline.RagPipeline;
 import com.plataforma.conversacional.pipeline.RagResult;
 import com.plataforma.conversacional.repository.DocumentRepository;
@@ -31,6 +32,7 @@ import com.plataforma.conversacional.service.RagIngestionService;
 import com.plataforma.conversacional.strategy.MessageProcessingStrategy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -42,6 +44,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 public class MessageServiceImpl implements MessageService {
@@ -60,6 +63,8 @@ public class MessageServiceImpl implements MessageService {
     private final ObjectMapper objectMapper;
     private final DocumentService documentService;
     private final RagIngestionService ragIngestionService;
+    private final DocumentParser txtParser;
+    private final DocumentParser pdfParser;
 
     public MessageServiceImpl(SessionRepository sessionRepository,
                               MessageRepository messageRepository,
@@ -70,9 +75,11 @@ public class MessageServiceImpl implements MessageService {
                               DocumentRepository documentRepository,
                               PipelineJobRepository pipelineJobRepository,
                               SourceReferenceRepository sourceReferenceRepository,
-                              ObjectMapper objectMapper,
-                              DocumentService documentService,
-                              RagIngestionService ragIngestionService) {
+                                ObjectMapper objectMapper,
+                                DocumentService documentService,
+                                RagIngestionService ragIngestionService,
+                                @Qualifier("txtParser") DocumentParser txtParser,
+                                @Qualifier("pdfParser") DocumentParser pdfParser) {
         this.sessionRepository = sessionRepository;
         this.messageRepository = messageRepository;
         this.messageMapper = messageMapper;
@@ -85,6 +92,8 @@ public class MessageServiceImpl implements MessageService {
         this.objectMapper = objectMapper;
         this.documentService = documentService;
         this.ragIngestionService = ragIngestionService;
+        this.txtParser = txtParser;
+        this.pdfParser = pdfParser;
     }
 
     @Override
@@ -110,7 +119,10 @@ public class MessageServiceImpl implements MessageService {
         String messageType;
 
         if (hasIndexedDocuments) {
-            RagResult result = ragPipeline.execute(request.content(), sessionId);
+            String docNames = documentRepository.findBySessionId(sessionId).stream()
+                .map(Document::getOriginalName)
+                .collect(Collectors.joining(", "));
+            RagResult result = ragPipeline.execute(request.content(), docNames, sessionId);
             assistantContent = result.answer();
             sourceRefs = result.sources();
             messageType = "RAG";
@@ -125,6 +137,8 @@ public class MessageServiceImpl implements MessageService {
         assistantMessage.setContent(assistantContent);
         assistantMessage.setRole(MessageRole.ASSISTANT);
         assistantMessage.setStatus(MessageStatus.RECEIVED);
+
+        messageRepository.save(assistantMessage);
 
         if (!sourceRefs.isEmpty()) {
             try {
@@ -148,8 +162,6 @@ public class MessageServiceImpl implements MessageService {
                 sourceReferenceRepository.save(ref);
             }
         }
-
-        messageRepository.save(assistantMessage);
 
         eventPublisher.publishMessageSent(assistantMessage.getId(), messageType);
 
@@ -189,8 +201,27 @@ public class MessageServiceImpl implements MessageService {
         Session session = sessionRepository.findById(sessionId)
                 .orElseThrow(() -> new ResourceNotFoundException("Session not found: " + sessionId));
 
+        StringBuilder fileContents = new StringBuilder();
+
         for (MultipartFile file : files) {
             if (file.isEmpty()) continue;
+
+            String extension = FileUtils.getExtension(file.getOriginalFilename());
+            if (!FileUtils.isAllowedType(extension)) {
+                log.warn("Unsupported file type: .{} - skipping sync parse, async ingestion will validate", extension);
+                continue;
+            }
+
+            try {
+                DocumentParser parser = "pdf".equals(extension) ? pdfParser : txtParser;
+                String text = parser.parse(file.getBytes(), file.getContentType());
+                if (!text.isBlank()) {
+                    if (!fileContents.isEmpty()) fileContents.append("\n\n---\n\n");
+                    fileContents.append(text);
+                }
+            } catch (Exception e) {
+                log.warn("Failed to parse file {} synchronously, async ingestion will retry", file.getOriginalFilename(), e);
+            }
 
             FileUploadData uploadData = new FileUploadData(
                     file.getOriginalFilename(),
@@ -200,8 +231,7 @@ public class MessageServiceImpl implements MessageService {
                     sessionId
             );
             DocumentResponse docResponse = documentService.store(uploadData);
-            IngestionStatusResponse ingestResponse = ragIngestionService.ingestDocument(docResponse.id());
-            awaitIngestion(ingestResponse.jobId());
+            ragIngestionService.ingestDocument(docResponse.id());
         }
 
         Message userMessage = new Message();
@@ -213,58 +243,23 @@ public class MessageServiceImpl implements MessageService {
 
         updateSessionFromMessage(session, request.content());
 
-        RagResult result = ragPipeline.execute(request.content(), sessionId);
+        String assistantContent;
+        if (!fileContents.isEmpty()) {
+            assistantContent = processingStrategy.processWithContext(fileContents.toString(), request.content());
+        } else {
+            assistantContent = processingStrategy.process(request.content());
+        }
 
         Message assistantMessage = new Message();
         assistantMessage.setSession(session);
-        assistantMessage.setContent(result.answer());
+        assistantMessage.setContent(assistantContent);
         assistantMessage.setRole(MessageRole.ASSISTANT);
         assistantMessage.setStatus(MessageStatus.RECEIVED);
 
-        if (!result.sources().isEmpty()) {
-            try {
-                List<Map<String, Object>> sourcesMeta = result.sources().stream()
-                        .map(ref -> {
-                            Map<String, Object> m = new HashMap<>();
-                            m.put("documentId", ref.getChunk().getDocument().getId());
-                            m.put("documentName", ref.getChunk().getDocument().getOriginalName());
-                            m.put("relevanceScore", ref.getRelevanceScore());
-                            m.put("excerpt", ref.getExcerpt());
-                            return m;
-                        })
-                        .toList();
-                assistantMessage.setMetadata(objectMapper.writeValueAsString(sourcesMeta));
-            } catch (Exception e) {
-                log.warn("Failed to serialize source metadata", e);
-            }
-
-            for (SourceReference ref : result.sources()) {
-                ref.setMessage(assistantMessage);
-                sourceReferenceRepository.save(ref);
-            }
-        }
-
         messageRepository.save(assistantMessage);
-        eventPublisher.publishMessageSent(assistantMessage.getId(), "RAG");
+        eventPublisher.publishMessageSent(assistantMessage.getId(), "SIMPLE");
 
         return messageMapper.toResponse(assistantMessage);
-    }
-
-    private void awaitIngestion(Long jobId) {
-        int maxRetries = 60;
-        for (int i = 0; i < maxRetries; i++) {
-            IngestionStatusResponse status = ragIngestionService.getStatus(jobId);
-            if ("READY".equals(status.status())) return;
-            if ("FAILED".equals(status.status()))
-                throw new RuntimeException("Ingestion failed: " + status.errorMessage());
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
-                throw new RuntimeException("Ingestion wait interrupted", e);
-            }
-        }
-        throw new RuntimeException("Ingestion timeout for job: " + jobId);
     }
 
     @Override

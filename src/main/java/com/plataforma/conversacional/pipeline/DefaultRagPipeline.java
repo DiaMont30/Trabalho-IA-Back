@@ -28,7 +28,7 @@ public class DefaultRagPipeline implements RagPipeline {
     }
 
     @Override
-    public RagResult execute(String query, Long sessionId) {
+    public RagResult execute(String query, String contextDescription, Long sessionId) {
         List<ScoredChunk> scoredChunks = retriever.retrieve(query, topK);
 
         StringBuilder context = new StringBuilder();
@@ -52,8 +52,18 @@ public class DefaultRagPipeline implements RagPipeline {
             sources.add(sourceReference);
         }
 
-        String augmentedPrompt = context + "\n\nPergunta: " + query;
-        String answer = messageProcessingStrategy.process(augmentedPrompt);
+        StringBuilder fullContext = new StringBuilder();
+        if (!context.isEmpty()) {
+            fullContext.append(context);
+        }
+        if (contextDescription != null && !contextDescription.isBlank()) {
+            if (!fullContext.isEmpty()) {
+                fullContext.append("\n\n");
+            }
+            fullContext.append("Documentos disponíveis na conversa: ").append(contextDescription);
+        }
+
+        String answer = messageProcessingStrategy.processWithContext(fullContext.toString(), query);
 
         return new RagResult(answer, sources);
     }

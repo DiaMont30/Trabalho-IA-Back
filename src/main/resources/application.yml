@@ -43,14 +43,15 @@ app:
     ollama:
       url: http://localhost:11434
       model: nomic-embed-text
-      timeout: 60000
+      read-timeout: 60000
+      connect-timeout: 10000
       chat-model: llama3.2
     chunking:
       max-size: 512
       overlap: 64
     retrieval:
       top-k: 5
-      min-score: 0.7
+      min-score: 0.5
   n8n:
     webhook-url: ${N8N_WEBHOOK_URL:http://localhost:5678/webhook/rag}
     enabled: false

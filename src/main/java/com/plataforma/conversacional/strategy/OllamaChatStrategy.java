@@ -42,7 +42,28 @@ public class OllamaChatStrategy implements MessageProcessingStrategy {
             ),
             "stream", false
         );
+        return callOllama(request);
+    }
 
+    @Override
+    public String processWithContext(String context, String query) {
+        Map<String, Object> request = Map.of(
+            "model", model,
+            "messages", List.of(
+                Map.of("role", "system", "content",
+                    "Você é um assistente especializado em análise de documentos. " +
+                    "Você receberá o CONTEÚDO DOS ARQUIVOS e depois uma pergunta. " +
+                    "Responda APENAS com base no CONTEÚDO DOS ARQUIVOS fornecido. " +
+                    "Se o conteúdo não tiver informações suficientes, diga que não sabe."),
+                Map.of("role", "user", "content", "CONTEÚDO DOS ARQUIVOS:\n" + context),
+                Map.of("role", "user", "content", "Com base SOMENTE no CONTEÚDO DOS ARQUIVOS acima, responda: " + query)
+            ),
+            "stream", false
+        );
+        return callOllama(request);
+    }
+
+    private String callOllama(Map<String, Object> request) {
         try {
             String response = restTemplate.postForObject(url, request, String.class);
             JsonNode root = objectMapper.readTree(response);

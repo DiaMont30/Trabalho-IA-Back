@@ -12,5 +12,6 @@ public interface MessageMapper {
     @Mapping(target = "sessionId", source = "session.id")
     @Mapping(target = "createdAt", source = "createdAt")
     @Mapping(target = "updatedAt", source = "updatedAt")
+    @Mapping(target = "sources", ignore = true)
     MessageResponse toResponse(Message message);
 }

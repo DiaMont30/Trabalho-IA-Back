@@ -27,6 +27,7 @@ Base URL: `/api/v1`
 |---|---|---|---|---|
 | POST | `/documents/upload` | Multipart (file + sessionId opcional) | DocumentResponse | 400, 413, 500 |
 | GET | `/documents/{documentId}` | — | DocumentResponse | 404 |
+| GET | `/documents/{documentId}/status` | — | DocumentStatusResponse | 404 |
 
 ### 1.4 Health Check
 
@@ -83,9 +84,23 @@ Base URL: `/api/v1`
   "role": "USER",
   "status": "SENT",
   "createdAt": "2024-01-01T00:00:00",
-  "updatedAt": "2024-01-01T00:00:00"
+  "updatedAt": "2024-01-01T00:00:00",
+  "metadata": null,
+  "sources": null
 }
 ```
+
+| Campo | Tipo | Descrição |
+|---|---|---|
+| id | Long | ID da mensagem |
+| sessionId | Long | ID da sessão |
+| content | String | Conteúdo da mensagem |
+| role | String | USER, ASSISTANT ou SYSTEM |
+| status | String | SENT, RECEIVED ou FAILED |
+| createdAt | String | ISO-8601 |
+| updatedAt | String | ISO-8601 |
+| metadata | String (JSON) | Metadados opcionais (fontes em formato JSON quando RAG) |
+| sources | List\<SourceDetailResponse\> | Fontes utilizadas na resposta RAG (null quando não RAG) |
 
 ### SessionHistoryResponse
 
@@ -126,6 +141,24 @@ Base URL: `/api/v1`
 }
 ```
 
+### DocumentStatusResponse
+
+```json
+{
+  "documentId": 1,
+  "status": "READY",
+  "chunksCount": 15,
+  "errorMessage": null
+}
+```
+
+| Campo | Tipo | Descrição |
+|---|---|---|
+| documentId | Long | ID do documento |
+| status | String | PENDING, PROCESSING, READY ou FAILED |
+| chunksCount | Integer | Quantidade de chunks indexados (null se não processado) |
+| errorMessage | String | Mensagem de erro (null se bem-sucedido) |
+
 ### ErrorResponse
 
 ```json
@@ -147,6 +180,7 @@ Base URL: `/api/v1`
 |---|---|---|
 | 400 BAD_REQUEST | Validação de DTO ou tipo de arquivo inválido | MethodArgumentNotValidException, InvalidFileTypeException |
 | 404 NOT_FOUND | Recurso não encontrado | ResourceNotFoundException |
+| 409 CONFLICT | Conflito de estado (documento já indexado, sessão encerrada) | ConflictException |
 | 422 UNPROCESSABLE_ENTITY | Regra de negócio violada | BusinessException |
 | 500 INTERNAL_SERVER_ERROR | Erro inesperado | Exception genérica |
 | 503 SERVICE_UNAVAILABLE | Health check com dependência crítica DOWN | — |

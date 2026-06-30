@@ -18,6 +18,7 @@
 | 7   | Implementar config classes stub (Web, Storage, OpenApi, MessagePublisher) | Baixa      | ✅ iniciada |
 | 8   | Logging estruturado JSON (logback-spring.xml)                             | Média      | ✅ Concluída     |
 | 9   | **Pipeline RAG — Parte 2 (16 etapas)**                                    | **Alta**   | ✅ Concluída (16/16) |
+| 10  | **Integração n8n — Conectar Webhooks + Endpoints (8 etapas)**             | **Alta**   | ✅ Concluída (8/8)   |
 
 ---
 
@@ -609,3 +610,171 @@ Etapa 9.3  ─── Entidades JPA (DocumentChunk, SourceReference, PipelineJob)
 ---
 
 > **Nota:** Cada etapa é autocontida e segue o princípio SDD de isolamento. Nenhuma etapa mistura responsabilidades de camadas diferentes. O código gerado deve respeitar estritamente os limites definidos nos spec-drivens.
+
+---
+
+## [10] Integração n8n — Conectar Webhooks + Endpoints (8 etapas)
+
+> **Documentos de referência:** `docs/spec-api.md`, `docs/spec-arquitetura.md`, `docs/spec-casos-de-uso.md`
+>
+> **Stack:** n8n (Docker) para orquestração, Spring Events para notificações, RestTemplate para chamadas HTTP
+>
+> **Ordem:** As etapas devem ser executadas sequencialmente. Cada etapa depende da anterior.
+
+---
+
+### Etapa 10.1 — N8nNotificationListener (conectar webhook de ingestão)
+
+**Objetivo:** Escutar `DocumentIngestedEvent` e disparar o webhook para o n8n.
+
+**Tarefas:**
+
+- [x] Criar `integration/n8n/N8nNotificationListener.java` — `@Component` com `@EventListener`:
+  1. Recebe `DocumentIngestedEvent`
+  2. Chama `n8nWebhookClient.notifyIngestionCompleted(documentId, "READY")`
+  3. Log do resultado
+- [x] Verificar que `notifyIngestionCompleted()` está sendo chamada de fato (atualmente não é chamada por ninguém)
+
+**Arquivos:** `src/main/java/com/plataforma/conversacional/integration/n8n/N8nNotificationListener.java`
+
+---
+
+### Etapa 10.2 — Conectar webhook de query respondida
+
+**Objetivo:** Notificar o n8n quando uma pergunta for respondida com RAG.
+
+**Tarefas:**
+
+- [x] Injetar `N8nWebhookClient` no `MessageServiceImpl`
+- [x] Chamar `n8nWebhookClient.notifyQueryCompleted(result, sessionId)` após o `ragPipeline.execute()` no método `send()`
+- [x] Proteger com verificação de enabled (mesmo pattern do client)
+
+**Arquivos:** `src/main/java/com/plataforma/conversacional/service/impl/MessageServiceImpl.java`
+
+---
+
+### Etapa 10.3 — Endpoint GET /api/documents/{id}/status
+
+**Objetivo:** Expor endpoint para o n8n consultar o status do documento.
+
+**Tarefas:**
+
+- [x] Adicionar método em `DocumentController`:
+  ```
+  GET /api/v1/documents/{id}/status → DocumentStatusResponse
+  ```
+- [x] Criar DTO `dto/response/DocumentStatusResponse.java`:
+  ```java
+  public record DocumentStatusResponse(
+      Long documentId,
+      String status,
+      Integer chunksCount,
+      String errorMessage
+  ) {}
+  ```
+- [x] Buscar PipelineJob associado ao documento no service para determinar o status
+- [x] Retornar 404 se documento não existir, 200 com status
+
+**Arquivos:** `src/main/java/com/plataforma/conversacional/controller/DocumentController.java`, `src/main/java/com/plataforma/conversacional/dto/response/DocumentStatusResponse.java`
+
+---
+
+### Etapa 10.4 — Container n8n no Docker Compose + script de setup
+
+**Objetivo:** Disponibilizar n8n via Docker para orquestração.
+
+**Tarefas:**
+
+- [x] Adicionar serviço `n8n` no `docker-compose.yml`
+- [x] Adicionar volume `n8n_data:` na seção de volumes
+- [x] Criar script `docker-init-n8n.sh`
+
+**Arquivos:** `docker-compose.yml`, `docker-init-n8n.sh`
+
+---
+
+### Etapa 10.5 — Ativar e documentar configuração do n8n
+
+**Objetivo:** Garantir que a integração n8n seja ativada corretamente via configuração.
+
+**Tarefas:**
+
+- [x] Definir `app.n8n.enabled` como `true` por padrão no `application.yml`
+- [x] Garantir que a propriedade `app.n8n.webhook-url` esteja documentada com exemplo
+- [x] Adicionar comentário no `application.yml` explicando o propósito de cada propriedade n8n
+
+**Arquivos:** `src/main/resources/application.yml`
+
+---
+
+### Etapa 10.6 — Tratamento 409 Conflict no GlobalExceptionHandler
+
+**Objetivo:** Implementar status code 409 para conflitos de estado.
+
+**Tarefas:**
+
+- [x] Criar `exception/ConflictException.java` — RuntimeException
+- [x] Adicionar handler no `GlobalExceptionHandler.java` para 409 Conflict
+- [x] `ConflictException` criada para uso quando houver conflitos de estado
+
+**Arquivos:** `src/main/java/com/plataforma/conversacional/exception/ConflictException.java`, `src/main/java/com/plataforma/conversacional/exception/GlobalExceptionHandler.java`
+
+---
+
+### Etapa 10.7 — Campo sources top-level no MessageResponse
+
+**Objetivo:** Incluir array `sources` diretamente no DTO de resposta de mensagem.
+
+**Tarefas:**
+
+- [ ] Adicionar campo no `MessageResponse.java`:
+  ```java
+  List<SourceDetailResponse> sources
+  ```
+- [ ] Atualizar `MessageMapper.toResponse()` para popular o novo campo
+- [ ] Atualizar construtor/record factory para incluir o campo
+
+**Arquivos:** `src/main/java/com/plataforma/conversacional/dto/response/MessageResponse.java`, `src/main/java/com/plataforma/conversacional/mapper/MessageMapper.java`
+
+---
+
+### Etapa 10.8 — Atualização dos Spec-drivens
+
+**Objetivo:** Manter a documentação sincronizada com as implementações.
+
+**Tarefas:**
+
+- [x] Atualizar `spec-api.md`:
+  - Adicionar endpoint `GET /api/v1/documents/{id}/status`
+  - Adicionar status code 409 Conflict
+  - Atualizar `MessageResponse` com campo `sources`
+- [x] Atualizar `spec-arquitetura.md`:
+  - Adicionar pacote `integration/n8n/`
+  - Adicionar container n8n no diagrama de deployment
+- [x] Atualizar `spec-casos-de-uso.md`:
+  - Adicionar fluxo: upload → ingestão → webhook n8n → notificação
+  - Adicionar fluxo: query → resposta → webhook n8n
+
+**Arquivos:** `docs/spec-api.md`, `docs/spec-arquitetura.md`, `docs/spec-casos-de-uso.md`
+
+---
+
+### 🧭 Roadmap Visual
+
+```
+Etapa 10.1 ─── N8nNotificationListener (conectar webhook de ingestão)
+      │
+Etapa 10.2 ─── Conectar webhook de query respondida
+      │
+Etapa 10.3 ─── Endpoint GET /api/documents/{id}/status
+      │
+Etapa 10.4 ─── Container n8n no Docker Compose + script de setup
+      │
+Etapa 10.5 ─── Ativar e documentar configuração do n8n
+      │
+Etapa 10.6 ─── Tratamento 409 Conflict no GlobalExceptionHandler
+      │
+Etapa 10.7 ─── Campo sources top-level no MessageResponse
+      │
+      └── Etapa 10.8 ─── Atualização Spec-drivens
+```

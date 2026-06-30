@@ -2,6 +2,7 @@ package com.plataforma.conversacional.controller;
 
 import com.plataforma.conversacional.dto.internal.FileUploadData;
 import com.plataforma.conversacional.dto.response.DocumentResponse;
+import com.plataforma.conversacional.dto.response.DocumentStatusResponse;
 import com.plataforma.conversacional.service.DocumentService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -44,6 +45,12 @@ public class DocumentController {
     @GetMapping("/{" + DOCUMENT_ID_VARIABLE + "}")
     public ResponseEntity<DocumentResponse> findById(@PathVariable Long documentId) {
         DocumentResponse response = documentService.findById(documentId);
+        return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/{" + DOCUMENT_ID_VARIABLE + "}/status")
+    public ResponseEntity<DocumentStatusResponse> getStatus(@PathVariable Long documentId) {
+        DocumentStatusResponse response = documentService.getDocumentStatus(documentId);
         return ResponseEntity.ok(response);
     }
 }

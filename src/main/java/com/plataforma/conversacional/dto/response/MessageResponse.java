@@ -3,6 +3,8 @@ package com.plataforma.conversacional.dto.response;
 import com.plataforma.conversacional.enums.MessageRole;
 import com.plataforma.conversacional.enums.MessageStatus;
 
+import java.util.List;
+
 public record MessageResponse(
     Long id,
     Long sessionId,
@@ -11,5 +13,6 @@ public record MessageResponse(
     MessageStatus status,
     String createdAt,
     String updatedAt,
-    String metadata
+    String metadata,
+    List<SourceDetailResponse> sources
 ) {}

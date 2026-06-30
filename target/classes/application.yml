@@ -53,8 +53,10 @@ app:
       top-k: 5
       min-score: 0.5
   n8n:
+    # URL do webhook do n8n para onde as notificacoes serao enviadas
     webhook-url: ${N8N_WEBHOOK_URL:http://localhost:5678/webhook/rag}
-    enabled: false
+    # Habilita/desabilita o envio de notificacoes para o n8n
+    enabled: true
 
 logging:
   level:

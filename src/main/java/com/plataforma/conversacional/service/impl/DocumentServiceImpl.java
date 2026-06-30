@@ -2,14 +2,18 @@ package com.plataforma.conversacional.service.impl;
 
 import com.plataforma.conversacional.dto.internal.FileUploadData;
 import com.plataforma.conversacional.dto.response.DocumentResponse;
+import com.plataforma.conversacional.dto.response.DocumentStatusResponse;
 import com.plataforma.conversacional.entity.Document;
+import com.plataforma.conversacional.entity.PipelineJob;
 import com.plataforma.conversacional.entity.Session;
 import com.plataforma.conversacional.enums.DocumentType;
+import com.plataforma.conversacional.enums.PipelineStatus;
 import com.plataforma.conversacional.event.DocumentEventPublisher;
 import com.plataforma.conversacional.exception.InvalidFileTypeException;
 import com.plataforma.conversacional.exception.ResourceNotFoundException;
 import com.plataforma.conversacional.mapper.DocumentMapper;
 import com.plataforma.conversacional.repository.DocumentRepository;
+import com.plataforma.conversacional.repository.PipelineJobRepository;
 import com.plataforma.conversacional.repository.SessionRepository;
 import com.plataforma.conversacional.service.DocumentService;
 import com.plataforma.conversacional.storage.FileStorageService;
@@ -25,17 +29,20 @@ public class DocumentServiceImpl implements DocumentService {
     private final FileStorageService fileStorageService;
     private final DocumentMapper documentMapper;
     private final DocumentEventPublisher documentEventPublisher;
+    private final PipelineJobRepository pipelineJobRepository;
 
     public DocumentServiceImpl(DocumentRepository documentRepository,
                                SessionRepository sessionRepository,
                                FileStorageService fileStorageService,
                                DocumentMapper documentMapper,
-                               DocumentEventPublisher documentEventPublisher) {
+                               DocumentEventPublisher documentEventPublisher,
+                               PipelineJobRepository pipelineJobRepository) {
         this.documentRepository = documentRepository;
         this.sessionRepository = sessionRepository;
         this.fileStorageService = fileStorageService;
         this.documentMapper = documentMapper;
         this.documentEventPublisher = documentEventPublisher;
+        this.pipelineJobRepository = pipelineJobRepository;
     }
 
     @Override
@@ -81,5 +88,34 @@ public class DocumentServiceImpl implements DocumentService {
                 .orElseThrow(() -> new ResourceNotFoundException(
                         "Document not found: " + documentId));
         return documentMapper.toResponse(document);
+    }
+
+    @Override
+    public DocumentStatusResponse getDocumentStatus(Long documentId) {
+        if (!documentRepository.existsById(documentId)) {
+            throw new ResourceNotFoundException("Document not found: " + documentId);
+        }
+
+        String status;
+        Integer chunksCount = null;
+        String errorMessage = null;
+
+        PipelineJob job = pipelineJobRepository.findByDocumentId(documentId).orElse(null);
+        if (job == null) {
+            status = "PENDING";
+        } else {
+            switch (job.getStatus()) {
+                case QUEUED, PARSING, CHUNKING, EMBEDDING -> status = "PROCESSING";
+                case READY -> status = "READY";
+                case FAILED -> {
+                    status = "FAILED";
+                    errorMessage = job.getErrorMessage();
+                }
+                default -> status = "UNKNOWN";
+            }
+            chunksCount = job.getChunksCount();
+        }
+
+        return new DocumentStatusResponse(documentId, status, chunksCount, errorMessage);
     }
 }

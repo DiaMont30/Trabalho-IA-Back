@@ -70,9 +70,10 @@ projeto-ia/
     │   │   │   │   ├── HealthResponse.java
     │   │   │   │   ├── SessionResponse.java
     │   │   │   │   ├── ErrorResponse.java
-    │   │   │   │   ├── RagQueryResponse.java             # ← RAG
-    │   │   │   │   ├── SourceDetailResponse.java          # ← RAG
-    │   │   │   │   └── IngestionStatusResponse.java       # ← RAG
+│   │   │   │   ├── RagQueryResponse.java             # ← RAG
+│   │   │   │   ├── SourceDetailResponse.java          # ← RAG
+│   │   │   │   ├── IngestionStatusResponse.java       # ← RAG
+│   │   │   │   └── DocumentStatusResponse.java        # ← n8n
     │   │   │   └── internal/
     │   │   │       └── FileUploadData.java
     │   │   ├── mapper/
@@ -89,8 +90,9 @@ projeto-ia/
     │   │   │   ├── BusinessException.java
     │   │   │   ├── ParsingException.java                 # ← RAG
     │   │   │   ├── EmbeddingException.java               # ← RAG
-    │   │   │   ├── RetrievalException.java               # ← RAG
-    │   │   │   └── RagProcessingException.java           # ← RAG
+│   │   │   ├── RetrievalException.java               # ← RAG
+│   │   │   ├── RagProcessingException.java           # ← RAG
+│   │   │   └── ConflictException.java                # ← n8n
     │   │   ├── constants/
     │   │   │   └── ApiConstants.java
     │   │   ├── util/
@@ -137,8 +139,9 @@ projeto-ia/
     │   │   │   └── SourceDetail.java                   # ← RAG
     │   │   ├── integration/
     │   │   │   ├── n8n/
-    │   │   │   │   ├── N8nWebhookClient.java           # ← RAG
-    │   │   │   │   └── RestN8nWebhookClient.java       # ← RAG
+│   │   │   │   ├── N8nWebhookClient.java           # ← RAG
+│   │   │   │   ├── RestN8nWebhookClient.java       # ← RAG
+│   │   │   │   └── N8nNotificationListener.java    # ← n8n
     │   │   │   └── webhook/
     │   │   │       └── N8nWebhookPayload.java          # ← RAG
     │   └── resources/
@@ -594,5 +597,29 @@ O que NÃO deve conter:
                 (TXT/PDF)  (FixedSize)  (Ollama)
 
    Integração n8n (externa):
-   Controller ←→ N8nWebhookClient ←→ n8n (HTTP)
+   +------------------+
+   |  AsyncIngestion   |
+   |  Processor        |
+   +--------+---------+
+            | ApplicationEvent
+            v
+   +---------------------+
+   | N8nNotification     |
+   | Listener            |
+   +--------+------------+
+            | HTTP POST (webhook)
+            v
+   +------------------+
+   | n8n (Docker)      |
+   | workflow engine   |
+   +------------------+
+            | HTTP GET (status)
+            v
+   +------------------+
+   | DocumentController |
+   | /documents/{id}/   |
+   | status             |
+   +------------------+
+
+   MessageServiceImpl (query RAG) → N8nWebhookClient → n8n (HTTP)
 ```

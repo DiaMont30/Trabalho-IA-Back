@@ -1,18 +1,20 @@
 package com.plataforma.conversacional.mapper;
 
 import com.plataforma.conversacional.dto.response.MessageResponse;
+import com.plataforma.conversacional.dto.response.SourceDetailResponse;
 import com.plataforma.conversacional.entity.Message;
 import com.plataforma.conversacional.entity.Session;
 import com.plataforma.conversacional.enums.MessageRole;
 import com.plataforma.conversacional.enums.MessageStatus;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 import javax.annotation.processing.Generated;
 import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2026-06-29T21:02:51-0300",
-    comments = "version: 1.5.5.Final, compiler: javac, environment: Java 17.0.18 (Microsoft)"
+    date = "2026-06-29T22:43:18-0300",
+    comments = "version: 1.5.5.Final, compiler: Eclipse JDT (IDE) 3.46.100.v20260624-0231, environment: Java 21.0.11 (Eclipse Adoptium)"
 )
 @Component
 public class MessageMapperImpl implements MessageMapper {
@@ -45,7 +47,9 @@ public class MessageMapperImpl implements MessageMapper {
         status = message.getStatus();
         metadata = message.getMetadata();
 
-        MessageResponse messageResponse = new MessageResponse( id, sessionId, content, role, status, createdAt, updatedAt, metadata );
+        List<SourceDetailResponse> sources = null;
+
+        MessageResponse messageResponse = new MessageResponse( id, sessionId, content, role, status, createdAt, updatedAt, metadata, sources );
 
         return messageResponse;
     }

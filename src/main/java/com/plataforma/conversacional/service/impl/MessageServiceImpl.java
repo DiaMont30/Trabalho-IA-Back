@@ -16,6 +16,7 @@ import com.plataforma.conversacional.enums.MessageStatus;
 import com.plataforma.conversacional.enums.PipelineStatus;
 import com.plataforma.conversacional.event.MessageEventPublisher;
 import com.plataforma.conversacional.exception.ResourceNotFoundException;
+import com.plataforma.conversacional.integration.n8n.N8nWebhookClient;
 import com.plataforma.conversacional.mapper.MessageMapper;
 import com.plataforma.conversacional.parsing.DocumentParser;
 import com.plataforma.conversacional.util.FileUtils;
@@ -65,6 +66,7 @@ public class MessageServiceImpl implements MessageService {
     private final RagIngestionService ragIngestionService;
     private final DocumentParser txtParser;
     private final DocumentParser pdfParser;
+    private final N8nWebhookClient n8nWebhookClient;
 
     public MessageServiceImpl(SessionRepository sessionRepository,
                               MessageRepository messageRepository,
@@ -79,7 +81,8 @@ public class MessageServiceImpl implements MessageService {
                                 DocumentService documentService,
                                 RagIngestionService ragIngestionService,
                                 @Qualifier("txtParser") DocumentParser txtParser,
-                                @Qualifier("pdfParser") DocumentParser pdfParser) {
+                                @Qualifier("pdfParser") DocumentParser pdfParser,
+                                N8nWebhookClient n8nWebhookClient) {
         this.sessionRepository = sessionRepository;
         this.messageRepository = messageRepository;
         this.messageMapper = messageMapper;
@@ -94,6 +97,7 @@ public class MessageServiceImpl implements MessageService {
         this.ragIngestionService = ragIngestionService;
         this.txtParser = txtParser;
         this.pdfParser = pdfParser;
+        this.n8nWebhookClient = n8nWebhookClient;
     }
 
     @Override
@@ -126,6 +130,15 @@ public class MessageServiceImpl implements MessageService {
             assistantContent = result.answer();
             sourceRefs = result.sources();
             messageType = "RAG";
+            n8nWebhookClient.notifyQueryCompleted(
+                    new com.plataforma.conversacional.dto.response.RagQueryResponse(assistantContent,
+                            sourceRefs.stream().map(ref -> new com.plataforma.conversacional.dto.response.SourceDetailResponse(
+                                    ref.getChunk().getDocument().getId(),
+                                    ref.getChunk().getDocument().getOriginalName(),
+                                    ref.getExcerpt(),
+                                    ref.getRelevanceScore()
+                            )).toList()),
+                    sessionId);
         } else {
             assistantContent = processingStrategy.process(request.content());
             sourceRefs = List.of();

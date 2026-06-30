@@ -268,6 +268,11 @@
 [VectorStore] → [MockVectorStore / PostgreSQL]
 [EmbeddingStrategy] → [Ollama (Docker)]
     ▼
+[MessageServiceImpl]
+    │ 1. Salva mensagem ASSISTANT com metadados das fontes
+    │ 2. Chama n8nWebhookClient.notifyQueryCompleted() 
+    │    (se habilitado, envia POST para n8n com answer + sources)
+    ▼
 [RagController]
     │ Monta RagQueryResponse com answer + SourceDetail[]
     │ Retorna ResponseEntity.ok(response)
@@ -301,8 +306,13 @@
     │ 9. Gera embeddings via EmbeddingStrategy (Ollama)
     │ 10. Armazena chunks + embeddings via VectorStore
     │ 11. Atualiza status → READY
-    │ 12. Publica DocumentIngestedEvent
+    │ 12. Publica DocumentIngestedEvent (via ApplicationEventPublisher)
     │ 13. Retorna IngestionStatusResponse
+    ▼
+[N8nNotificationListener] (assíncrono, via @EventListener)
+    │ 1. Recebe DocumentIngestedEvent
+    │ 2. Chama n8nWebhookClient.notifyIngestionCompleted(documentId, "READY")
+    │ 3. n8n recebe POST com { documentId, status }
     ▼
 [RagController]
     │ Retorna ResponseEntity.created(ingestionStatus)
@@ -325,7 +335,90 @@
 
 ---
 
-## 11. Webhook n8n (Resposta Assíncrona)
+## 11. Consultar Status do Documento
+
+**Endpoint:** `GET /api/v1/documents/{documentId}/status`
+
+```
+[n8n / Cliente]
+    │ GET /api/v1/documents/1/status
+    ▼
+[DocumentController]
+    │ 1. Extrai documentId
+    │ 2. Chama documentService.getDocumentStatus(documentId)
+    ▼
+[DocumentServiceImpl]
+    │ 1. Verifica se documento existe (404 se não)
+    │ 2. Busca PipelineJob associado ao documento
+    │ 3. Mapeia status:
+    │    - Sem job → "PENDING"
+    │    - QUEUED/PARSING/CHUNKING/EMBEDDING → "PROCESSING"
+    │    - READY → "READY"
+    │    - FAILED → "FAILED" + errorMessage
+    │ 4. Retorna DocumentStatusResponse
+    ▼
+[DocumentRepository + PipelineJobRepository] → [PostgreSQL]
+    ▼
+[DocumentController]
+    │ Retorna ResponseEntity.ok(statusResponse)
+    ▼
+[n8n / Cliente] ← 200 OK
+```
+
+---
+
+## 12. Fluxo de Notificação n8n (Ingestão Completa)
+
+**Gatilho:** `DocumentIngestedEvent` publicado ao final da ingestão
+
+```
+[AsyncIngestionProcessor]
+    │ Pipeline concluído com sucesso (status = READY)
+    │ publica DocumentIngestedEvent(documentId, jobId)
+    ▼
+[N8nNotificationListener] (@EventListener)
+    │ 1. Recebe o evento
+    │ 2. Log do recebimento
+    │ 3. Chama n8nWebhookClient.notifyIngestionCompleted(documentId, "READY")
+    ▼
+[RestN8nWebhookClient]
+    │ 1. Verifica se app.n8n.enabled = true (senão apenas loga)
+    │ 2. Monta N8nWebhookPayload:
+    │    { eventType: "INGESTION_COMPLETED",
+    │      payload: { documentId, status: "READY" },
+    │      timestamp: "2024-..."" }
+    │ 3. POST para app.n8n.webhook-url (padrão: http://localhost:5678/webhook/rag)
+    ▼
+[n8n (externo)]
+    │ 1. Recebe webhook com eventType = INGESTION_COMPLETED
+    │ 2. Consulta GET /api/v1/documents/{documentId}/status para confirmar
+    │ 3. Executa ação configurada (e-mail, notificação, relatório)
+```
+
+---
+
+## 13. Fluxo de Notificação n8n (Query Respondida)
+
+**Gatilho:** Mensagem RAG respondida em `MessageServiceImpl.send()`
+
+```
+[MessageServiceImpl.send()]
+    │ 1. ragPipeline.execute() retorna RagResult com answer + sources
+    │ 2. Salva mensagem ASSISTANT com metadados
+    │ 3. Chama n8nWebhookClient.notifyQueryCompleted(result, sessionId)
+    ▼
+[RestN8nWebhookClient]
+    │ 1. Verifica se app.n8n.enabled = true
+    │ 2. Monta payload com answer + sources
+    │ 3. POST para webhook-url
+    ▼
+[n8n (externo)]
+    │ Workflow processa a resposta (logging, análise, notificação)
+```
+
+---
+
+## 14. Webhook n8n (Resposta Assíncrona)
 
 **Endpoint:** `POST /api/v1/webhooks/n8n/rag-response`
 

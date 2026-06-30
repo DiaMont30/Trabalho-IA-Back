@@ -12,10 +12,12 @@ import java.time.Duration;
 public class RestTemplateConfig {
 
     @Bean
-    public RestTemplate restTemplate(@Value("${app.rag.ollama.timeout}") long timeout) {
+    public RestTemplate restTemplate(
+            @Value("${app.rag.ollama.read-timeout}") long readTimeout,
+            @Value("${app.rag.ollama.connect-timeout}") long connectTimeout) {
         return new RestTemplateBuilder()
-                .setConnectTimeout(Duration.ofMillis(timeout))
-                .setReadTimeout(Duration.ofMillis(timeout))
+                .setConnectTimeout(Duration.ofMillis(connectTimeout))
+                .setReadTimeout(Duration.ofMillis(readTimeout))
                 .build();
     }
 }

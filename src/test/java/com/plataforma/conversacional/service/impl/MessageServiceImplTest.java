@@ -120,7 +120,7 @@ class MessageServiceImplTest {
         verify(messageRepository, times(2)).save(any(Message.class));
         verify(processingStrategy).process("Hello");
         verify(eventPublisher).publishMessageSent(2L, "SIMPLE");
-        verify(ragPipeline, never()).execute(anyString(), anyLong());
+        verify(ragPipeline, never()).execute(anyString(), anyString(), anyLong());
     }
 
     @Test
@@ -143,7 +143,7 @@ class MessageServiceImplTest {
         when(sessionRepository.findById(1L)).thenReturn(Optional.of(session));
         when(documentRepository.findBySessionId(1L)).thenReturn(List.of(doc));
         when(pipelineJobRepository.findByDocumentId(10L)).thenReturn(Optional.of(createReadyJob()));
-        when(ragPipeline.execute("Hello", 1L)).thenReturn(ragResult);
+        when(ragPipeline.execute("Hello", "test.pdf", 1L)).thenReturn(ragResult);
         when(objectMapper.writeValueAsString(any())).thenReturn("[{\"documentId\":10}]");
 
         MessageResponse expectedResponse = new MessageResponse(
@@ -161,7 +161,7 @@ class MessageServiceImplTest {
 
         assertEquals("RAG response", result.content());
         verify(messageRepository, times(2)).save(any(Message.class));
-        verify(ragPipeline).execute("Hello", 1L);
+        verify(ragPipeline).execute("Hello", "test.pdf", 1L);
         verify(sourceReferenceRepository).save(sourceRef);
         verify(eventPublisher).publishMessageSent(2L, "RAG");
         verify(processingStrategy, never()).process(anyString());

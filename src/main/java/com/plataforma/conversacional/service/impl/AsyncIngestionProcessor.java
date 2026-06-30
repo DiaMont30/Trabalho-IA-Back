@@ -18,7 +18,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationEventPublisher;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -63,7 +62,6 @@ public class AsyncIngestionProcessor {
         this.eventPublisher = eventPublisher;
     }
 
-    @Async
     public void processAsync(Document document, PipelineJob job) {
         try {
             job.setStatus(PipelineStatus.PARSING);

@@ -4,9 +4,11 @@ import com.plataforma.conversacional.dto.request.RagQueryRequest;
 import com.plataforma.conversacional.dto.response.IngestionStatusResponse;
 import com.plataforma.conversacional.dto.response.RagQueryResponse;
 import com.plataforma.conversacional.dto.response.SourceDetailResponse;
+import com.plataforma.conversacional.entity.Document;
 import com.plataforma.conversacional.entity.SourceReference;
 import com.plataforma.conversacional.pipeline.RagPipeline;
 import com.plataforma.conversacional.pipeline.RagResult;
+import com.plataforma.conversacional.repository.DocumentRepository;
 import com.plataforma.conversacional.repository.SourceReferenceRepository;
 import com.plataforma.conversacional.service.RagIngestionService;
 import jakarta.validation.Valid;
@@ -19,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static com.plataforma.conversacional.constants.ApiConstants.API_VERSION;
 import static com.plataforma.conversacional.constants.ApiConstants.DOCUMENT_ID_VARIABLE;
@@ -34,18 +37,24 @@ public class RagController {
     private final RagPipeline ragPipeline;
     private final RagIngestionService ragIngestionService;
     private final SourceReferenceRepository sourceReferenceRepository;
+    private final DocumentRepository documentRepository;
 
     public RagController(RagPipeline ragPipeline,
                          RagIngestionService ragIngestionService,
-                         SourceReferenceRepository sourceReferenceRepository) {
+                         SourceReferenceRepository sourceReferenceRepository,
+                         DocumentRepository documentRepository) {
         this.ragPipeline = ragPipeline;
         this.ragIngestionService = ragIngestionService;
         this.sourceReferenceRepository = sourceReferenceRepository;
+        this.documentRepository = documentRepository;
     }
 
     @PostMapping(QUERY_PATH)
     public ResponseEntity<RagQueryResponse> query(@Valid @RequestBody RagQueryRequest request) {
-        RagResult result = ragPipeline.execute(request.query(), request.sessionId());
+        String docNames = documentRepository.findBySessionId(request.sessionId()).stream()
+            .map(Document::getOriginalName)
+            .collect(Collectors.joining(", "));
+        RagResult result = ragPipeline.execute(request.query(), docNames, request.sessionId());
         List<SourceDetailResponse> sources = result.sources().stream()
                 .map(this::toSourceDetail)
                 .toList();

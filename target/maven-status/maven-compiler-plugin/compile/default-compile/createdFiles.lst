@@ -81,7 +81,6 @@ com\plataforma\conversacional\retrieval\Retriever.class
 com\plataforma\conversacional\enums\DocumentType.class
 com\plataforma\conversacional\entity\SourceReference.class
 com\plataforma\conversacional\dto\response\SourceDetailResponse.class
-com\plataforma\conversacional\config\MessagePublisherConfig.class
 com\plataforma\conversacional\config\CorsConfig$1.class
 com\plataforma\conversacional\dto\request\SendMessageRequest.class
 com\plataforma\conversacional\repository\PipelineJobRepository.class
@@ -119,4 +118,5 @@ com\plataforma\conversacional\mapper\DocumentMapperImpl.class
 com\plataforma\conversacional\PlataformaConversacionalApplication.class
 com\plataforma\conversacional\dto\response\SessionPageResponse.class
 com\plataforma\conversacional\exception\ResourceNotFoundException.class
+com\plataforma\conversacional\storage\PostgresVectorStore.class
 com\plataforma\conversacional\repository\SessionRepository.class

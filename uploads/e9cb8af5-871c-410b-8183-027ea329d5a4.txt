@@ -1,0 +1,1 @@
+testando ollama com arquivo txt

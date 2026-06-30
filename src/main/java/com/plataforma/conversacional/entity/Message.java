@@ -14,10 +14,13 @@ import jakarta.persistence.Index;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "messages", indexes = {
@@ -44,6 +47,9 @@ public class Message {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 20)
     private MessageStatus status;
+
+    @OneToMany(mappedBy = "message", fetch = FetchType.LAZY)
+    private List<SourceReference> sourceReferences = new ArrayList<>();
 
     @Column(columnDefinition = "JSON")
     private String metadata;
@@ -77,6 +83,8 @@ public class Message {
     public void setStatus(MessageStatus status) { this.status = status; }
     public String getMetadata() { return metadata; }
     public void setMetadata(String metadata) { this.metadata = metadata; }
+    public List<SourceReference> getSourceReferences() { return sourceReferences; }
+    public void setSourceReferences(List<SourceReference> sourceReferences) { this.sourceReferences = sourceReferences; }
     public LocalDateTime getCreatedAt() { return createdAt; }
     public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
     public LocalDateTime getUpdatedAt() { return updatedAt; }

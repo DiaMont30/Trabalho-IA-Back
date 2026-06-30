@@ -178,6 +178,8 @@ public class MessageServiceImpl implements MessageService {
 
         eventPublisher.publishMessageSent(assistantMessage.getId(), messageType);
 
+        assistantMessage.setSourceReferences(sourceRefs);
+
         return messageMapper.toResponse(assistantMessage);
     }
 

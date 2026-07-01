@@ -44,7 +44,7 @@ app:
       url: http://localhost:11434
       model: nomic-embed-text
       chat-model: llama3.2
-      timeout: 5000
+      timeout: 120000
     chunking:
       max-size: 512
       overlap: 64

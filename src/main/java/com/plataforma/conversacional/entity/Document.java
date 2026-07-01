@@ -50,6 +50,9 @@ public class Document {
     @Column(nullable = false, length = 100)
     private String contentType;
 
+    @Column(columnDefinition = "TEXT")
+    private String content;
+
     @Column(nullable = false, updatable = false)
     private LocalDateTime uploadedAt;
 
@@ -76,4 +79,6 @@ public class Document {
     public void setContentType(String contentType) { this.contentType = contentType; }
     public LocalDateTime getUploadedAt() { return uploadedAt; }
     public void setUploadedAt(LocalDateTime uploadedAt) { this.uploadedAt = uploadedAt; }
+    public String getContent() { return content; }
+    public void setContent(String content) { this.content = content; }
 }

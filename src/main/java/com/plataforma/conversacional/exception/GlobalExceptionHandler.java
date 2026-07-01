@@ -1,4 +1,4 @@
-package com.plataforma.conversacional.exception;
+﻿package com.plataforma.conversacional.exception;
 
 import com.plataforma.conversacional.dto.response.ErrorResponse;
 import org.springframework.dao.DataAccessException;
@@ -126,7 +126,7 @@ public class GlobalExceptionHandler {
         ErrorResponse response = new ErrorResponse(
                 HttpStatus.PAYLOAD_TOO_LARGE.value(),
                 "File Too Large",
-                "O arquivo excede o tamanho máximo permitido de 10MB",
+                "O arquivo excede o tamanho mÃ¡ximo permitido de 10MB",
                 LocalDateTime.now().toString(),
                 request.getDescription(false).replace("uri=", ""),
                 null
@@ -166,10 +166,12 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorResponse> handleGeneric(Exception ex, WebRequest request) {
+        String msg = ex.getClass().getSimpleName() + ": " + ex.getMessage();
+        if (ex.getCause() != null) msg += " | Cause: " + ex.getCause().getMessage();
         ErrorResponse response = new ErrorResponse(
                 HttpStatus.INTERNAL_SERVER_ERROR.value(),
                 "Internal Server Error",
-                "An unexpected error occurred",
+                msg,
                 LocalDateTime.now().toString(),
                 request.getDescription(false).replace("uri=", ""),
                 null
@@ -177,3 +179,4 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
     }
 }
+

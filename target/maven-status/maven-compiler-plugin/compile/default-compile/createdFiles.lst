@@ -119,4 +119,5 @@ com\plataforma\conversacional\mapper\DocumentMapperImpl.class
 com\plataforma\conversacional\PlataformaConversacionalApplication.class
 com\plataforma\conversacional\dto\response\SessionPageResponse.class
 com\plataforma\conversacional\exception\ResourceNotFoundException.class
+com\plataforma\conversacional\storage\PostgresVectorStore.class
 com\plataforma\conversacional\repository\SessionRepository.class

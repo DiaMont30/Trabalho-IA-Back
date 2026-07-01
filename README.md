@@ -1,4 +1,4 @@
-# Projeto IA – Front-end
+# Projeto IA – Back-end
 
 ## Grupo 4
 
@@ -15,7 +15,15 @@
 
 ---
 
-## Estrutura do Repositório
+## Back-end
+
+O repositório do back-end está disponível em:
+
+```
+https://github.com/DiaMont30/Trabalho-IA-Back.git
+```
+
+### Estrutura do Back-end
 
 ```
 Trabalho-IA-Back/
@@ -57,82 +65,93 @@ Trabalho-IA-Back/
     └── conversacional-0.0.1-SNAPSHOT.jar
 ```
 
----
+### Tecnologias do Back-end
 
-## Como executar o código
+| Tecnologia | Finalidade |
+|---|---|
+| Java 17 | Linguagem de programação |
+| Spring Boot 3.2 | Framework web |
+| Spring Data JPA | Camada de persistência com Hibernate |
+| Spring Security | Autenticação e controle de acesso |
+| PostgreSQL | Banco de dados relacional |
+| MapStruct | Mapeamento entre entidades e DTOs |
+| SpringDoc OpenAPI | Documentação da API (Swagger) |
+| Spring Dotenv | Carregamento de variáveis do `.env` |
 
-### Pré-requisitos
+### Pré-requisitos do Back-end
 
-- Java 17+ instalado
-- Maven 3.8+ instalado (ou utilizar o wrapper da IDE)
+- Java 17+
+- Maven 3.8+
 - PostgreSQL rodando (local ou remoto)
 
-### Passos
+### Como Executar via Maven
 
-1. **Clonar o repositório**
+```bash
+git clone https://github.com/DiaMont30/Trabalho-IA-Back.git
+cd Trabalho-IA-Back
+```
 
-   ```bash
-   git clone https://github.com/DiaMont30/Trabalho-IA-Back.git
-   cd Trabalho-IA-Back
-   ```
+Crie o arquivo `.env` na raiz com as credenciais do banco:
 
-2. **Criar o arquivo `.env`** na raiz do projeto com as credenciais do banco:
+```env
+DB_USERNAME=chatbot
+DB_PASSWORD=***
+```
 
-   ```env
-   DB_USERNAME=chatbot
-   DB_PASSWORD=***
-   ```
+Execute:
 
-3. **Executar**
+```bash
+mvn spring-boot:run
+```
 
-   ```bash
-    mvn spring-boot:run
-   ```
+A aplicação estará disponível em `http://localhost:8080`.
 
-   A aplicação estará disponível em `http://localhost:8080` ou `http://localhost:8080/swagger-ui/index.html`.
+A documentação Swagger estará em `http://localhost:8080/swagger-ui/index.html`.
 
----
+### Como Executar via .jar
 
-## Como executar o `.jar`
+Pré-requisito: Java 17+
 
-### Pré-requisito
+Baixe o `.jar` disponível em `target/conversacional-0.0.1-SNAPSHOT.jar`, crie o arquivo `.env` no mesmo diretório e execute:
 
-- Java 17+ instalado
-
-### Passos
-
-1. **Baixar o `.jar`** — disponível em `target/conversacional-0.0.1-SNAPSHOT.jar`
-
-2. **Criar o arquivo `.env`** no mesmo diretório do `.jar`:
-
-   ```env
-   DB_USERNAME=chatbot
-   DB_PASSWORD=***
-   ```
-
-3. **Executar**:
-
-   ```bash
-   java -jar conversacional-0.0.1-SNAPSHOT.jar
-   ```
-
-   A aplicação sobe na porta `8080`.
+```bash
+java -jar conversacional-0.0.1-SNAPSHOT.jar
+```
 
 ---
 
-## Tecnologias
+## Endpoints Consumidos pelo Front-end
 
-- [Java 17](https://openjdk.org/projects/jdk/17/) — Linguagem de programação
-- [Spring Boot 3.2](https://spring.io/projects/spring-boot) — Framework para desenvolvimento de aplicações web
-- [Spring Data JPA](https://spring.io/projects/spring-data-jpa) — Camada de persistência com Hibernate
-- [Spring Security](https://spring.io/projects/spring-security) — Autenticação e controle de acesso
-- [PostgreSQL](https://www.postgresql.org/) — Banco de dados relacional
-- [MapStruct](https://mapstruct.org/) — Mapeamento entre entidades e DTOs
-- [SpringDoc OpenAPI](https://springdoc.org/) — Documentação da API (Swagger)
-- [Spring Dotenv](https://github.com/paulschwarz/spring-dotenv) — Carregamento de variáveis de ambiente do arquivo `.env`
+| Método | Endpoint | Finalidade |
+|---|---|---|
+| GET | `/api/health` | Verificar disponibilidade da API |
+| POST | `/api/auth/login` | Autenticar usuário |
+| POST | `/api/auth/register` | Registrar novo usuário |
+| POST | `/api/chat` | Enviar mensagem |
+| GET | `/api/chat/{sessionId}` | Recuperar histórico da sessão |
+| POST | `/api/upload` | Upload de arquivos |
+| GET | `/api/ingestion/{id}` | Verificar status de ingestão |
 
 ---
 
-<p align="center">
-  <strong>Grupo 4 — Serratec Residência · Sala 34</strong>
-</p>
+## Tipos de Arquivos Suportados no Upload
+
+- `.txt`
+- `.pdf`
+
+---
+
+## Documentação
+
+A documentação técnica do front-end encontra-se na pasta `docs/`:
+
+- **SYSTEM_DOCS.md** — especificação arquitetural da aplicação
+- **IMPLEMENTATION_PLAN.md** — plano de implementação seguido durante o desenvolvimento
+- **IMPLEMENTATION_PENDENCIAS_PLAN.md** — pendências e ajustes da implementação
+- **SPEC-PENDENCIAS-FRONTEND.md** — especificação das pendências do front-end
+
+---
+
+## Desenvolvimento Assistido por IA
+
+Este projeto utilizou uma ferramenta de IA durante o processo de desenvolvimento.

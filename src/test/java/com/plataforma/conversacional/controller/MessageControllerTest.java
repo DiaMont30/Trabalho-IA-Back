@@ -35,7 +35,7 @@ class MessageControllerTest {
     void send_ShouldReturn201() throws Exception {
         MessageResponse response = new MessageResponse(
                 2L, 1L, "Resposta", MessageRole.ASSISTANT,
-                MessageStatus.RECEIVED, "2024-01-01T00:00:00", "2024-01-01T00:00:00", null);
+                MessageStatus.RECEIVED, "2024-01-01T00:00:00", "2024-01-01T00:00:00", null, null);
         when(messageService.send(anyLong(), any(SendMessageRequest.class))).thenReturn(response);
 
         mockMvc.perform(post("/api/v1/sessions/1/messages")

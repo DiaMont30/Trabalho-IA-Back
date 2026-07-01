@@ -103,16 +103,11 @@ class MessageServiceImplTest {
         when(documentRepository.findBySessionId(1L)).thenReturn(List.of());
         when(processingStrategy.process("Hello")).thenReturn("Mock response");
 
-        MessageResponse expectedResponse = new MessageResponse(
-                2L, 1L, "Mock response", MessageRole.ASSISTANT,
-                MessageStatus.RECEIVED, "2024-01-01T00:00:00", "2024-01-01T00:00:00", null);
-
         when(messageRepository.save(any(Message.class))).thenAnswer(invocation -> {
             Message msg = invocation.getArgument(0);
             msg.setId(msg.getRole() == MessageRole.USER ? 1L : 2L);
             return msg;
         });
-        when(messageMapper.toResponse(any(Message.class))).thenReturn(expectedResponse);
 
         MessageResponse result = messageService.send(1L, request);
 
@@ -124,7 +119,7 @@ class MessageServiceImplTest {
     }
 
     @Test
-    void send_ShouldUseRagPipeline_WhenSessionHasIndexedDocuments() throws Exception {
+    void send_ShouldUseRagPipeline_WhenSessionHasIndexedDocuments() {
         Session session = createSession();
         SendMessageRequest request = new SendMessageRequest("Hello");
         Document doc = createDocument(10L, session);
@@ -142,27 +137,21 @@ class MessageServiceImplTest {
 
         when(sessionRepository.findById(1L)).thenReturn(Optional.of(session));
         when(documentRepository.findBySessionId(1L)).thenReturn(List.of(doc));
-        when(pipelineJobRepository.findByDocumentId(10L)).thenReturn(Optional.of(createReadyJob()));
         when(ragPipeline.execute("Hello", 1L)).thenReturn(ragResult);
-        when(objectMapper.writeValueAsString(any())).thenReturn("[{\"documentId\":10}]");
-
-        MessageResponse expectedResponse = new MessageResponse(
-                2L, 1L, "RAG response", MessageRole.ASSISTANT,
-                MessageStatus.RECEIVED, "2024-01-01T00:00:00", "2024-01-01T00:00:00", null);
 
         when(messageRepository.save(any(Message.class))).thenAnswer(invocation -> {
             Message msg = invocation.getArgument(0);
             msg.setId(msg.getRole() == MessageRole.USER ? 1L : 2L);
             return msg;
         });
-        when(messageMapper.toResponse(any(Message.class))).thenReturn(expectedResponse);
 
         MessageResponse result = messageService.send(1L, request);
 
         assertEquals("RAG response", result.content());
+        assertEquals(1, result.sources().size());
         verify(messageRepository, times(2)).save(any(Message.class));
         verify(ragPipeline).execute("Hello", 1L);
-        verify(sourceReferenceRepository).save(sourceRef);
+        verify(sourceReferenceRepository).saveAll(List.of(sourceRef));
         verify(eventPublisher).publishMessageSent(2L, "RAG");
         verify(processingStrategy, never()).process(anyString());
     }
@@ -194,7 +183,7 @@ class MessageServiceImplTest {
 
         MessageResponse msgResponse = new MessageResponse(
                 1L, 1L, "Hello", MessageRole.USER,
-                MessageStatus.SENT, "2024-01-01T00:00:00", "2024-01-01T00:00:00", null);
+                MessageStatus.SENT, "2024-01-01T00:00:00", "2024-01-01T00:00:00", null, null);
 
         when(messageRepository.findBySessionId(1L, PageRequest.of(0, 10))).thenReturn(page);
         when(messageMapper.toResponse(message)).thenReturn(msgResponse);

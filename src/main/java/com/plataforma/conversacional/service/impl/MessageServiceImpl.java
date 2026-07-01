@@ -3,17 +3,22 @@ package com.plataforma.conversacional.service.impl;
 import com.plataforma.conversacional.dto.request.SendMessageRequest;
 import com.plataforma.conversacional.dto.response.MessageResponse;
 import com.plataforma.conversacional.dto.response.SessionHistoryResponse;
+import com.plataforma.conversacional.dto.response.SourceDetailResponse;
 import com.plataforma.conversacional.entity.Document;
 import com.plataforma.conversacional.entity.Message;
 import com.plataforma.conversacional.entity.Session;
+import com.plataforma.conversacional.entity.SourceReference;
 import com.plataforma.conversacional.enums.MessageRole;
 import com.plataforma.conversacional.enums.MessageStatus;
 import com.plataforma.conversacional.event.MessageEventPublisher;
 import com.plataforma.conversacional.exception.ResourceNotFoundException;
 import com.plataforma.conversacional.mapper.MessageMapper;
+import com.plataforma.conversacional.pipeline.RagPipeline;
+import com.plataforma.conversacional.pipeline.RagResult;
 import com.plataforma.conversacional.repository.DocumentRepository;
 import com.plataforma.conversacional.repository.MessageRepository;
 import com.plataforma.conversacional.repository.SessionRepository;
+import com.plataforma.conversacional.repository.SourceReferenceRepository;
 import com.plataforma.conversacional.service.MessageService;
 import com.plataforma.conversacional.strategy.MessageProcessingStrategy;
 import org.slf4j.Logger;
@@ -40,19 +45,25 @@ public class MessageServiceImpl implements MessageService {
     private final MessageProcessingStrategy processingStrategy;
     private final MessageEventPublisher eventPublisher;
     private final DocumentRepository documentRepository;
+    private final RagPipeline ragPipeline;
+    private final SourceReferenceRepository sourceReferenceRepository;
 
     public MessageServiceImpl(SessionRepository sessionRepository,
                               MessageRepository messageRepository,
                               MessageMapper messageMapper,
                               MessageProcessingStrategy processingStrategy,
                               MessageEventPublisher eventPublisher,
-                              DocumentRepository documentRepository) {
+                              DocumentRepository documentRepository,
+                              RagPipeline ragPipeline,
+                              SourceReferenceRepository sourceReferenceRepository) {
         this.sessionRepository = sessionRepository;
         this.messageRepository = messageRepository;
         this.messageMapper = messageMapper;
         this.processingStrategy = processingStrategy;
         this.eventPublisher = eventPublisher;
         this.documentRepository = documentRepository;
+        this.ragPipeline = ragPipeline;
+        this.sourceReferenceRepository = sourceReferenceRepository;
     }
 
     @Override
@@ -70,8 +81,27 @@ public class MessageServiceImpl implements MessageService {
 
         updateSessionFromMessage(session, request.content());
 
-        String assistantContent = buildAndProcess(sessionId, request.content());
-        String messageType = assistantContent.equals(request.content()) ? "SIMPLE" : "RAG";
+        List<Document> sessionDocuments = documentRepository.findBySessionId(sessionId);
+        String assistantContent;
+        List<SourceReference> sourceRefs;
+
+        if (!sessionDocuments.isEmpty()) {
+            // Tenta RAG vetorial; se não houver chunks indexados usa contexto naive
+            RagResult ragResult = ragPipeline.execute(request.content(), sessionId);
+            if (!ragResult.sources().isEmpty()) {
+                assistantContent = ragResult.answer();
+                sourceRefs = ragResult.sources();
+                log.debug("RAG used for sessionId={}, sources={}", sessionId, sourceRefs.size());
+            } else {
+                assistantContent = buildContextAndProcess(sessionDocuments, request.content());
+                sourceRefs = List.of();
+                log.debug("Fallback naive context for sessionId={}", sessionId);
+            }
+        } else {
+            assistantContent = processingStrategy.process(request.content());
+            sourceRefs = List.of();
+            log.debug("No documents for sessionId={} - direct LLM", sessionId);
+        }
 
         Message assistantMessage = new Message();
         assistantMessage.setSession(session);
@@ -80,9 +110,35 @@ public class MessageServiceImpl implements MessageService {
         assistantMessage.setStatus(MessageStatus.RECEIVED);
         messageRepository.save(assistantMessage);
 
-        eventPublisher.publishMessageSent(assistantMessage.getId(), messageType);
+        if (!sourceRefs.isEmpty()) {
+            for (SourceReference ref : sourceRefs) {
+                ref.setMessage(assistantMessage);
+            }
+            sourceReferenceRepository.saveAll(sourceRefs);
+        }
 
-        return messageMapper.toResponse(assistantMessage);
+        eventPublisher.publishMessageSent(assistantMessage.getId(),
+                sourceRefs.isEmpty() ? "SIMPLE" : "RAG");
+
+        List<SourceDetailResponse> sourceDtos = sourceRefs.stream()
+                .map(ref -> new SourceDetailResponse(
+                        ref.getChunk().getDocument().getId(),
+                        ref.getChunk().getDocument().getOriginalName(),
+                        ref.getExcerpt(),
+                        ref.getRelevanceScore()))
+                .toList();
+
+        return new MessageResponse(
+                assistantMessage.getId(),
+                sessionId,
+                assistantMessage.getContent(),
+                assistantMessage.getRole(),
+                assistantMessage.getStatus(),
+                assistantMessage.getCreatedAt() != null ? assistantMessage.getCreatedAt().toString() : null,
+                assistantMessage.getUpdatedAt() != null ? assistantMessage.getUpdatedAt().toString() : null,
+                assistantMessage.getMetadata(),
+                sourceDtos
+        );
     }
 
     @Override
@@ -100,7 +156,8 @@ public class MessageServiceImpl implements MessageService {
 
         updateSessionFromMessage(session, request.content());
 
-        String assistantContent = buildAndProcess(sessionId, request.content());
+        List<Document> sessionDocuments = documentRepository.findBySessionId(sessionId);
+        String assistantContent = buildContextAndProcess(sessionDocuments, request.content());
 
         Message assistantMessage = new Message();
         assistantMessage.setSession(session);
@@ -137,8 +194,7 @@ public class MessageServiceImpl implements MessageService {
         );
     }
 
-    private String buildAndProcess(Long sessionId, String userQuestion) {
-        List<Document> sessionDocuments = documentRepository.findBySessionId(sessionId);
+    private String buildContextAndProcess(List<Document> sessionDocuments, String userQuestion) {
         String context = sessionDocuments.stream()
                 .filter(d -> d.getContent() != null && !d.getContent().isBlank())
                 .map(Document::getContent)

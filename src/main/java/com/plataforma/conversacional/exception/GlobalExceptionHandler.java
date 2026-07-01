@@ -1,4 +1,4 @@
-﻿package com.plataforma.conversacional.exception;
+package com.plataforma.conversacional.exception;
 
 import com.plataforma.conversacional.dto.response.ErrorResponse;
 import org.springframework.dao.DataAccessException;

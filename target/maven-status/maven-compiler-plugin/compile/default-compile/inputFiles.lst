@@ -109,6 +109,7 @@ C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\p
 C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\retrieval\SimilarityRetriever.java
 C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\mapper\SessionMapper.java
 C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\storage\LocalFileStorageService.java
+C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\event\DocumentIngestedEventListener.java
 C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\enums\SessionStatus.java
 C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\exception\ResourceNotFoundException.java
 C:\Users\betar\OneDrive\Desktop\SERRATEC\IA\Trabalho-IA-Back\src\main\java\com\plataforma\conversacional\pipeline\DefaultRagPipeline.java

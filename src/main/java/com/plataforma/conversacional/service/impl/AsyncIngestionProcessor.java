@@ -69,14 +69,44 @@ public class AsyncIngestionProcessor {
             job.setStatus(PipelineStatus.PARSING);
             pipelineJobRepository.save(job);
 
+            byte[] fileBytes = readFileBytes(document.getStoragePath());
+            DocumentParser parser = resolveParser(document.getType());
+            String text = parser.parse(fileBytes, document.getContentType());
+
+            job.setStatus(PipelineStatus.CHUNKING);
+            pipelineJobRepository.save(job);
+
+            List<Chunk> chunks = chunkingStrategy.chunk(text);
+
+            job.setStatus(PipelineStatus.EMBEDDING);
+            pipelineJobRepository.save(job);
+
+            List<DocumentChunk> documentChunks = new ArrayList<>();
+            for (Chunk chunk : chunks) {
+                DocumentChunk documentChunk = new DocumentChunk();
+                documentChunk.setDocument(document);
+                documentChunk.setContent(chunk.getContent());
+                documentChunk.setChunkIndex(chunk.getIndex());
+                documentChunks.add(documentChunk);
+            }
+            documentChunks = documentChunkRepository.saveAll(documentChunks);
+
+            List<String> texts = documentChunks.stream()
+                    .map(DocumentChunk::getContent)
+                    .toList();
+            List<float[]> embeddings = embeddingStrategy.embedBatch(texts);
+
+            vectorStore.storeChunks(documentChunks, embeddings);
+
             job.setStatus(PipelineStatus.READY);
-            job.setChunksCount(0);
+            job.setChunksCount(documentChunks.size());
             job.setCompletedAt(LocalDateTime.now());
             pipelineJobRepository.save(job);
 
             eventPublisher.publishEvent(new DocumentIngestedEvent(this, document.getId(), job.getId()));
 
-            log.info("Ingestion completed for documentId={}, jobId={}", document.getId(), job.getId());
+            log.info("Ingestion completed for documentId={}, jobId={}, chunks={}",
+                    document.getId(), job.getId(), documentChunks.size());
 
         } catch (Exception e) {
             log.error("Ingestion failed for documentId={}, jobId={}", document.getId(), job.getId(), e);

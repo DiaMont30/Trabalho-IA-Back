@@ -113,7 +113,6 @@ com\plataforma\conversacional\dto\response\DocumentResponse.class
 com\plataforma\conversacional\controller\SessionController.class
 com\plataforma\conversacional\entity\Message.class
 com\plataforma\conversacional\exception\BusinessException.class
-com\plataforma\conversacional\exception\GlobalExceptionHandler.class
 com\plataforma\conversacional\specification\MessageSpecification.class
 com\plataforma\conversacional\mapper\DocumentMapperImpl.class
 com\plataforma\conversacional\PlataformaConversacionalApplication.class

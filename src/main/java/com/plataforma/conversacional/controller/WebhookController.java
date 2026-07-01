@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Map;
+
 import static com.plataforma.conversacional.constants.ApiConstants.API_VERSION;
 import static com.plataforma.conversacional.constants.ApiConstants.N8N_PATH;
 import static com.plataforma.conversacional.constants.ApiConstants.WEBHOOK_PATH;
@@ -20,9 +22,9 @@ public class WebhookController {
     private static final Logger log = LoggerFactory.getLogger(WebhookController.class);
 
     @PostMapping("/rag-response")
-    public ResponseEntity<Void> receiveRagResponse(@RequestBody N8nWebhookPayload payload) {
+    public ResponseEntity<Map<String, String>> receiveRagResponse(@RequestBody N8nWebhookPayload payload) {
         log.info("Received n8n webhook response: eventType={}, timestamp={}",
                 payload.eventType(), payload.timestamp());
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok(Map.of("status", "received", "eventType", payload.eventType()));
     }
 }

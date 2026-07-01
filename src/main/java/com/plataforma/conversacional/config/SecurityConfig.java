@@ -36,6 +36,7 @@ public class SecurityConfig {
                 .requestMatchers("/api-docs/**", "/swagger-ui/**", "/swagger-ui.html").permitAll()
                 .requestMatchers("/api/v1/health").permitAll()
                 .requestMatchers("/actuator/health").permitAll()
+                .requestMatchers("/api/v1/webhooks/**").permitAll()
                 .anyRequest().authenticated()
             )
             .addFilterBefore(new JwtAuthenticationFilter(jwtTokenProvider, userDetailsService),
